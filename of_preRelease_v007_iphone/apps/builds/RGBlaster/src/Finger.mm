@@ -1,0 +1,72 @@
+//
+//  Finger.mm
+//  RGBlaster
+//
+//  Created by Matthew Vroman on 11/22/11.
+//  Last Modified: 12/13/11
+//
+//  Copyright (c) 2011 RGBeast.
+//  Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+//
+//  Description: Handles collision detection between touches & ships
+
+#include <iostream>
+#import "Finger.h"
+
+//setup finger with OF touch event listeners
+Finger::Finger(){
+    ofAddListener(ofEvents.touchDown, this, &Finger::touchDown);
+	ofAddListener(ofEvents.touchMoved, this, &Finger::touchMoved);
+	ofAddListener(ofEvents.touchUp, this, &Finger::touchUp);
+    
+    target = new Target();
+    
+    //defines how large of a radius the touch has influence over
+    radius=15;
+}
+
+//remove all touch events
+Finger::~Finger(){
+    ofRemoveListener(ofEvents.touchDown, this, &Finger::touchDown);
+	ofRemoveListener(ofEvents.touchMoved, this, &Finger::touchMoved);
+	ofRemoveListener(ofEvents.touchUp, this, &Finger::touchUp);
+}
+
+void Finger::touchDown(ofTouchEventArgs &touch) {
+    down=true;
+    x=touch.x;
+    y=touch.y;
+    
+}
+
+void Finger::touchMoved(ofTouchEventArgs &touch) {
+    x=touch.x;
+    y=touch.y;
+    
+    
+}
+void Finger::touchUp(ofTouchEventArgs &touch) {
+    down=false;
+    x=nil;
+    y=nil;
+    target->clearTargets();
+}
+
+void Finger::setColor(Color _color){
+    color=_color;
+}
+
+//Check if the touch has collided with any of the ships on-screen
+bool Finger::hitTest(Ship &ship){
+
+    if(x < ship.x+ship.width/2 && x > ship.x-ship.width/2 &&
+       y < ship.y+ship.height/2 && y > ship.y-ship.height/2 &&
+       !ship.targeted
+    ){
+        ship.targeted=true;
+        target->addTarget(&ship);
+        return true;
+    }else{
+        return false;
+    }
+}

@@ -1,0 +1,79 @@
+//
+//  SpawnManager.h
+//  RGBlaster
+//
+//  Created by Matthew Vroman on 11/10/11.
+//  Last Modified: 12/13/11
+//
+//  Copyright (c) 2011 RGBeast.
+//  Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+//
+//  DESCRIPTION:
+//  Handles the spawning and message passing of groups and enemies
+//
+
+#include "ofMain.h"
+#include "ofxiPhone.h"
+#include "ofxiPhoneExtras.h"
+
+#include "Group.h"
+#import "Ship.h"
+#import "HUD.h"
+#import "SoundManager.h"
+
+class SpawnManager{
+
+public:
+    
+    int difficulty;
+    int nextDifficultyIncrease;
+    
+    int spawnDecrementer;
+    int currentFrame;
+    int spawnInterval;
+    
+    int maxColor;
+    int maxResolution;
+    int maxShips;
+    int maxShipSpeed;
+    int maxMultiplier;
+    int maxMovementLevel;
+    
+    int numWaves;
+    
+    bool gameOver;
+    
+    Resolution resolution;
+    
+    void setResolution(Resolution);
+    
+    void setHUD(HUD *_hud);
+    
+    //Missile.mm needs to find us
+    static SpawnManager* getInstance();
+    static SpawnManager* instance;
+    
+    void notifyShipDestroyed();
+    void notifyShipCrashed(int _dmg);
+    void notifyGameOver();
+    
+    vector<Group*>activeGroups;
+    
+    void update();
+    void draw();
+    
+    void removeGroup(int _pos);
+    
+    void removeAllGroups();
+    
+    void spawnGroup();
+    
+    void increaseDifficulty();
+    
+private:
+    //singleton has a private constructor called by getInstance()
+    SpawnManager();
+    HUD *hud;
+    bool enabled;
+
+};

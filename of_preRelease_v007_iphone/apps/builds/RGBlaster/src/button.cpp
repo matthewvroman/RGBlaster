@@ -1,0 +1,107 @@
+//
+//  button.cpp
+//  RGBlaster
+//
+//  Created by Alex Miner on 11/28/11.
+//  Last Modified: 12/13/11
+//
+//  Copyright (c) 2011 RGBeast.
+//  Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+//
+//  DESCRIPTION:
+//  Button class used in GUI
+//
+
+#include "button.h"
+
+button::button() {
+	enableTouchEvents();
+}
+
+button::~button() {
+	disableTouchEvents();
+}
+
+void button::init( int _buttonId, bool _alive, string _buttonLabel, ofTrueTypeFont &font, float _offset ) {
+	// Assigning ID, background image path, and button label text
+	buttonId = _buttonId;
+	alive = _alive;
+	buttonLabel = _buttonLabel;
+	hideBtn = false;
+    ArcadeClassic = font;
+    offset = _offset;
+}
+
+void button::setup() {
+	// Used in find the size of the string, so it can be centered in draw()
+	labelBoundingBox = ArcadeClassic.getStringBoundingBox( buttonLabel, 0, 0 );
+	
+    // Initialize button states
+	pressed = false;
+	touchedDown = false;
+}
+
+void button::update() {
+	// So a press only registers once
+	if(pressed)
+		pressed = false;
+}
+
+void button:: hide() {
+    hideBtn = true;
+}
+
+void button:: show() {
+    hideBtn = false;
+}
+
+void button::draw() {
+    if(!hideBtn){
+        // Draw background
+        if(buttonId==1)
+            ofSetColor( 255, 0, 0 );
+        else if(buttonId==2)
+            ofSetColor( 0, 255, 0 );
+        else if(buttonId==3)
+            ofSetColor( 0, 0, 255 );
+        ofRect( x - 5, y - 5, width + 10, height + 10 );
+        ofSetColor( 0, 0, 0 );
+        ofRect( x, y, width, height );
+        if(buttonId==1)
+            ofSetColor( 255, 0, 0 );
+        else if(buttonId==2)
+            ofSetColor( 0, 255, 0 );
+        else if(buttonId==3)
+            ofSetColor( 0, 0, 255 );
+        
+        // Draw the label text
+        ArcadeClassic.drawString( buttonLabel, x + offset, y + (height/2) + 15 );
+        
+        ofSetColor( 255, 255, 255 );
+    }
+}
+
+void button::exit() {
+}
+
+void button::onTouchDown( float x, float y ) {
+	// Activate touch
+    if(!hideBtn){
+        touchedDown = true;
+        pressed = true;
+    }
+}
+
+void button::onTouchMoved( float x, float y ) {}
+
+void button::onTouchUp( float x, float y ) {
+	// Deactivate touch
+    if(!hideBtn){
+        touchedDown = false;
+    }
+}
+
+void button::setLabel( string _newLabel ) {
+	// Change the label to desired string
+	buttonLabel = _newLabel;
+}
