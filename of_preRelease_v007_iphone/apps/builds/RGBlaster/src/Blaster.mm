@@ -126,6 +126,8 @@ void Blaster::update(){
     
     targetOverlay->update();
     
+    finger->update();
+    
     for(short i=0; i<missiles.size(); i++){
         missiles.at(i)->update();
         if(missiles.at(i)->dead){
@@ -158,6 +160,8 @@ void Blaster::draw(){
     if(!enabled) return;
     
     targetOverlay->draw();
+    
+    finger->draw();
     
     for(short i=0; i<missiles.size(); i++){
         missiles.at(i)->draw();

@@ -17,6 +17,9 @@
 #import "ofxiPhone.h"
 #import "ofxiPhoneExtras.h"
 
+#import "ofxSpriteSheetRenderer.h"
+#import "Animations.h"
+
 #import "Target.h"
 #import "Ship.h"
 
@@ -32,7 +35,11 @@ public:
     
     float       x;
     float       y;
+    float       scale;
+    int         r;
     float       radius;
+    
+    float       speed;
     
     bool        down;
     
@@ -44,9 +51,15 @@ public:
     void		touchMoved(ofTouchEventArgs &touch);
     void		touchUp(ofTouchEventArgs &touch);
     
+    
+    void        update();
+    void        draw();
+    
 private:
     Color color;
-
+    
+    basicSprite *sprite;
+    ofxSpriteSheetRenderer  *renderer;
 };
 
 

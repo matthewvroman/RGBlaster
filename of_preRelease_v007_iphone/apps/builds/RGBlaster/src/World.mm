@@ -45,6 +45,7 @@ World::World(){
     spawner->setHUD(hud);
     
     motivator.loadImage("sprites/motivator.png");
+    
     background8.loadImage("sprites/background-8bit.png");
     background16.loadImage("sprites/background-16bit.png");
     background32.loadImage("sprites/background-32bit.png");
@@ -153,7 +154,7 @@ void World::drawBackground(){
 
 void World::draw(){
     if(!enabled) return;
-    drawBackground();
+    //drawBackground();
     notifier->draw();
     spawner->draw();
     blaster->draw();

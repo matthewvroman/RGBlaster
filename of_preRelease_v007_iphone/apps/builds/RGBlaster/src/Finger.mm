@@ -23,6 +23,16 @@ Finger::Finger(){
     
     //defines how large of a radius the touch has influence over
     radius=15;
+    r=0;
+    scale=1;
+    speed=3;
+    
+    sprite = new basicSprite();
+    sprite->animation = defaultAnimation; //set its animation to the walk animation we declared
+    sprite->animation.index = 0;
+    
+    renderer = new ofxSpriteSheetRenderer(1,100,0,56);
+    renderer->loadTexture("sprites/finger_sprite.png", 512, GL_NEAREST);
 }
 
 //remove all touch events
@@ -30,6 +40,8 @@ Finger::~Finger(){
     ofRemoveListener(ofEvents.touchDown, this, &Finger::touchDown);
 	ofRemoveListener(ofEvents.touchMoved, this, &Finger::touchMoved);
 	ofRemoveListener(ofEvents.touchUp, this, &Finger::touchUp);
+    
+    delete renderer;
 }
 
 void Finger::touchDown(ofTouchEventArgs &touch) {
@@ -54,6 +66,7 @@ void Finger::touchUp(ofTouchEventArgs &touch) {
 
 void Finger::setColor(Color _color){
     color=_color;
+    sprite->animation.index = int(color);
 }
 
 //Check if the touch has collided with any of the ships on-screen
@@ -69,4 +82,28 @@ bool Finger::hitTest(Ship &ship){
     }else{
         return false;
     }
+}
+
+void Finger::update(){
+    if(!x && !y) return;
+    renderer->clear(); // clear the sheet
+    renderer->update(ofGetElapsedTimeMillis());
+    
+    renderer->addCenterRotatedTile(&sprite->animation,0,0);
+}
+
+
+void Finger::draw(){
+    if((!x && !y) || (y>920)) return;
+
+    ofPushMatrix();
+    ofTranslate(x, y);
+    ofRotateZ(r);
+    ofScale(scale,scale);
+    renderer->draw();
+    ofPopMatrix();
+    
+    r%=360;
+    r+=speed;
+    
 }
