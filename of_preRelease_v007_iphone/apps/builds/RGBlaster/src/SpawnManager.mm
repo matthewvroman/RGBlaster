@@ -20,6 +20,7 @@ SpawnManager::SpawnManager(){
     resolution=Resolution(0);
     
     hud=nil;
+    notifier=nil;
     
     gameOver=false;
     
@@ -38,6 +39,7 @@ SpawnManager::SpawnManager(){
     maxShips=5;
     maxShipSpeed=5;
     maxMultiplier=1;
+    colorStreak=0;
     
     //spawnGroup();
 }
@@ -63,12 +65,57 @@ void SpawnManager::setResolution(Resolution _res){
 
 }
 
+void SpawnManager::setNotifier(Notifier *_notifier){
+    notifier=_notifier;
+}
+
 void SpawnManager::notifyShipDestroyed(){
     if(hud!=nil){
         hud->incrementScore(5*maxMultiplier*(resolution+1));
         hud->increaseHealth(1);
         SoundManager::getInstance()->missileSuccess.play();
+        incrementColorStreak(1);
     }
+}
+
+void SpawnManager::incrementColorStreak(int _incremenet){
+    colorStreak+=_incremenet;
+    
+    if(colorStreak==50){
+        resetColorStreak();
+        generatePowerUp();
+    }
+}
+
+void SpawnManager::generatePowerUp(){
+    if(notifier!=nil){
+        //0-2
+        int randPowerUp = (int)ofRandom(3);
+        switch (randPowerUp) {
+            case 0:
+                //slow time
+                break;
+            case 1:
+                //mono coor
+                break;
+            case 2:
+                //reticule radius increase
+                break;
+            default:
+                cout << "shouldn't happen" << endl;
+                break;
+        }
+        
+        notifier->displayNotification("POWER UP");
+    }
+}
+
+void SpawnManager::decrementColorStreak(int _decrement){
+    colorStreak-=_decrement;
+}
+
+void SpawnManager::resetColorStreak(){
+    colorStreak=0;
 }
 
 void SpawnManager::notifyShipCrashed(int _dmg){

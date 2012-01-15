@@ -20,6 +20,8 @@ World::World(){
     
     handler = AtlasHandler::getInstance();
     
+    notifier = new Notifier();
+    
     spawner = SpawnManager::getInstance();
     spawner->gameOver = false;
     spawner->resolution=Resolution(0);
@@ -35,8 +37,7 @@ World::World(){
     spawner->maxShips=5;
     spawner->maxShipSpeed=5;
     spawner->maxMultiplier=1;
-    
-    notifier = new Notifier();
+    spawner->setNotifier(notifier);
     
     spawnBlaster();
     

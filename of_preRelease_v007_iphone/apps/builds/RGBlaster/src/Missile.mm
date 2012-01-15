@@ -132,6 +132,7 @@ bool Missile::hitTest(Ship &ship){
                 SoundManager::getInstance()->missileSuccess.play();
             }
         }else{
+            SpawnManager::getInstance()->resetColorStreak();
             SoundManager::getInstance()->missileFailure.play();
         }
         return true;

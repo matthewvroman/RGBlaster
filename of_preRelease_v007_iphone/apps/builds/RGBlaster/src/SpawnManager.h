@@ -20,6 +20,7 @@
 #import "Ship.h"
 #import "HUD.h"
 #import "SoundManager.h"
+#import "Notifier.h"
 
 class SpawnManager{
 
@@ -70,10 +71,21 @@ public:
     
     void increaseDifficulty();
     
+    void incrementColorStreak(int);
+    void decrementColorStreak(int);
+    void resetColorStreak();
+    
+    void generatePowerUp();
+    
+    void setNotifier(Notifier *_notifier);
+    
 private:
     //singleton has a private constructor called by getInstance()
     SpawnManager();
     HUD *hud;
+    Notifier *notifier;
     bool enabled;
+    
+    int colorStreak;
 
 };
