@@ -41,6 +41,16 @@ SpawnManager::SpawnManager(){
     maxMultiplier=1;
     colorStreak=0;
     
+    
+    powerUpName = "";
+    
+    powerUp=-1;
+    
+    //power ups last for 10s
+    powerUpLength=5;
+    
+    powerUpTimer=powerUpEndTime=0;
+    
     //spawnGroup();
 }
 
@@ -81,33 +91,53 @@ void SpawnManager::notifyShipDestroyed(){
 void SpawnManager::incrementColorStreak(int _incremenet){
     colorStreak+=_incremenet;
     
-    if(colorStreak==50){
-        resetColorStreak();
+    if(colorStreak==10){
         generatePowerUp();
     }
 }
 
 void SpawnManager::generatePowerUp(){
+    
+    //remove previous power up so we can replace it
+    removePowerUp();
+    
+    powerUp=0;
+    //powerUp = (int)ofRandom(3);
+    applyPowerUp();
+    
     if(notifier!=nil){
-        //0-2
-        int randPowerUp = (int)ofRandom(3);
-        switch (randPowerUp) {
-            case 0:
-                //slow time
-                break;
-            case 1:
-                //mono coor
-                break;
-            case 2:
-                //reticule radius increase
-                break;
-            default:
-                cout << "shouldn't happen" << endl;
-                break;
-        }
-        
-        notifier->displayNotification("POWER UP");
+        notifier->displayNotification(powerUpName);
     }
+    
+    resetColorStreak();
+}
+
+void SpawnManager::removePowerUp(){
+    cout << "removing power up" << endl;
+    powerUpName = "";
+    switch (powerUp) {
+        case 0:
+            //slow time
+            powerUpName = "Slow Time";
+            for (short i=0; i<activeGroups.size(); i++) {
+                activeGroups.at(i)->resetSpeed();
+            }
+            break;
+        case 1:
+            //mono color
+            powerUpName = "Mono Color";
+            break;
+        case 2:
+            //reticule radius increase
+            powerUpName = "Range Up";
+            
+            break;
+        default:
+            powerUpName = "";
+            break;
+    }
+    
+    powerUp=-1;
 }
 
 void SpawnManager::decrementColorStreak(int _decrement){
@@ -147,6 +177,7 @@ void SpawnManager::update(){
         }else{
             currentFrame++;
         }
+        
         short i=0;
         while(i<activeGroups.size()){
             activeGroups[i]->update();
@@ -154,10 +185,25 @@ void SpawnManager::update(){
                 removeGroup(i);
             i++;
         }
+        
+        //if we have a power up
+        if(powerUp>=0){
+            //start counting
+            powerUpTimer%=60;
+            powerUpTimer++;
+            
+            //increment our timer every second
+            if(powerUpTimer==60){
+                powerUpEndTime+=1;
+                
+                //remove the power up once we hit the limit
+                if(powerUpEndTime==powerUpLength){
+                    removePowerUp();
+                    powerUpEndTime=0;
+                }
+            }
+        }
     }
-    
-    
-    
 }
 
 void SpawnManager::spawnGroup(){
@@ -173,7 +219,34 @@ void SpawnManager::spawnGroup(){
         numWaves=0;
         //nextDifficultyIncrease*=nextDifficultyIncrease;
     }
+    
+    applyPowerUp();
 
+}
+
+void SpawnManager::applyPowerUp(){
+    powerUpName = "";
+    switch (powerUp) {
+        case 0:
+            //slow time
+            powerUpName = "Slow Time";
+            for (short i=0; i<activeGroups.size(); i++) {
+                activeGroups.at(i)->speed=1;
+            }
+            break;
+        case 1:
+            //mono color
+            powerUpName = "Mono Color";
+            break;
+        case 2:
+            //reticule radius increase
+            powerUpName = "Range Up";
+            
+            break;
+        default:
+            powerUpName = "";
+            break;
+    }
 }
 
 void SpawnManager::removeGroup(int _pos){

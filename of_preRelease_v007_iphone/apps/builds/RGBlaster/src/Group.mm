@@ -23,6 +23,8 @@ Group::Group(){
     dead=false;
     
     x=y=a=0;
+    
+    speed=privSpeed=2;
 
     
 }
@@ -38,6 +40,8 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     y=a=r=0;
     
     x=ofRandom(600)+100;
+    
+    speed=privSpeed=2;
     
     numShips=_numShips;
     
@@ -75,6 +79,10 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     addShips(numShips);
     
 
+}
+
+void Group::resetSpeed(){
+    speed=privSpeed;
 }
 
 //deconstructor
@@ -281,16 +289,16 @@ void Group::update(){
     
     switch (movement) {
         case 0:
-            circleMove(2, 50);
+            circleMove(speed, 50);
             break;
         case 1:
-            expandMove(2, 100);
+            expandMove(speed, 100);
             break;
         case 2:
-            expandCircleMove(2, 150);
+            expandCircleMove(speed, 150);
             break;
         default:
-            zigZagMove(2,15);
+            zigZagMove(speed,15);
             break;
     }
     

@@ -54,10 +54,14 @@ public:
     
     void setResolution(Resolution);
     
+    void resetSpeed();
+    
     float x;
     float y;
     float a;
     float r; //radius
+    
+    int speed;
     
     //used for better collision detection
     float width;
@@ -83,6 +87,8 @@ private:
     PixelTexture texture;
     bool enabled;
     ofxSpriteSheetRenderer *renderer;
+    
+    int privSpeed;
 
 };
 

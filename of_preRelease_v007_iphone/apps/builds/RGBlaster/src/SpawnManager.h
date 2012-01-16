@@ -76,6 +76,8 @@ public:
     void resetColorStreak();
     
     void generatePowerUp();
+    void removePowerUp();
+    void applyPowerUp();
     
     void setNotifier(Notifier *_notifier);
     
@@ -87,5 +89,11 @@ private:
     bool enabled;
     
     int colorStreak;
-
+    
+    string powerUpName;
+    int powerUp;
+    int powerUpLength;
+    int powerUpTimer;
+    int powerUpEndTime;
+    
 };
