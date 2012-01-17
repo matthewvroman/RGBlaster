@@ -48,7 +48,7 @@ Blaster::Blaster(){
     width=192;
     height=192;
     
-    setPosition(384, 1000);
+    setPosition(386, 990);
 }
 
 Blaster::~Blaster(){

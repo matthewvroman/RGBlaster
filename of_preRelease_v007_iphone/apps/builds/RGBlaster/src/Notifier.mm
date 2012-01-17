@@ -15,6 +15,7 @@
 
 Notifier::Notifier(){
     blockFont.loadFont("fonts/ArcadeClassic.ttf",100,true,true);
+    blockFont.loadFont("fonts/ArcadeClassic.ttf",50,true,true);
 }
 
 Notifier::~Notifier(){

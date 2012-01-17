@@ -115,6 +115,8 @@ void SpawnManager::generatePowerUp(){
     }
     
     resetColorStreak();
+    
+    hud->setPowerUpCountString(powerUpLength);
 }
 
 void SpawnManager::applyPowerUp(){
@@ -231,6 +233,8 @@ void SpawnManager::update(){
             //increment our timer every second
             if(powerUpTimer==60){
                 powerUpEndTime+=1;
+                
+                hud->setPowerUpCountString(powerUpLength-powerUpEndTime);
                 
                 //remove the power up once we hit the limit
                 if(powerUpEndTime==powerUpLength){

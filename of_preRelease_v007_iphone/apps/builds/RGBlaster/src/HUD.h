@@ -37,6 +37,7 @@ public:
     void setHealth(int,int);
     void setHighScore(int);
     void resetHealth();
+    void setPowerUpCountString(int);
     
     //getters
     int getScore();
@@ -91,6 +92,7 @@ private:
     string highScoreString;
     string timeString;
     string livesString;
+    string powerUpCountString;
     
     //private methods
     void timeToString();

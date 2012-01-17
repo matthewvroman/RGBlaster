@@ -37,6 +37,8 @@ HUD::HUD(){
     setLives(1);
     setHealth(0,100);
     
+    powerUpCountString="";
+    
     healthBarBackground.loadImage("sprites/health-bar-background.jpg");
     
 }
@@ -144,6 +146,9 @@ void HUD::draw(){
     smallBlockFont.drawString(resString + " RESOLUTION",305,1015);
     
     ofSetColor(255,255,255);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), 995);
+    
+    ofSetColor(255,255,255);
     
     ofPopMatrix();
 }
@@ -180,6 +185,13 @@ void HUD::setHealth(int _health, int _maxHealth){
     maxHealthBarWidth=756;
 }
 
+void HUD::setPowerUpCountString(int _count){
+    powerUpCountString=ofToString(_count);
+    
+    if(_count==0){
+        powerUpCountString="";
+    }
+}
 
 void HUD::setHighScore(int _score){
     //set highscore to 0 if this is the first time

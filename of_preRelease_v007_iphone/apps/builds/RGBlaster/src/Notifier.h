@@ -44,6 +44,7 @@ private:
     vector<Notification>notifications;
     
     ofTrueTypeFont  blockFont;
+    ofTrueTypeFont  smallBockFont;
     
     void removeNotification(int);
 };
