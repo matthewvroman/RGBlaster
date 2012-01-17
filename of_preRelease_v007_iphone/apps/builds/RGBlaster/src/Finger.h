@@ -63,6 +63,9 @@ private:
     
     basicSprite *sprite;
     ofxSpriteSheetRenderer  *renderer;
+    
+    int defaultRadius;
+    int defaultScale;
 };
 
 

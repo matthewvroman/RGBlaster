@@ -22,9 +22,9 @@ Finger::Finger(){
     target = new Target();
     
     //defines how large of a radius the touch has influence over
-    radius=15;
+    defaultRadius=radius=15;
     r=0;
-    scale=1;
+    defaultScale=scale=1;
     speed=3;
     
     sprite = new basicSprite();
@@ -89,8 +89,8 @@ void Finger::powerUp(){
 }
 
 void Finger::powerDown(){
-    scale=1;
-    radius=15;
+    scale=defaultScale;
+    radius=defaultRadius;
 }
 
 void Finger::update(){
