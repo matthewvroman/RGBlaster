@@ -21,6 +21,7 @@
 #import "HUD.h"
 #import "SoundManager.h"
 #import "Notifier.h"
+#import "Finger.h"
 
 class SpawnManager{
 
@@ -49,6 +50,8 @@ public:
     void setResolution(Resolution);
     
     void setHUD(HUD *_hud);
+    
+    void setFinger(Finger *_finger);
     
     //Missile.mm needs to find us
     static SpawnManager* getInstance();
@@ -86,6 +89,8 @@ private:
     SpawnManager();
     HUD *hud;
     Notifier *notifier;
+    Finger *finger;
+    
     bool enabled;
     
     int colorStreak;

@@ -47,13 +47,13 @@ public:
     void touchDown(ofTouchEventArgs &touch);
     void touchUp(ofTouchEventArgs &touch);
     
+    Finger *finger;
+    
 private:
     Resolution resolution;
     Color color;
     
     Target *targetOverlay;
-    
-    Finger *finger;
     
     SpawnManager *spawner;
     

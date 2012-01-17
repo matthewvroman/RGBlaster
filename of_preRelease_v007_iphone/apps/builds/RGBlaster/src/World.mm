@@ -41,6 +41,9 @@ World::World(){
     
     spawnBlaster();
     
+    //give the spawner the blaster's finger object for power-ups
+    spawner->setFinger(blaster->finger);
+    
     hud = new HUD();
     
     spawner->setHUD(hud);

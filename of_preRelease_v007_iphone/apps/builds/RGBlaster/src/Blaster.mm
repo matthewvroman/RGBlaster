@@ -42,7 +42,7 @@ Blaster::Blaster(){
     
     spawner = nil;
     
-    finger = new Finger();;
+    finger = new Finger();
     targetOverlay = finger->target;
     
     width=192;

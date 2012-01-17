@@ -21,6 +21,7 @@ SpawnManager::SpawnManager(){
     
     hud=nil;
     notifier=nil;
+    finger=nil;
     
     gameOver=false;
     
@@ -64,6 +65,10 @@ void SpawnManager::setHUD(HUD *_hud){
     hud = _hud;
 }
 
+void SpawnManager::setFinger(Finger *_finger){
+    finger = _finger;
+}
+
 void SpawnManager::setResolution(Resolution _res){
     resolution=_res;
     //update each group as well
@@ -101,7 +106,7 @@ void SpawnManager::generatePowerUp(){
     //remove previous power up so we can replace it
     removePowerUp();
     
-    powerUp=0;
+    powerUp=2;
     //powerUp = (int)ofRandom(3);
     applyPowerUp();
     
@@ -110,6 +115,34 @@ void SpawnManager::generatePowerUp(){
     }
     
     resetColorStreak();
+}
+
+void SpawnManager::applyPowerUp(){
+    powerUpName = "";
+    switch (powerUp) {
+        case 0:
+            //slow time
+            powerUpName = "Slow Time";
+            for (short i=0; i<activeGroups.size(); i++) {
+                activeGroups.at(i)->speed=1;
+            }
+            break;
+        case 1:
+            //mono color
+            powerUpName = "Mono Color";
+            
+            break;
+        case 2:
+            //reticule radius increase
+            powerUpName = "Range Up";
+            if(finger!=nil){
+                finger->powerUp();
+            }
+            break;
+        default:
+            powerUpName = "";
+            break;
+    }
 }
 
 void SpawnManager::removePowerUp(){
@@ -126,11 +159,14 @@ void SpawnManager::removePowerUp(){
         case 1:
             //mono color
             powerUpName = "Mono Color";
+            
             break;
         case 2:
             //reticule radius increase
             powerUpName = "Range Up";
-            
+            if(finger!=nil){
+                finger->powerDown();
+            }
             break;
         default:
             powerUpName = "";
@@ -224,31 +260,6 @@ void SpawnManager::spawnGroup(){
 
 }
 
-void SpawnManager::applyPowerUp(){
-    powerUpName = "";
-    switch (powerUp) {
-        case 0:
-            //slow time
-            powerUpName = "Slow Time";
-            for (short i=0; i<activeGroups.size(); i++) {
-                activeGroups.at(i)->speed=1;
-            }
-            break;
-        case 1:
-            //mono color
-            powerUpName = "Mono Color";
-            break;
-        case 2:
-            //reticule radius increase
-            powerUpName = "Range Up";
-            
-            break;
-        default:
-            powerUpName = "";
-            break;
-    }
-}
-
 void SpawnManager::removeGroup(int _pos){
     if(_pos!=activeGroups.size()-1){
         //Temporarily tore our last element in the vector
@@ -322,6 +333,7 @@ void SpawnManager::increaseDifficulty(){
 
 
 void SpawnManager::draw(){
+
     short i=0;
     while(i<activeGroups.size()){
         activeGroups[i]->draw();

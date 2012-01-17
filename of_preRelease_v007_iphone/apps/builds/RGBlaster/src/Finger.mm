@@ -54,9 +54,9 @@ void Finger::touchDown(ofTouchEventArgs &touch) {
 void Finger::touchMoved(ofTouchEventArgs &touch) {
     x=touch.x;
     y=touch.y;
-    
-    
+        
 }
+
 void Finger::touchUp(ofTouchEventArgs &touch) {
     down=false;
     x=nil;
@@ -72,16 +72,25 @@ void Finger::setColor(Color _color){
 //Check if the touch has collided with any of the ships on-screen
 bool Finger::hitTest(Ship &ship){
 
-    if(x < ship.x+ship.width/2 && x > ship.x-ship.width/2 &&
-       y < ship.y+ship.height/2 && y > ship.y-ship.height/2 &&
-       !ship.targeted
-    ){
+    if(x - radius < ship.x+ship.width/2 && x + radius > ship.x - ship.width/2 &&
+       y - radius < ship.y+ship.height/2 && y + radius > ship.y-ship.height/2 &&
+       !ship.targeted){
         ship.targeted=true;
         target->addTarget(&ship);
         return true;
     }else{
         return false;
     }
+}
+
+void Finger::powerUp(){
+    scale=2;
+    radius=30;
+}
+
+void Finger::powerDown(){
+    scale=1;
+    radius=15;
 }
 
 void Finger::update(){

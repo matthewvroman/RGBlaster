@@ -55,6 +55,9 @@ public:
     void        update();
     void        draw();
     
+    void        powerUp();
+    void        powerDown();
+    
 private:
     Color color;
     
