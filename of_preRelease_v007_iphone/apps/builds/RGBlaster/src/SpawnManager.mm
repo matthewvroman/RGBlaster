@@ -48,7 +48,7 @@ SpawnManager::SpawnManager(){
     powerUp=-1;
     
     //power ups last for 10s
-    powerUpLength=5;
+    powerUpLength=10;
     
     powerUpTimer=powerUpEndTime=0;
     
