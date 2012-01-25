@@ -106,8 +106,8 @@ void SpawnManager::generatePowerUp(){
     //remove previous power up so we can replace it
     removePowerUp();
     
-    powerUp=2;
-    //powerUp = (int)ofRandom(3);
+    //powerUp=2;
+    powerUp = (int)ofRandom(3);
     applyPowerUp();
     
     if(notifier!=nil){
@@ -281,6 +281,8 @@ void SpawnManager::removeGroup(int _pos){
     
     //resize the vector
     activeGroups.pop_back();
+    
+    
     
 }
 

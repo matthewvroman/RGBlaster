@@ -62,3 +62,17 @@ static animation_t bit32Animation = {
     -1,
     1
 };
+
+static animation_t explodeAnimation = {
+    0,
+    0,
+    8,
+    1,
+    1,
+    75,
+    0,
+    -1,
+    -1,
+    1
+};
+

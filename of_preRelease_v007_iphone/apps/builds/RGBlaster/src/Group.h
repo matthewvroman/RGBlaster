@@ -17,6 +17,7 @@
 #import "ofxiPhoneExtras.h"
 
 #import "Ship.h"
+#import "Explosion.h"
 #import "ofxSpriteSheetRenderer.h"
 #import "HUD.h"
 #import "AtlasHandler.h"
@@ -51,6 +52,7 @@ public:
     void addShips(int _numShips);
 
     void removeFromVector(int _pos);
+    void removeExplosion(int _pos);
     
     void setResolution(Resolution);
     
@@ -80,6 +82,7 @@ public:
     int movement;
     
     vector<Ship*>objects;
+    vector<Explosion*>explosions;
     
 private:
     float deg2rad(float _deg);

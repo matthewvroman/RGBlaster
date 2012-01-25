@@ -40,6 +40,10 @@ AtlasHandler::AtlasHandler(){
     missileRenderer->loadTexture("sprites/missile_spriteSheet.png", 256, GL_NEAREST);
     sheets.push_back(missileRenderer);
     
+    explosionRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+    explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 256, GL_NEAREST);
+    sheets.push_back(explosionRenderer);
+    
     ofEnableAlphaBlending();
 
 }
@@ -51,6 +55,7 @@ AtlasHandler::~AtlasHandler(){
     delete blueShipRenderer;
     delete greenShipRenderer;
     delete missileRenderer;
+    delete explosionRenderer;
 }
 
 

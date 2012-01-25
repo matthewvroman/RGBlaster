@@ -32,8 +32,8 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, Ship *_targe
     sprite->speed=1; //set its speed
     sprite->animation = defaultAnimation; //set its animation to the walk animation we declared
     sprite->animation.frame_duration = 5; //adjust its frame duration based on how fast it is walking (faster = smaller)
-    
-    sprite->animation.index = int(color);
+    //spritesheet is loaded in as 256x256px, 32x32px tiles (256/32=8 tiles per row)
+    sprite->animation.index = 8*int(resolution)+int(color);
     
     target=_target;
     

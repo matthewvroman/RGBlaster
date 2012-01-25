@@ -63,6 +63,8 @@
 		AC98DA4E14CF81DE007F549D /* background-med.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA4B14CF81DE007F549D /* background-med.png */; };
 		AC98DA4F14CF81DE007F549D /* background-low.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA4C14CF81DE007F549D /* background-low.png */; };
 		AC98DA5114CFECC2007F549D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5014CFECC0007F549D /* Default-Portrait~ipad.png */; };
+		AC98DA5A14CFFC05007F549D /* Explosion.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC98DA5914CFFC04007F549D /* Explosion.mm */; };
+		AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */; };
 		ACA73BAD148DE8BD00F60A22 /* res_up_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */; };
 		ACA9588814976AB900967B01 /* fuelship-theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588714976AB900967B01 /* fuelship-theme.wav */; };
 		ACA9588C14976F2C00967B01 /* res_down_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588B14976F2C00967B01 /* res_down_sfx.wav */; };
@@ -188,6 +190,9 @@
 		AC98DA4B14CF81DE007F549D /* background-med.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-med.png"; path = "sprites/background-med.png"; sourceTree = "<group>"; };
 		AC98DA4C14CF81DE007F549D /* background-low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-low.png"; path = "sprites/background-low.png"; sourceTree = "<group>"; };
 		AC98DA5014CFECC0007F549D /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		AC98DA5714CFFBEE007F549D /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
+		AC98DA5914CFFC04007F549D /* Explosion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Explosion.mm; sourceTree = "<group>"; };
+		AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion_spriteSheet.png; path = sprites/explosion_spriteSheet.png; sourceTree = "<group>"; };
 		ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_up_sfx.wav; path = sound/res_up_sfx.wav; sourceTree = "<group>"; };
 		ACA9588714976AB900967B01 /* fuelship-theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fuelship-theme.wav"; path = "sound/fuelship-theme.wav"; sourceTree = "<group>"; };
 		ACA9588B14976F2C00967B01 /* res_down_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_down_sfx.wav; path = sound/res_down_sfx.wav; sourceTree = "<group>"; };
@@ -380,6 +385,7 @@
 		AC9529501453C36A001AB0BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */,
 				AC98DA4A14CF81DE007F549D /* background-hi.png */,
 				AC98DA4B14CF81DE007F549D /* background-med.png */,
 				AC98DA4C14CF81DE007F549D /* background-low.png */,
@@ -459,6 +465,8 @@
 				AC72D3841472FF2100380F24 /* Target.mm */,
 				ACB54892147323E700B32CE4 /* Missile.h */,
 				ACB54893147323F500B32CE4 /* Missile.mm */,
+				AC98DA5714CFFBEE007F549D /* Explosion.h */,
+				AC98DA5914CFFC04007F549D /* Explosion.mm */,
 			);
 			name = "Extended Classes";
 			sourceTree = "<group>";
@@ -645,6 +653,7 @@
 				AC98DA4E14CF81DE007F549D /* background-med.png in Resources */,
 				AC98DA4F14CF81DE007F549D /* background-low.png in Resources */,
 				AC98DA5114CFECC2007F549D /* Default-Portrait~ipad.png in Resources */,
+				AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +706,7 @@
 				AC2F6C4114956BFA00EA8F1E /* HelpScreen.mm in Sources */,
 				AC2F6C4214956BFA00EA8F1E /* AboutScreen.mm in Sources */,
 				AC9012F91496AB2F0010F64B /* Notifier.mm in Sources */,
+				AC98DA5A14CFFC05007F549D /* Explosion.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

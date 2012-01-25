@@ -270,14 +270,48 @@ void Group::removeFromVector(int _pos){
     
     }
     
+    //spawn explosion
+    Explosion *explosion = new Explosion(objects[objects.size()-1]->getPosition().x,objects[objects.size()-1]->getPosition().y);
+    explosions.push_back(explosion);
+    
     //delete the ship
     delete objects[objects.size()-1];
     
     //resize the vector
     objects.pop_back();
     
-    //check if our group should still exist
+    //THIS IS HANDLED IN removeExplosion()
+    /*check if our group should still exist
     if(objects.size()==0){
+        dead=true;
+        enabled=false;
+    }*/
+    
+}
+
+//remove a ship from the vector
+void Group::removeExplosion(int _pos){
+    
+    if(_pos!=objects.size()-1){
+        //Temporarily store our last element in the vector
+        Explosion *holder=explosions[explosions.size()-1];
+        
+        //move the ship we want to delete to the endof the position
+        explosions[explosions.size()-1]=explosions[_pos];
+        
+        //put the old last element in the TBDeleted spot
+        explosions[_pos]=holder;
+        
+    }
+
+    //delete the explosion
+    delete explosions[explosions.size()-1];
+    
+    //resize the vector
+    explosions.pop_back();
+    
+    //check if our group should still exist
+    if(explosions.size()==0 && objects.size()==0){
         dead=true;
         enabled=false;
     }
@@ -323,6 +357,16 @@ void Group::update(){
         i++;
         
     }
+    
+    short ctr=0;
+    while(ctr < explosions.size()){
+        if(explosions[ctr]->dead){
+            //remove explosion
+            removeExplosion(ctr);
+        }
+        explosions[ctr]->update();
+        ctr++;
+    }
 }
 
 void Group::setResolution(Resolution _res){
@@ -337,6 +381,13 @@ void Group::setResolution(Resolution _res){
 void Group::draw(){
     if(!enabled)return;
     renderer->draw();
+    
+    short ctr=0;
+    while(ctr < explosions.size()){
+        explosions[ctr]->draw();
+        ctr++;
+    }
+    
 }
 
 float Group::deg2rad(float _deg){
