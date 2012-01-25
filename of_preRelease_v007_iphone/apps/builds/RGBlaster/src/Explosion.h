@@ -26,7 +26,7 @@
 class Explosion : public BasicObject{
 public:
     //constructor
-    Explosion(int posX, int posY);
+    Explosion(int posX, int posY, Color _color);
     
     //destructor
     ~Explosion();

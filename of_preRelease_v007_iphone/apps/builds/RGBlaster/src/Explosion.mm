@@ -9,7 +9,7 @@
 #include <iostream>
 #import "Explosion.h"
 
-Explosion::Explosion(int posX, int posY){
+Explosion::Explosion(int posX, int posY, Color _color){
     
     spriteRenderer=AtlasHandler::getInstance()->explosionRenderer;
     
@@ -23,7 +23,7 @@ Explosion::Explosion(int posX, int posY){
     sprite->speed=1; //set its speed
     sprite->animation = explodeAnimation; //set its animation to the walk animation we declared
     sprite->animation.frame_duration = 5; //adjust its frame duration based on how fast it is walking (faster = smaller)
-    sprite->animation.index = 0;
+    sprite->animation.index = int(_color)*8;
     
     speed=3;
     
@@ -70,7 +70,7 @@ void Explosion::draw(){
     
     ofPushMatrix();
     ofTranslate(x, y);
-    ofScale(2,2);
+    ofScale(3,3);
     spriteRenderer->draw();
     ofPopMatrix();
 }

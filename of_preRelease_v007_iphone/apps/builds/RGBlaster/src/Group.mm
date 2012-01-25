@@ -271,7 +271,7 @@ void Group::removeFromVector(int _pos){
     }
     
     //spawn explosion
-    Explosion *explosion = new Explosion(objects[objects.size()-1]->getPosition().x,objects[objects.size()-1]->getPosition().y);
+    Explosion *explosion = new Explosion(objects[objects.size()-1]->getPosition().x,objects[objects.size()-1]->getPosition().y, this->color);
     explosions.push_back(explosion);
     
     //delete the ship
