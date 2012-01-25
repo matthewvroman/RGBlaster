@@ -79,7 +79,11 @@ void MenuScreen::draw(){
     ofDisableAlphaBlending();
     
     // Draw copyright text
+    ofSetColor(97, 114, 175);
     visitorFont.drawString( "Copyright RGBeast 2011", 175, 1000);
+    
+    // Reset color
+    ofSetColor( 255, 255, 255 );
 }
 
 MenuScreen::~MenuScreen(){

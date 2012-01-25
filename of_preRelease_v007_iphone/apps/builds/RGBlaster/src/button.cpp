@@ -64,8 +64,8 @@ void button::draw() {
             ofSetColor( 0, 255, 0 );
         else if(buttonId==3)
             ofSetColor( 0, 0, 255 );
-        ofRect( x - 5, y - 5, width + 10, height + 10 );
-        ofSetColor( 0, 0, 0 );
+        ofRect( x - 3, y - 3, width + 6, height + 6 );
+        ofSetColor( 8, 7, 27 );
         ofRect( x, y, width, height );
         if(buttonId==1)
             ofSetColor( 255, 0, 0 );
