@@ -115,7 +115,11 @@ void Missile::update() {
 void Missile::draw() {
     if(!enabled) return;
     
+    ofPushMatrix();
+    //ofTranslate(x,y);
+    //ofRotateZ(target->getPosition().x-x);
     spriteRenderer->draw();
+    ofPopMatrix();
 }
 
 bool Missile::hitTest(Ship &ship){

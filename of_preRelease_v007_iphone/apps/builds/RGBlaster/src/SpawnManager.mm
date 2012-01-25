@@ -96,7 +96,7 @@ void SpawnManager::notifyShipDestroyed(){
 void SpawnManager::incrementColorStreak(int _incremenet){
     colorStreak+=_incremenet;
     
-    if(colorStreak==10){
+    if(colorStreak==50){
         generatePowerUp();
     }
 }

@@ -50,9 +50,9 @@ World::World(){
     
     motivator.loadImage("sprites/motivator.png");
     
-    background8.loadImage("sprites/background-8bit.png");
-    background16.loadImage("sprites/background-16bit.png");
-    background32.loadImage("sprites/background-32bit.png");
+    background8.loadImage("sprites/background-low.png");
+    background16.loadImage("sprites/background-med.png");
+    background32.loadImage("sprites/background-hi.png");
     
     enabled=true;
     if(!SoundManager::getInstance()->backgroundMusic.getIsPlaying())
@@ -158,7 +158,7 @@ void World::drawBackground(){
 
 void World::draw(){
     if(!enabled) return;
-    //drawBackground();
+    drawBackground();
     notifier->draw();
     spawner->draw();
     blaster->draw();

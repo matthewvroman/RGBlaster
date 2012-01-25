@@ -27,7 +27,7 @@ MenuScreen::MenuScreen(){
     
     // Load images
     logo.loadImage("logo.png");
-    background8.loadImage("sprites/background-8bit.png");
+    background8.loadImage("sprites/background-low.png");
     
 	// Loading label text
 	font.loadFont("fonts/ArcadeClassic.ttf", 45, true, true, false);

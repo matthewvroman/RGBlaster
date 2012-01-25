@@ -59,6 +59,9 @@
 		AC95294C1453C314001AB0BF /* ofxSpriteSheetRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC95293F1453C314001AB0BF /* ofxSpriteSheetRenderer.cpp */; };
 		AC95294D1453C314001AB0BF /* PixelTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC9529411453C314001AB0BF /* PixelTexture.cpp */; };
 		AC95C01714A3F63700EF40BC /* finger_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = AC95C01614A3F63700EF40BC /* finger_sprite.png */; };
+		AC98DA4D14CF81DE007F549D /* background-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA4A14CF81DE007F549D /* background-hi.png */; };
+		AC98DA4E14CF81DE007F549D /* background-med.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA4B14CF81DE007F549D /* background-med.png */; };
+		AC98DA4F14CF81DE007F549D /* background-low.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA4C14CF81DE007F549D /* background-low.png */; };
 		ACA73BAD148DE8BD00F60A22 /* res_up_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */; };
 		ACA9588814976AB900967B01 /* fuelship-theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588714976AB900967B01 /* fuelship-theme.wav */; };
 		ACA9588C14976F2C00967B01 /* res_down_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588B14976F2C00967B01 /* res_down_sfx.wav */; };
@@ -181,6 +184,9 @@
 		AC9529411453C314001AB0BF /* PixelTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelTexture.cpp; sourceTree = "<group>"; };
 		AC9529421453C314001AB0BF /* PixelTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelTexture.h; sourceTree = "<group>"; };
 		AC95C01614A3F63700EF40BC /* finger_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finger_sprite.png; path = sprites/finger_sprite.png; sourceTree = "<group>"; };
+		AC98DA4A14CF81DE007F549D /* background-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-hi.png"; path = "sprites/background-hi.png"; sourceTree = "<group>"; };
+		AC98DA4B14CF81DE007F549D /* background-med.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-med.png"; path = "sprites/background-med.png"; sourceTree = "<group>"; };
+		AC98DA4C14CF81DE007F549D /* background-low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-low.png"; path = "sprites/background-low.png"; sourceTree = "<group>"; };
 		ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_up_sfx.wav; path = sound/res_up_sfx.wav; sourceTree = "<group>"; };
 		ACA9588714976AB900967B01 /* fuelship-theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fuelship-theme.wav"; path = "sound/fuelship-theme.wav"; sourceTree = "<group>"; };
 		ACA9588B14976F2C00967B01 /* res_down_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_down_sfx.wav; path = sound/res_down_sfx.wav; sourceTree = "<group>"; };
@@ -373,6 +379,9 @@
 		AC9529501453C36A001AB0BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AC98DA4A14CF81DE007F549D /* background-hi.png */,
+				AC98DA4B14CF81DE007F549D /* background-med.png */,
+				AC98DA4C14CF81DE007F549D /* background-low.png */,
 				AC95C01614A3F63700EF40BC /* finger_sprite.png */,
 				AC901309149702AD0010F64B /* help7.png */,
 				AC90130A149702AD0010F64B /* help6.png */,
@@ -633,6 +642,9 @@
 				ACA9589314977F7900967B01 /* icon.png in Resources */,
 				ACA95895149789C400967B01 /* the-voyage.wav in Resources */,
 				AC95C01714A3F63700EF40BC /* finger_sprite.png in Resources */,
+				AC98DA4D14CF81DE007F549D /* background-hi.png in Resources */,
+				AC98DA4E14CF81DE007F549D /* background-med.png in Resources */,
+				AC98DA4F14CF81DE007F549D /* background-low.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
