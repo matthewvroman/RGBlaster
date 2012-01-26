@@ -166,7 +166,7 @@ void Blaster::draw(){
     for(short i=0; i<missiles.size(); i++){
         missiles.at(i)->draw();
     }
-    
+
     spriteRenderer->draw();
 }
 
