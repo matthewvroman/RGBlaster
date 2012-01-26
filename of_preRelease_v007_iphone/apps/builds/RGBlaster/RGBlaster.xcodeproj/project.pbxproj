@@ -61,6 +61,8 @@
 		AC98DA5114CFECC2007F549D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5014CFECC0007F549D /* Default-Portrait~ipad.png */; };
 		AC98DA5A14CFFC05007F549D /* Explosion.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC98DA5914CFFC04007F549D /* Explosion.mm */; };
 		AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */; };
+		AC98DA5E14D137E6007F549D /* ship_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5D14D137E6007F549D /* ship_explosion.wav */; };
+		AC98DA6014D138A1007F549D /* missile_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5F14D138A0007F549D /* missile_explosion.wav */; };
 		ACA73BAD148DE8BD00F60A22 /* res_up_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */; };
 		ACA9588814976AB900967B01 /* fuelship-theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588714976AB900967B01 /* fuelship-theme.wav */; };
 		ACA9588C14976F2C00967B01 /* res_down_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588B14976F2C00967B01 /* res_down_sfx.wav */; };
@@ -185,6 +187,8 @@
 		AC98DA5714CFFBEE007F549D /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
 		AC98DA5914CFFC04007F549D /* Explosion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Explosion.mm; sourceTree = "<group>"; };
 		AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion_spriteSheet.png; path = sprites/explosion_spriteSheet.png; sourceTree = "<group>"; };
+		AC98DA5D14D137E6007F549D /* ship_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ship_explosion.wav; path = sound/ship_explosion.wav; sourceTree = "<group>"; };
+		AC98DA5F14D138A0007F549D /* missile_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = missile_explosion.wav; path = sound/missile_explosion.wav; sourceTree = "<group>"; };
 		ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_up_sfx.wav; path = sound/res_up_sfx.wav; sourceTree = "<group>"; };
 		ACA9588714976AB900967B01 /* fuelship-theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fuelship-theme.wav"; path = "sound/fuelship-theme.wav"; sourceTree = "<group>"; };
 		ACA9588B14976F2C00967B01 /* res_down_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_down_sfx.wav; path = sound/res_down_sfx.wav; sourceTree = "<group>"; };
@@ -424,6 +428,8 @@
 		ACDB7D301473544700F732A5 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				AC98DA5F14D138A0007F549D /* missile_explosion.wav */,
+				AC98DA5D14D137E6007F549D /* ship_explosion.wav */,
 				AC2DB71014944F920015EA2D /* game_over_sfx.wav */,
 				ACA9588B14976F2C00967B01 /* res_down_sfx.wav */,
 				ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */,
@@ -638,6 +644,8 @@
 				AC98DA4F14CF81DE007F549D /* background-low.png in Resources */,
 				AC98DA5114CFECC2007F549D /* Default-Portrait~ipad.png in Resources */,
 				AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */,
+				AC98DA5E14D137E6007F549D /* ship_explosion.wav in Resources */,
+				AC98DA6014D138A1007F549D /* missile_explosion.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

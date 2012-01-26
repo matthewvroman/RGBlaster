@@ -96,7 +96,7 @@ void SpawnManager::notifyShipDestroyed(){
 void SpawnManager::incrementColorStreak(int _incremenet){
     colorStreak+=_incremenet;
     
-    if(colorStreak==50){
+    if(colorStreak==45){
         generatePowerUp();
     }
 }
@@ -327,11 +327,23 @@ void SpawnManager::increaseDifficulty(){
             maxShips=9;
             maxMultiplier=3;
             break;
+        case 6:
+            maxShips=10;
+            maxMultiplier=2;
+        case 7:
+            maxShips=12;
+        case 8:
+            maxShips=14;
+        case 9:
+            maxShips=16;
+            maxMultiplier=3;
+        case 10:
+            maxShips=18;
         default:
             maxMovementLevel=2;
             maxColor=3;
             maxResolution=3;
-            maxShips=10;
+            maxShips=20;
             maxMultiplier=4;
             break;
     }

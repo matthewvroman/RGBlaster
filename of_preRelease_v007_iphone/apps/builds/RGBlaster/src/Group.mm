@@ -255,9 +255,25 @@ void Group::zigZagMove(int _speed, int _maxRadius){
     y+=_speed;
 }
 
+void Group::lineMove(int _speed, int _spacing){
+    
+    int _spacer=_spacing;
+    
+    short i=0;
+    while(i<objects.size()){
+        if(!objects[i]->dead){
+            objects.at(i)->setPosition(this->x, this->y-_spacing);
+        }
+        i++;
+        _spacing+=_spacer;
+    }
+    
+    y+=_speed;
+}
+
 //remove a ship from the vector
 void Group::removeFromVector(int _pos){
-
+    cout << "remove from vector" << endl;
     if(_pos!=objects.size()-1){
         //Temporarily store our last element in the vector
         Ship *holder=objects[objects.size()-1];
@@ -271,7 +287,7 @@ void Group::removeFromVector(int _pos){
     }
     
     //spawn explosion
-    Explosion *explosion = new Explosion(objects[objects.size()-1]->getPosition().x,objects[objects.size()-1]->getPosition().y, this->color);
+    Explosion *explosion = new Explosion(objects[objects.size()-1]->getPosition().x,objects[objects.size()-1]->getPosition().y, this->color, this->resolution);
     explosions.push_back(explosion);
     
     //delete the ship
@@ -323,6 +339,7 @@ void Group::update(){
     
     switch (movement) {
         case 0:
+            //lineMove(speed,40);
             circleMove(speed, 50);
             break;
         case 1:
@@ -349,7 +366,6 @@ void Group::update(){
             objects[i]->enabled=false;
         }
 
-        
         //check if dead
         if(objects[i]->dead)
             removeFromVector(i);

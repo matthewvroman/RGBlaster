@@ -31,13 +31,14 @@ enum Color {
 enum MovementType {
     ZIGZAG=0,
     CIRCLE=1,
-    CIRCEXPAND=2,
+    CIRCEXPAND=2
 };
 
 enum ObjectType {
     BLASTER=0,
     SHIP=1,
-    MISSILE=2
+    MISSILE=2,
+    EXPLOSION=3
 };
 
 #endif
