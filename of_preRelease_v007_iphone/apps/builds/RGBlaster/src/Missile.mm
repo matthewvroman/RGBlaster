@@ -69,9 +69,9 @@ void Missile::update() {
     if(!enabled) return;
     
     if(sprite!=NULL && !dead){
+        //position is handled in the draw func by ofTranslate
         spriteRenderer->addCenteredTile(
-                                        &sprite->animation, 
-                                        0,0
+                                        &sprite->animation,0,0
                                         );
     }
     

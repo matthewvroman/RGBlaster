@@ -17,7 +17,6 @@
 		7EA0317314874011002853A6 /* MenuScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0317214874011002853A6 /* MenuScreen.mm */; };
 		7EA0317614874493002853A6 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0317414874493002853A6 /* button.cpp */; };
 		7EA03179148744F3002853A6 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.cpp */; };
-		AC0FBD3514843BC20058BAF2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0FBD2A14843BC20058BAF2 /* background.png */; };
 		AC0FBD3A14843BC20058BAF2 /* missile_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0FBD2F14843BC20058BAF2 /* missile_spriteSheet.png */; };
 		AC23A4A51482E1E100171457 /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC23A4A41482E1E000171457 /* HUD.mm */; };
 		AC23A4B71482E58200171457 /* verdana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC23A4B51482E58200171457 /* verdana.ttf */; };
@@ -25,9 +24,6 @@
 		AC23A4BA1482E7BD00171457 /* LLPIXEL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = AC23A4B91482E7BC00171457 /* LLPIXEL.TTF */; };
 		AC23A4BC1482E88F00171457 /* ArcadeClassic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC23A4BB1482E88F00171457 /* ArcadeClassic.ttf */; };
 		AC2629B21469C15700184B74 /* Ship.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC2629B11469C15700184B74 /* Ship.mm */; };
-		AC2DB6DA149448730015EA2D /* background-16bit.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2DB6D7149448730015EA2D /* background-16bit.png */; };
-		AC2DB6DB149448730015EA2D /* background-8bit.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2DB6D8149448730015EA2D /* background-8bit.png */; };
-		AC2DB70D149449A20015EA2D /* background-32bit.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2DB70C149449A20015EA2D /* background-32bit.png */; };
 		AC2DB70F14944C530015EA2D /* blaster_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2DB70E14944C530015EA2D /* blaster_sprite.png */; };
 		AC2DB71214944F920015EA2D /* game_over_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC2DB71014944F920015EA2D /* game_over_sfx.wav */; };
 		AC2F6C4014956BFA00EA8F1E /* ScreenManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6C3B14956BFA00EA8F1E /* ScreenManager.mm */; };
@@ -126,7 +122,6 @@
 		7EA0317514874493002853A6 /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
 		7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
 		7EA03178148744F3002853A6 /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
-		AC0FBD2A14843BC20058BAF2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = sprites/background.png; sourceTree = "<group>"; };
 		AC0FBD2F14843BC20058BAF2 /* missile_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = missile_spriteSheet.png; path = sprites/missile_spriteSheet.png; sourceTree = "<group>"; };
 		AC23A4A31482E1D100171457 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		AC23A4A41482E1E000171457 /* HUD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUD.mm; sourceTree = "<group>"; };
@@ -136,9 +131,6 @@
 		AC23A4BB1482E88F00171457 /* ArcadeClassic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArcadeClassic.ttf; path = fonts/ArcadeClassic.ttf; sourceTree = "<group>"; };
 		AC2629B01469C14700184B74 /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
 		AC2629B11469C15700184B74 /* Ship.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ship.mm; sourceTree = "<group>"; };
-		AC2DB6D7149448730015EA2D /* background-16bit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-16bit.png"; path = "sprites/background-16bit.png"; sourceTree = "<group>"; };
-		AC2DB6D8149448730015EA2D /* background-8bit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-8bit.png"; path = "sprites/background-8bit.png"; sourceTree = "<group>"; };
-		AC2DB70C149449A20015EA2D /* background-32bit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-32bit.png"; path = "sprites/background-32bit.png"; sourceTree = "<group>"; };
 		AC2DB70E14944C530015EA2D /* blaster_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blaster_sprite.png; path = sprites/blaster_sprite.png; sourceTree = "<group>"; };
 		AC2DB71014944F920015EA2D /* game_over_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = game_over_sfx.wav; path = sound/game_over_sfx.wav; sourceTree = "<group>"; };
 		AC2F6C3B14956BFA00EA8F1E /* ScreenManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScreenManager.mm; sourceTree = "<group>"; };
@@ -401,12 +393,8 @@
 				AC9012F01495CA160010F64B /* red_sprite.png */,
 				AC9012F11495CA160010F64B /* blue_sprite.png */,
 				AC2DB70E14944C530015EA2D /* blaster_sprite.png */,
-				AC2DB70C149449A20015EA2D /* background-32bit.png */,
-				AC2DB6D7149448730015EA2D /* background-16bit.png */,
-				AC2DB6D8149448730015EA2D /* background-8bit.png */,
 				ACD2BF3F148C595500148819 /* motivator.png */,
 				AC80989B148605F70042AF68 /* targeting_spriteSheet.png */,
-				AC0FBD2A14843BC20058BAF2 /* background.png */,
 				AC0FBD2F14843BC20058BAF2 /* missile_spriteSheet.png */,
 			);
 			name = Images;
@@ -617,7 +605,6 @@
 				AC23A4B81482E58200171457 /* bit_outline.ttf in Resources */,
 				AC23A4BA1482E7BD00171457 /* LLPIXEL.TTF in Resources */,
 				AC23A4BC1482E88F00171457 /* ArcadeClassic.ttf in Resources */,
-				AC0FBD3514843BC20058BAF2 /* background.png in Resources */,
 				AC0FBD3A14843BC20058BAF2 /* missile_spriteSheet.png in Resources */,
 				AC80989A1485FD0F0042AF68 /* the-voyage.mp3 in Resources */,
 				AC80989C148605F70042AF68 /* targeting_spriteSheet.png in Resources */,
@@ -626,9 +613,6 @@
 				7EA0317014873FC8002853A6 /* logo.png in Resources */,
 				ACD2BF40148C595500148819 /* motivator.png in Resources */,
 				ACA73BAD148DE8BD00F60A22 /* res_up_sfx.wav in Resources */,
-				AC2DB6DA149448730015EA2D /* background-16bit.png in Resources */,
-				AC2DB6DB149448730015EA2D /* background-8bit.png in Resources */,
-				AC2DB70D149449A20015EA2D /* background-32bit.png in Resources */,
 				AC2DB70F14944C530015EA2D /* blaster_sprite.png in Resources */,
 				AC2DB71214944F920015EA2D /* game_over_sfx.wav in Resources */,
 				AC2F6C44149573ED00EA8F1E /* visitor1.ttf in Resources */,
