@@ -71,8 +71,7 @@ void Missile::update() {
     if(sprite!=NULL && !dead){
         spriteRenderer->addCenteredTile(
                                         &sprite->animation, 
-                                        this->getPosition().x, 
-                                        this->getPosition().y
+                                        0,0
                                         );
     }
     
@@ -116,8 +115,8 @@ void Missile::draw() {
     if(!enabled) return;
     
     ofPushMatrix();
-    //ofTranslate(x,y);
-    //ofRotateZ(target->getPosition().x-x);
+    ofTranslate(x,y);
+    ofRotateZ(-asin((target->getPosition().x-x)/(target->getPosition().y-y)) *180/3.141592);
     spriteRenderer->draw();
     ofPopMatrix();
 }
