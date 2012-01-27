@@ -107,7 +107,7 @@ void SpawnManager::generatePowerUp(){
     removePowerUp();
     
     //powerUp=2;
-    powerUp = (int)ofRandom(3);
+    powerUp = (int)ofRandom(2);
     applyPowerUp();
     
     if(notifier!=nil){
@@ -130,17 +130,18 @@ void SpawnManager::applyPowerUp(){
             }
             break;
         case 1:
-            //mono color
-            powerUpName = "Mono Color";
-            
-            break;
-        case 2:
             //reticule radius increase
             powerUpName = "Range Up";
             if(finger!=nil){
                 finger->powerUp();
             }
             break;
+        case 2:
+            //mono color
+            powerUpName = "Mono Color";
+            
+            break;
+            
         default:
             powerUpName = "";
             break;
@@ -159,16 +160,16 @@ void SpawnManager::removePowerUp(){
             }
             break;
         case 1:
-            //mono color
-            powerUpName = "Mono Color";
-            
-            break;
-        case 2:
             //reticule radius increase
             powerUpName = "Range Up";
             if(finger!=nil){
                 finger->powerDown();
             }
+            break;
+        case 2:
+            //mono color
+            powerUpName = "Mono Color";
+            
             break;
         default:
             powerUpName = "";
