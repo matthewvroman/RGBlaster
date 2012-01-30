@@ -27,7 +27,6 @@ MenuScreen::MenuScreen(){
     
     // Load images
     logo.loadImage("logo.png");
-    background8.loadImage("sprites/background-low.png");
     
 	// Loading label text
 	font.loadFont("fonts/ArcadeClassic.ttf", 45, true, true, false);
@@ -69,8 +68,6 @@ void MenuScreen::update(){
 
 //--------------------------------------------------------------
 void MenuScreen::draw(){
-    // Draw background
-    background8.draw(0,0);
     
     // Draw logo
     ofSetColor( 255, 255, 255 );

@@ -19,6 +19,8 @@ ScreenManager::ScreenManager(){
     // Initialize screen manager
     currentScreen = 0;
     switchScreens(currentScreen);
+    
+    mainBackground.loadImage("sprites/background-low.png");
 }
 
 ScreenManager::~ScreenManager(){
@@ -60,15 +62,18 @@ void ScreenManager::draw(){
     // Determine which screen object to draw
     switch (currentScreen) {
         case 0: // MENU
+            mainBackground.draw(0,0);
             menuScreen->draw();
             break;
         case 1: // GAME
             gameScreen->draw();
             break;
         case 2: // HELP
+            mainBackground.draw(0,0);
             helpScreen->draw();
             break;
         case 3: // ABOUT
+            mainBackground.draw(0,0);
             aboutScreen->draw();
             break;
         default:

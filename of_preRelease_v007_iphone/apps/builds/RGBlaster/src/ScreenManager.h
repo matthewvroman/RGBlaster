@@ -33,6 +33,8 @@ public:
     HelpScreen *helpScreen;
     AboutScreen *aboutScreen;
     
+    ofImage mainBackground;
+    
     void switchScreens(int screen);
     
     void update();

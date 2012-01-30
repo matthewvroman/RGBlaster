@@ -29,7 +29,6 @@ public:
     SoundManager *soundManager;
     
     ofImage logo;
-    ofImage background8;
     
     ofTrueTypeFont font;
     ofTrueTypeFont visitorFont;
