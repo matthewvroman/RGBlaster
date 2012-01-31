@@ -134,6 +134,34 @@ void Blaster::setSpawner(SpawnManager *_spawner){
 //check finger collisions & spawn a missile if there'sa hit
 void Blaster::update(){
     if(!enabled) return;
+    
+    //determine rotation based on where the user is touching
+    if(finger->down && finger->y < 930){
+        float _percent = (finger->x-x)/(finger->y-y);
+        if(_percent>maxRotation){
+            _percent=maxRotation;
+        }else if(_percent<-maxRotation){
+            _percent=-maxRotation;
+        }
+        r=-asin(_percent) * 180.0 / 3.141592;
+        if(r!=r){ //if NaN
+            r=0;
+        }
+        
+        currentMissileSpawnPos.x=missileSpawnPos.x+r;
+        
+    }else{
+        r=0;
+    }
+    
+    if(currentR>r+rotationSpeed){
+        currentR-=rotationSpeed;
+    }else if(currentR<r-rotationSpeed){
+        currentR+=rotationSpeed;
+    }else{
+        currentR=r;
+    }
+    
     if(finger->down && spawner != nil){
         for(short i=0; i<spawner->activeGroups.size(); i++){
             for(short j=0; j<spawner->activeGroups[i]->objects.size(); j++){
@@ -175,33 +203,6 @@ void Blaster::update(){
     colorWheelRenderer->update(ofGetElapsedTimeMillis());
     if(colorWheelSprite!=NULL && !dead){
         colorWheelRenderer->addCenteredTile(&colorWheelSprite->animation, 0, 0);
-    }
-    
-    //determine rotation based on where the user is touching
-    if(finger->down && finger->y < 930){
-        float _percent = (finger->x-x)/(finger->y-y);
-        if(_percent>maxRotation){
-            _percent=maxRotation;
-        }else if(_percent<-maxRotation){
-            _percent=-maxRotation;
-        }
-        r=-asin(_percent) * 180.0 / 3.141592;
-        if(r!=r){ //if NaN
-            r=0;
-        }
-        
-        currentMissileSpawnPos.x=missileSpawnPos.x+r;
-        
-    }else{
-        r=0;
-    }
-    
-    if(currentR>r+rotationSpeed){
-        currentR-=rotationSpeed;
-    }else if(currentR<r-rotationSpeed){
-        currentR+=rotationSpeed;
-    }else{
-        currentR=r;
     }
 
     
