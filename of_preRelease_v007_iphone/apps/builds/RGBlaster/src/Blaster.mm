@@ -56,6 +56,8 @@ Blaster::Blaster(){
     finger = new Finger();
     targetOverlay = finger->target;
     
+    tilesPerRow=6;
+    
     width=height=74;
     
     setPosition(386, 990);
@@ -140,7 +142,7 @@ void Blaster::update(){
                     missiles.push_back(missile);
                     
                     sprite->animation = blasterAnimation;
-                    sprite->animation.frame = 0;
+                    sprite->animation.index = tilesPerRow*int(resolution);
                 }
             }
         }
@@ -157,9 +159,9 @@ void Blaster::update(){
         }
     }
     
-    if(sprite->animation.frame==2){
+    if(sprite->animation.frame==2 || sprite->animation.frame==10 || sprite->animation.frame==18){
         sprite->animation = defaultAnimation;
-        sprite->animation.frame=0;
+        sprite->animation.index = tilesPerRow*int(resolution);
     }
     
     spriteRenderer->clear(); // clear the sheet
@@ -184,7 +186,6 @@ void Blaster::update(){
             _percent=-maxRotation;
         }
         r=-asin(_percent) * 180.0 / 3.141592;
-        cout << (finger->x-x)/(finger->y-y) << endl;
         if(r!=r){ //if NaN
             r=0;
         }
@@ -250,6 +251,6 @@ void Blaster::setResolution(Resolution _res){
 
 //update sprite sheet to accurately reflect color & res
 void Blaster::updateSpriteSheet(){
-    colorWheelSprite->animation.index = 6*int(resolution)+int(color);
-    sprite->animation.index = 6*int(resolution);
+    colorWheelSprite->animation.index = tilesPerRow*int(resolution)+int(color);
+    sprite->animation.index = tilesPerRow*int(resolution);
 }

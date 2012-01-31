@@ -72,6 +72,8 @@ public:
     int width;
     int height;
     
+    int tilesPerRow;
+    
     float x;
     float y;
     float r;

@@ -88,4 +88,3 @@ static animation_t blasterAnimation = {
     -1,
     1
 };
-

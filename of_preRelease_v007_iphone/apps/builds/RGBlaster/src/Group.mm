@@ -273,7 +273,7 @@ void Group::lineMove(int _speed, int _spacing){
 
 //remove a ship from the vector
 void Group::removeFromVector(int _pos){
-    cout << "remove from vector" << endl;
+    //cout << "remove from vector" << endl;
     if(_pos!=objects.size()-1){
         //Temporarily store our last element in the vector
         Ship *holder=objects[objects.size()-1];
