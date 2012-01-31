@@ -77,6 +77,8 @@ private:
     
     bool switchingColor;
     
+    void switchColor();
+    
 
 };
 

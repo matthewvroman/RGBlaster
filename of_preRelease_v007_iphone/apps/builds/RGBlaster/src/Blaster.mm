@@ -60,7 +60,7 @@ Blaster::Blaster(){
     
     width=height=74;
     
-    setPosition(386, 990);
+    setPosition(386, 995);
     
     r=currentR=0;
     
@@ -68,6 +68,8 @@ Blaster::Blaster(){
     maxRotation=0.85;
     
     missileSpawnPos=currentMissileSpawnPos=ofVec2f(386,930);
+    
+    switchingColor=false;
 }
 
 Blaster::~Blaster(){
@@ -98,22 +100,26 @@ void Blaster::touchDown(ofTouchEventArgs &touch) {
 //Swap colors if the swipe moved far enough from touchDown to touchUp
 void Blaster::touchUp(ofTouchEventArgs &touch) {
     if(lastTouch!=nil){
+        //left
         if(touch.x<lastTouch.x-leeway){
             color=Color(int(color)+1);
             if(int(color)>2)
                 color=Color(0);
+            r=-90;
+            currentR=0;
+            switchingColor=true;
             SoundManager::getInstance()->spin.play();
         }
         if(touch.x>lastTouch.x+leeway){
             color=Color(int(color)-1);
             if(int(color)<0)
                 color=Color(2);
+            r=90;
+            currentR=0;
+            switchingColor=true;
             SoundManager::getInstance()->spin.play();
                 
         }
-        updateSpriteSheet();
-        finger->setColor(color);
-        targetOverlay->changeColor(color);
     }
     
 }
@@ -131,12 +137,19 @@ void Blaster::setSpawner(SpawnManager *_spawner){
     spawner = _spawner;
 }
 
+void Blaster::switchColor(){
+    cout << "Switch color" << endl;
+    updateSpriteSheet();
+    finger->setColor(color);
+    targetOverlay->changeColor(color);
+}
+
 //check finger collisions & spawn a missile if there'sa hit
 void Blaster::update(){
     if(!enabled) return;
     
     //determine rotation based on where the user is touching
-    if(finger->down && finger->y < 930){
+    if(finger->down && finger->y < 930 && !switchingColor){
         float _percent = (finger->x-x)/(finger->y-y);
         if(_percent>maxRotation){
             _percent=maxRotation;
@@ -150,7 +163,7 @@ void Blaster::update(){
         
         currentMissileSpawnPos.x=missileSpawnPos.x+r;
         
-    }else{
+    }else if(!finger->down && !switchingColor){
         r=0;
     }
     
@@ -160,6 +173,11 @@ void Blaster::update(){
         currentR+=rotationSpeed;
     }else{
         currentR=r;
+        if(switchingColor){
+            currentR=0;
+            switchingColor=false;
+            switchColor();
+        }
     }
     
     if(finger->down && spawner != nil){
