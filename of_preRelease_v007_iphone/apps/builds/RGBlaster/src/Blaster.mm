@@ -28,7 +28,18 @@ Blaster::Blaster(){
     
     /*SPRITE DRAWING*/
     //int _numLayers, int _tilesPerLayer, int _defaultLayer, int _tileSize
-    setSpriteTexture("sprites/blaster_sprite.png", 768, 192);
+    setSpriteTexture("sprites/blaster_sprite.png", 512, 74);
+    sprite->animation = defaultAnimation;
+    
+    colorWheelRenderer = new ofxSpriteSheetRenderer(1,100,0,74);
+    colorWheelRenderer->loadTexture("sprites/colorWheel_sprite.png", 512, GL_NEAREST);
+    
+    colorWheelSprite = new basicSprite(); // create a new sprite
+    colorWheelSprite->pos.set(0,0); //set its position
+    colorWheelSprite->speed=1; //set its speed
+    colorWheelSprite->animation = defaultAnimation; //set its animation to the walk animation we declared
+    colorWheelSprite->animation.frame_duration = 5; //adjust its frame duration based on how fast it is walking (faster = smaller)
+    colorWheelSprite->animation.index = 0; //change the start index of our sprite. we have 4 rows of animations and our spritesheet is 8 tiles wide, so our possible start indicies are 0, 8, 16, and 24
     
 	ofEnableAlphaBlending(); // turn on alpha blending. important!
     
@@ -45,16 +56,27 @@ Blaster::Blaster(){
     finger = new Finger();
     targetOverlay = finger->target;
     
-    width=192;
-    height=192;
+    width=height=74;
+    
+    frontColor = ofColor(255,0,0);
+    rightColor = ofColor(0,255,0);
+    leftColor = ofColor(0,0,255);
     
     setPosition(386, 990);
+    
+    r=currentR=0;
+    
+    rotationSpeed=10;
+    
+    missileSpawnPos=ofVec2f(386,930);
 }
 
 Blaster::~Blaster(){
     ofRemoveListener(ofEvents.touchDown, this, &Blaster::touchDown);
 	ofRemoveListener(ofEvents.touchUp, this, &Blaster::touchUp);
     delete finger; 
+    delete colorWheelRenderer;
+    delete colorWheelSprite;
 }
 
 void Blaster::touchDown(ofTouchEventArgs &touch) {
@@ -102,6 +124,8 @@ void Blaster::addTarget(BasicObject *target){
         targets.push_back(target);
         target->targeted = true;
     }
+    sprite->animation = blasterAnimation;
+    cout << "ADDED TARGET" << endl;
 }
 
 void Blaster::setSpawner(SpawnManager *_spawner){
@@ -115,10 +139,11 @@ void Blaster::update(){
         for(short i=0; i<spawner->activeGroups.size(); i++){
             for(short j=0; j<spawner->activeGroups[i]->objects.size(); j++){
                 if(finger->hitTest(*spawner->activeGroups[i]->objects[j])){
-                    float _x=this->getPosition().x;
-                    float _y=this->getPosition().y;
-                    Missile *missile = new Missile(_x,_y,color,resolution,spawner->activeGroups[i]->objects[j]);
+                    Missile *missile = new Missile(missileSpawnPos.x,missileSpawnPos.y,color,resolution,spawner->activeGroups[i]->objects[j]);
                     missiles.push_back(missile);
+                    
+                    sprite->animation = blasterAnimation;
+                    sprite->animation.frame = 0;
                 }
             }
         }
@@ -135,7 +160,44 @@ void Blaster::update(){
         }
     }
     
-    BasicObject::update();
+    if(sprite->animation.frame==2){
+        sprite->animation = defaultAnimation;
+        sprite->animation.frame=0;
+    }
+    
+    spriteRenderer->clear(); // clear the sheet
+	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
+    
+    if(sprite!=NULL && !dead){
+        spriteRenderer->addCenteredTile(&sprite->animation,0,0);
+    }
+    
+    colorWheelRenderer->clear();
+    colorWheelRenderer->update(ofGetElapsedTimeMillis());
+    if(colorWheelSprite!=NULL && !dead){
+        colorWheelRenderer->addCenteredTile(&colorWheelSprite->animation, 0, 0);
+    }
+    
+    //determine rotation based on where the user is touching
+    if(finger->down && finger->y<y && finger->y<900){
+        r=-asin((finger->x-x)/(finger->y-y)) * 180/3.141592;
+        if(r!=r){ //if NaN
+            r=0;
+        }
+    }else{
+        r=0;
+    }
+    
+    if(currentR>r+rotationSpeed){
+        currentR-=rotationSpeed;
+    }else if(currentR<r-rotationSpeed){
+        currentR+=rotationSpeed;
+    }else{
+        currentR=r;
+    }
+
+    
+    //BasicObject::update();
 }
 
 void Blaster::removeMissile(int _pos){
@@ -166,25 +228,15 @@ void Blaster::draw(){
     for(short i=0; i<missiles.size(); i++){
         missiles.at(i)->draw();
     }
-
+    
+    ofPushMatrix();
+    ofTranslate(x, y);
+    ofScale(2,2);
+    ofRotateZ(currentR);
+    colorWheelRenderer->draw();
     spriteRenderer->draw();
-}
+    ofPopMatrix();
 
-void Blaster::switchColor(){
-    switch(color){
-        case RED:
-            color = GREEN;
-            break;
-        case GREEN:
-            color = BLUE;
-            break;
-        case BLUE:
-            color = RED;
-            break;
-    }
-    SoundManager::getInstance()->spin.play();
-    finger->setColor(color);
-    updateSpriteSheet();
 }
 
 void Blaster::setResolution(Resolution _res){
@@ -194,5 +246,5 @@ void Blaster::setResolution(Resolution _res){
 
 //update sprite sheet to accurately reflect color & res
 void Blaster::updateSpriteSheet(){
-    sprite->animation.index = 4*int(resolution)+int(color);
+    colorWheelSprite->animation.index = 4*int(resolution)+int(color);
 }

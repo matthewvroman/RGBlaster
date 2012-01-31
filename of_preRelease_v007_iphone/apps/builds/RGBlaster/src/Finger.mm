@@ -103,7 +103,7 @@ void Finger::update(){
 
 
 void Finger::draw(){
-    if((!x && !y) || (y>920)) return;
+    if((!x && !y) || (y>900)) return;
 
     ofPushMatrix();
     ofTranslate(x, y);

@@ -38,7 +38,6 @@ public:
     void update();
     void draw();
     
-    void switchColor();
     void setResolution(Resolution _res);
     void updateSpriteSheet();
     
@@ -65,6 +64,20 @@ private:
     
     int         leeway;
     ofVec2f     lastTouch;
+    
+    ofVec2f     missileSpawnPos;
+    
+    ofColor     frontColor;
+    ofColor     leftColor;
+    ofColor     rightColor;
+    
+    ofxSpriteSheetRenderer *colorWheelRenderer;
+    basicSprite *colorWheelSprite;
+    
+    float currentR;
+    float rotationSpeed;
+    
+
 };
 
 #endif

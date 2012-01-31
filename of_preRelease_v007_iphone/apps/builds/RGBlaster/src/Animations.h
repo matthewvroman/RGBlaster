@@ -76,3 +76,16 @@ static animation_t explodeAnimation = {
     1
 };
 
+static animation_t blasterAnimation = {
+    0,
+    0,
+    3,
+    1,
+    1,
+    75,
+    0,
+    -1,
+    -1,
+    1
+};
+

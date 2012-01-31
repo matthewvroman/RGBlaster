@@ -74,6 +74,7 @@ public:
     
     float x;
     float y;
+    float r;
     int a;
     
     //determines whether or not to run update & draw

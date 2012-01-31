@@ -70,6 +70,7 @@
 		ACA95895149789C400967B01 /* the-voyage.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA95894149789C300967B01 /* the-voyage.wav */; };
 		ACADA37014633534001CD87D /* BasicObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACADA36F14633533001CD87D /* BasicObject.mm */; };
 		ACB54894147323F500B32CE4 /* Missile.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACB54893147323F500B32CE4 /* Missile.mm */; };
+		ACC67B5214D7728B00BDAB88 /* colorWheel_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */; };
 		ACCA19CF1473676C00686CBA /* explosion_sfx.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACCA19CE1473676C00686CBA /* explosion_sfx.caf */; };
 		ACD2BF40148C595500148819 /* motivator.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD2BF3F148C595500148819 /* motivator.png */; };
 		ACD48A921457454A001A932A /* World.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACD48A911457454A001A932A /* World.mm */; };
@@ -199,6 +200,7 @@
 		ACB1F8571484806F00A0BD03 /* ScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenManager.h; sourceTree = "<group>"; };
 		ACB54892147323E700B32CE4 /* Missile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Missile.h; sourceTree = "<group>"; };
 		ACB54893147323F500B32CE4 /* Missile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Missile.mm; sourceTree = "<group>"; };
+		ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = colorWheel_sprite.png; path = sprites/colorWheel_sprite.png; sourceTree = "<group>"; };
 		ACCA19CE1473676C00686CBA /* explosion_sfx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = explosion_sfx.caf; path = sound/explosion_sfx.caf; sourceTree = "<group>"; };
 		ACD2BF3F148C595500148819 /* motivator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = motivator.png; path = sprites/motivator.png; sourceTree = "<group>"; };
 		ACD48A911457454A001A932A /* World.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = World.mm; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 		AC9529501453C36A001AB0BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */,
 				AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */,
 				AC98DA4A14CF81DE007F549D /* background-hi.png */,
 				AC98DA4B14CF81DE007F549D /* background-med.png */,
@@ -646,6 +649,7 @@
 				AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */,
 				AC98DA5E14D137E6007F549D /* ship_explosion.wav in Resources */,
 				AC98DA6014D138A1007F549D /* missile_explosion.wav in Resources */,
+				ACC67B5214D7728B00BDAB88 /* colorWheel_sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
