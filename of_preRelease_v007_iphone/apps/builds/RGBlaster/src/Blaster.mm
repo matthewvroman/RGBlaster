@@ -58,15 +58,12 @@ Blaster::Blaster(){
     
     width=height=74;
     
-    frontColor = ofColor(255,0,0);
-    rightColor = ofColor(0,255,0);
-    leftColor = ofColor(0,0,255);
-    
     setPosition(386, 990);
     
     r=currentR=0;
     
     rotationSpeed=10;
+    maxRotation=0.85;
     
     missileSpawnPos=ofVec2f(386,930);
 }
@@ -179,8 +176,15 @@ void Blaster::update(){
     }
     
     //determine rotation based on where the user is touching
-    if(finger->down && finger->y<y && finger->y<900){
-        r=-asin((finger->x-x)/(finger->y-y)) * 180/3.141592;
+    if(finger->down && finger->y < 930){
+        float _percent = (finger->x-x)/(finger->y-y);
+        if(_percent>maxRotation){
+            _percent=maxRotation;
+        }else if(_percent<-maxRotation){
+            _percent=-maxRotation;
+        }
+        r=-asin(_percent) * 180.0 / 3.141592;
+        cout << (finger->x-x)/(finger->y-y) << endl;
         if(r!=r){ //if NaN
             r=0;
         }
@@ -246,5 +250,6 @@ void Blaster::setResolution(Resolution _res){
 
 //update sprite sheet to accurately reflect color & res
 void Blaster::updateSpriteSheet(){
-    colorWheelSprite->animation.index = 4*int(resolution)+int(color);
+    colorWheelSprite->animation.index = 6*int(resolution)+int(color);
+    sprite->animation.index = 6*int(resolution);
 }

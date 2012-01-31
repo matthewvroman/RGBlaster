@@ -67,15 +67,14 @@ private:
     
     ofVec2f     missileSpawnPos;
     
-    ofColor     frontColor;
-    ofColor     leftColor;
-    ofColor     rightColor;
-    
     ofxSpriteSheetRenderer *colorWheelRenderer;
     basicSprite *colorWheelSprite;
     
     float currentR;
     float rotationSpeed;
+    float maxRotation;
+    
+    bool switchingColor;
     
 
 };

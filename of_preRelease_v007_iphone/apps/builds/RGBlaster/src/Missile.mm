@@ -39,7 +39,11 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, Ship *_targe
     
     speed=10;
     
+    r=0;
+    
     type = MISSILE;
+    
+    maxRotation=0.9;
     
     this->setPosition(posX, posY);
     
@@ -101,6 +105,15 @@ void Missile::update() {
     
     move(direction.x,direction.y);
     
+    
+    float _percent = (target->getPosition().x-x)/(target->getPosition().y-y);
+    if(_percent>maxRotation){
+        _percent=maxRotation;
+    }else if(_percent<-maxRotation){
+        _percent=-maxRotation;
+    }
+    r=-asin(_percent) *180/3.141592;
+    
     //check if we hit the target
     hitTest(*target);
     
@@ -116,7 +129,7 @@ void Missile::draw() {
     
     ofPushMatrix();
     ofTranslate(x,y);
-    ofRotateZ(-asin((target->getPosition().x-x)/(target->getPosition().y-y)) *180/3.141592);
+    ofRotateZ(r);
     spriteRenderer->draw();
     ofPopMatrix();
 }

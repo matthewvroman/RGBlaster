@@ -56,6 +56,8 @@ public:
     void update();
     void draw();
     
+    float maxRotation;
+    
     
     
     

@@ -24,7 +24,9 @@ SoundManager::SoundManager(){
     mainMenuMusic.loadSound("sound/fuelship-theme.wav");
     backgroundMusic.loadSound("sound/the-voyage.wav");
     
-    targeted.loadSound("sound/target_sfx.caf");
+    
+    targeted.loadSound("sound/cannon-shot.wav");
+    //targeted.loadSound("sound/target_sfx.caf");
     explosion.loadSound("sound/explosion_sfx.caf");
     //missileSuccess.loadSound("sound/missile-success.wav");
     missileSuccess.loadSound("sound/ship_explosion.wav");
