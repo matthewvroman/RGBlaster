@@ -67,7 +67,7 @@ Blaster::Blaster(){
     rotationSpeed=10;
     maxRotation=0.85;
     
-    missileSpawnPos=ofVec2f(386,930);
+    missileSpawnPos=currentMissileSpawnPos=ofVec2f(386,930);
 }
 
 Blaster::~Blaster(){
@@ -138,7 +138,7 @@ void Blaster::update(){
         for(short i=0; i<spawner->activeGroups.size(); i++){
             for(short j=0; j<spawner->activeGroups[i]->objects.size(); j++){
                 if(finger->hitTest(*spawner->activeGroups[i]->objects[j])){
-                    Missile *missile = new Missile(missileSpawnPos.x,missileSpawnPos.y,color,resolution,spawner->activeGroups[i]->objects[j]);
+                    Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups[i]->objects[j]);
                     missiles.push_back(missile);
                     
                     sprite->animation = blasterAnimation;
@@ -189,6 +189,9 @@ void Blaster::update(){
         if(r!=r){ //if NaN
             r=0;
         }
+        
+        currentMissileSpawnPos.x=missileSpawnPos.x+r;
+        
     }else{
         r=0;
     }

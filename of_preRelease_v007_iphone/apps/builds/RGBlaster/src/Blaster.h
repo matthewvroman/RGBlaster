@@ -66,6 +66,7 @@ private:
     ofVec2f     lastTouch;
     
     ofVec2f     missileSpawnPos;
+    ofVec2f     currentMissileSpawnPos;
     
     ofxSpriteSheetRenderer *colorWheelRenderer;
     basicSprite *colorWheelSprite;
