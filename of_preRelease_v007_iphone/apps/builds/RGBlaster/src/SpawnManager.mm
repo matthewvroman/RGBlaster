@@ -332,19 +332,19 @@ void SpawnManager::increaseDifficulty(){
             maxShips=10;
             maxMultiplier=2;
         case 7:
-            maxShips=12;
+            maxShips=10;
         case 8:
-            maxShips=14;
+            maxShips=10;
         case 9:
-            maxShips=16;
+            maxShips=12;
             maxMultiplier=3;
         case 10:
-            maxShips=18;
+            maxShips=12;
         default:
             maxMovementLevel=2;
             maxColor=3;
             maxResolution=3;
-            maxShips=20;
+            maxShips=14;
             maxMultiplier=4;
             break;
     }

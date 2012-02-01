@@ -36,6 +36,7 @@ SoundManager::SoundManager(){
     gameOver.loadSound("sound/game_over_sfx.wav");
     click.loadSound("sound/blip.wav");
     spin.loadSound("sound/blaster-spin.wav");
+    //spin.loadSound("sound/cannon_rotation.wav");
     
     sfx.push_back(targeted);
     sfx.push_back(explosion);
