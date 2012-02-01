@@ -87,7 +87,7 @@ void SpawnManager::setNotifier(Notifier *_notifier){
 void SpawnManager::notifyShipDestroyed(){
     if(hud!=nil){
         hud->incrementScore(5*maxMultiplier*(resolution+1));
-        hud->increaseHealth(35);
+        hud->increaseHealth(1);
         SoundManager::getInstance()->missileSuccess.play();
         incrementColorStreak(1);
     }
