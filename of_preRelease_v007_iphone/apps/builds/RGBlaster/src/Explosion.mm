@@ -9,7 +9,7 @@
 #include <iostream>
 #import "Explosion.h"
 
-Explosion::Explosion(int posX, int posY, Color _color, Resolution _res){
+Explosion::Explosion(int posX, int posY, Color _color, Resolution _res,float _scale){
     
     spriteRenderer=AtlasHandler::getInstance()->explosionRenderer;
     
@@ -27,6 +27,8 @@ Explosion::Explosion(int posX, int posY, Color _color, Resolution _res){
     //sprite->animation.index = (int(_color)*16)*(3*_res);
     
     speed=3;
+    
+    scale=_scale;
     
     this->setPosition(posX, posY);
     
@@ -71,7 +73,7 @@ void Explosion::draw(){
     
     ofPushMatrix();
     ofTranslate(x, y);
-    ofScale(3,3);
+    ofScale(scale,scale);
     spriteRenderer->draw();
     ofPopMatrix();
 }

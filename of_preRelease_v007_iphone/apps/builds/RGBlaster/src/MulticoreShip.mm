@@ -19,7 +19,7 @@ void MulticoreShip::initCores(){
     cout << "new multicore ship" << endl;
     spriteRenderer=AtlasHandler::getInstance()->multicoreShipRenderer;
     
-    dead=false;
+    dead=destroyed=false;
     
     scale=2.5;
     
@@ -62,11 +62,17 @@ void MulticoreShip::removeCore(int _pos){
     //resize the vector
     cores.pop_back();
     
+    //if we're out of cores then create a huge explosion for the ship
+    if(cores.size()==0 && !destroyed){
+        //spawn explosion
+        Explosion *explosion = new Explosion(this->getPosition().x,this->getPosition().y, this->getColor(), this->getRes(),10);
+        explosions.push_back(explosion);
+        destroyed=true;
+    }
 }
 
 //remove a ship from the vector
 void MulticoreShip::removeExplosion(int _pos){
-    cout << "remove explosion" << endl;
     if(_pos!=cores.size()-1){
         //Temporarily store our last element in the vector
         Explosion *holder=explosions[explosions.size()-1];
@@ -86,7 +92,7 @@ void MulticoreShip::removeExplosion(int _pos){
     explosions.pop_back();
     
     //check if our group should still exist
-    if(explosions.size()==0 && cores.size()==0){
+    if(explosions.size()==0 && cores.size()==0 ){
         dead=true;
         enabled=false;
     }
@@ -99,7 +105,7 @@ void MulticoreShip::update(){
     spriteRenderer->clear(); // clear the sheet
 	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
-    if(sprite!=NULL && !dead){
+    if(sprite!=NULL && !dead && !destroyed){
         spriteRenderer->addCenteredTile(&sprite->animation,0,0);
     }
     
@@ -149,11 +155,13 @@ void MulticoreShip::move(float _x, float _y){
 void MulticoreShip::draw(){
     if(!enabled) return;
     
-    ofPushMatrix();
-    ofTranslate(x,y);
-    ofScale(scale, scale);
-    spriteRenderer->draw();
-    ofPopMatrix();
+    if(!destroyed){
+        ofPushMatrix();
+        ofTranslate(x,y);
+        ofScale(scale, scale);
+        spriteRenderer->draw();
+        ofPopMatrix();
+    }
     
     short i=0;
     while(i<cores.size()){

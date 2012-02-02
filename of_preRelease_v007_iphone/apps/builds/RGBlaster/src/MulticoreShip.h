@@ -47,6 +47,8 @@ public:
 private:
     void initCores();
     
+    bool destroyed;
+    
     Core *core1;
     Core *core2;
     Core *core3;

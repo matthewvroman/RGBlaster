@@ -69,6 +69,7 @@ public:
     void draw();
     
     void removeGroup(int _pos);
+    void removeMulticoreShip(int _pos);
     
     void removeAllGroups();
     

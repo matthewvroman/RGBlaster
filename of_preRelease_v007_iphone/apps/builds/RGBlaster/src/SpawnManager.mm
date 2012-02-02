@@ -232,7 +232,7 @@ void SpawnManager::update(){
         while(j<activeMulticoreShips.size()){
             activeMulticoreShips[j]->update();
             if(activeMulticoreShips[i]!=nil && activeMulticoreShips[i]->dead)
-                cout << "remove multicore ship" << endl;
+                removeMulticoreShip(i);
             j++;
         }
         
@@ -294,6 +294,28 @@ void SpawnManager::removeGroup(int _pos){
     //resize the vector
     activeGroups.pop_back();
     
+    
+    
+}
+
+void SpawnManager::removeMulticoreShip(int _pos){
+    if(_pos!=activeGroups.size()-1){
+        //Temporarily tore our last element in the vector
+        MulticoreShip *holder=activeMulticoreShips[activeMulticoreShips.size()-1];
+        
+        //move the ship we want to delete to the endof the position
+        activeMulticoreShips[activeMulticoreShips.size()-1]=activeMulticoreShips[_pos];
+        
+        //put the old last element in the TBDeleted spot
+        activeMulticoreShips[_pos]=holder;
+    }
+    
+    //delete the ship
+    delete activeMulticoreShips[activeMulticoreShips.size()-1];
+    
+    //resize the vector
+    activeMulticoreShips.pop_back();
+    cout << "removed multicore ship" << endl;
     
     
 }
