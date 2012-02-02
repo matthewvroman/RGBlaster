@@ -72,6 +72,10 @@
 		ACB54894147323F500B32CE4 /* Missile.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACB54893147323F500B32CE4 /* Missile.mm */; };
 		ACC67B5214D7728B00BDAB88 /* colorWheel_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */; };
 		ACC67B5414D7CD2900BDAB88 /* cannon-shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACC67B5314D7CD2900BDAB88 /* cannon-shot.wav */; };
+		ACC67B5B14D9237D00BDAB88 /* MulticoreShip.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACC67B5A14D9237C00BDAB88 /* MulticoreShip.mm */; };
+		ACC67B5D14DA55D900BDAB88 /* cores_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC67B5C14DA55D800BDAB88 /* cores_spriteSheet.png */; };
+		ACC67B6014DA56D900BDAB88 /* Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACC67B5F14DA56D800BDAB88 /* Core.mm */; };
+		ACC67B6214DA587F00BDAB88 /* multicore_ship_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC67B6114DA587E00BDAB88 /* multicore_ship_sprite.png */; };
 		ACCA19CF1473676C00686CBA /* explosion_sfx.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACCA19CE1473676C00686CBA /* explosion_sfx.caf */; };
 		ACD2BF40148C595500148819 /* motivator.png in Resources */ = {isa = PBXBuildFile; fileRef = ACD2BF3F148C595500148819 /* motivator.png */; };
 		ACD48A921457454A001A932A /* World.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACD48A911457454A001A932A /* World.mm */; };
@@ -203,6 +207,12 @@
 		ACB54893147323F500B32CE4 /* Missile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Missile.mm; sourceTree = "<group>"; };
 		ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = colorWheel_sprite.png; path = sprites/colorWheel_sprite.png; sourceTree = "<group>"; };
 		ACC67B5314D7CD2900BDAB88 /* cannon-shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "cannon-shot.wav"; path = "sound/cannon-shot.wav"; sourceTree = "<group>"; };
+		ACC67B5914D9236600BDAB88 /* MulticoreShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticoreShip.h; sourceTree = "<group>"; };
+		ACC67B5A14D9237C00BDAB88 /* MulticoreShip.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MulticoreShip.mm; sourceTree = "<group>"; };
+		ACC67B5C14DA55D800BDAB88 /* cores_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cores_spriteSheet.png; path = sprites/cores_spriteSheet.png; sourceTree = "<group>"; };
+		ACC67B5E14DA56C200BDAB88 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		ACC67B5F14DA56D800BDAB88 /* Core.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Core.mm; sourceTree = "<group>"; };
+		ACC67B6114DA587E00BDAB88 /* multicore_ship_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multicore_ship_sprite.png; path = sprites/multicore_ship_sprite.png; sourceTree = "<group>"; };
 		ACCA19CE1473676C00686CBA /* explosion_sfx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = explosion_sfx.caf; path = sound/explosion_sfx.caf; sourceTree = "<group>"; };
 		ACD2BF3F148C595500148819 /* motivator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = motivator.png; path = sprites/motivator.png; sourceTree = "<group>"; };
 		ACD48A911457454A001A932A /* World.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = World.mm; sourceTree = "<group>"; };
@@ -385,6 +395,8 @@
 		AC9529501453C36A001AB0BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ACC67B6114DA587E00BDAB88 /* multicore_ship_sprite.png */,
+				ACC67B5C14DA55D800BDAB88 /* cores_spriteSheet.png */,
 				ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */,
 				AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */,
 				AC98DA4A14CF81DE007F549D /* background-hi.png */,
@@ -459,6 +471,10 @@
 				ACD48A911457454A001A932A /* World.mm */,
 				AC2629B01469C14700184B74 /* Ship.h */,
 				AC2629B11469C15700184B74 /* Ship.mm */,
+				ACC67B5914D9236600BDAB88 /* MulticoreShip.h */,
+				ACC67B5A14D9237C00BDAB88 /* MulticoreShip.mm */,
+				ACC67B5E14DA56C200BDAB88 /* Core.h */,
+				ACC67B5F14DA56D800BDAB88 /* Core.mm */,
 				ACEDC636146CAF55009CDD3C /* Blaster.h */,
 				ACEDC635146CAF55009CDD3C /* Blaster.mm */,
 				AC72D3831472FF1300380F24 /* Target.h */,
@@ -654,6 +670,8 @@
 				AC98DA6014D138A1007F549D /* missile_explosion.wav in Resources */,
 				ACC67B5214D7728B00BDAB88 /* colorWheel_sprite.png in Resources */,
 				ACC67B5414D7CD2900BDAB88 /* cannon-shot.wav in Resources */,
+				ACC67B5D14DA55D900BDAB88 /* cores_spriteSheet.png in Resources */,
+				ACC67B6214DA587F00BDAB88 /* multicore_ship_sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +725,8 @@
 				AC2F6C4214956BFA00EA8F1E /* AboutScreen.mm in Sources */,
 				AC9012F91496AB2F0010F64B /* Notifier.mm in Sources */,
 				AC98DA5A14CFFC05007F549D /* Explosion.mm in Sources */,
+				ACC67B5B14D9237D00BDAB88 /* MulticoreShip.mm in Sources */,
+				ACC67B6014DA56D900BDAB88 /* Core.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

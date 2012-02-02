@@ -53,6 +53,9 @@ SpawnManager::SpawnManager(){
     powerUpTimer=powerUpEndTime=0;
     
     //spawnGroup();
+    
+    MulticoreShip *coreShip = new MulticoreShip(150, 150);
+    activeMulticoreShips.push_back(coreShip);
 }
 
 SpawnManager* SpawnManager::getInstance(){
@@ -225,6 +228,14 @@ void SpawnManager::update(){
             i++;
         }
         
+        short j=0;
+        while(j<activeMulticoreShips.size()){
+            activeMulticoreShips[j]->update();
+            if(activeMulticoreShips[i]!=nil && activeMulticoreShips[i]->dead)
+                cout << "remove multicore ship" << endl;
+            j++;
+        }
+        
         //if we have a power up
         if(powerUp>=0){
             //start counting
@@ -357,5 +368,11 @@ void SpawnManager::draw(){
     while(i<activeGroups.size()){
         activeGroups[i]->draw();
         i++;
+    }
+    
+    short j=0;
+    while(j<activeMulticoreShips.size()){
+        activeMulticoreShips[j]->draw();
+        j++;
     }
 }

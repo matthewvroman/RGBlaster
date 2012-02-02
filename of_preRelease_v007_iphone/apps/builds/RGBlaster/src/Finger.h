@@ -22,6 +22,7 @@
 
 #import "Target.h"
 #import "Ship.h"
+#import "Core.h"
 
 class Finger{
 public:
@@ -44,6 +45,7 @@ public:
     bool        down;
     
     bool        hitTest(Ship &ship);
+    bool        hitTest(Core &core);
     
     void        setColor(Color _color);
     

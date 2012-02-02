@@ -29,6 +29,8 @@ BasicObject::BasicObject(){
     
     type = SHIP;
     
+    scale=1;
+    
     dead=false;
 
 }
@@ -54,6 +56,7 @@ BasicObject::BasicObject(float _x, float _y, int _width, int _height,string _spr
     x=_x;
     y=_y;
     
+    scale=1;
     a=0;
     
     width=_width;
@@ -153,7 +156,7 @@ void BasicObject::update() {
 	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
     if(sprite!=NULL && !dead){
-        spriteRenderer->addCenteredTile(&sprite->animation,x,y);
+        spriteRenderer->addCenteredTile(&sprite->animation,0,0);
     }
     
 }
@@ -161,7 +164,11 @@ void BasicObject::update() {
 void BasicObject::draw() {
     if(!enabled) return;
     
+    ofPushMatrix();
+    ofTranslate(x,y);
+    ofScale(scale, scale);
     spriteRenderer->draw();
+    ofPopMatrix();
 }
 
 float BasicObject::deg2rad(float _deg){

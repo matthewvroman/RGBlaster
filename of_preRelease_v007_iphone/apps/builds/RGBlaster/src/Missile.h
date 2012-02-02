@@ -31,14 +31,14 @@
 class Missile : public BasicObject{
 public:
     //constructor
-    Missile(int posX, int posY, Color _color, Resolution _res, Ship *_target);
+    Missile(int posX, int posY, Color _color, Resolution _res, BasicObject *_target);
     
     //destructor
     ~Missile();
     
     float speed;
     
-    Ship *target;
+    BasicObject *target;
     
     Color color;
     Resolution resolution;
@@ -51,7 +51,7 @@ public:
     
     bool derez();
     
-    bool hitTest(Ship &ship);
+    bool hitTest(BasicObject &ship);
     
     void update();
     void draw();

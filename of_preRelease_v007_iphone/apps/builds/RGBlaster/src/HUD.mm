@@ -126,13 +126,13 @@ void HUD::draw(){
     string resString="";
     switch (int(SpawnManager::getInstance()->resolution)){
         case 0:
-            resString="8 BIT";
+            resString="LO";
             break;
         case 1:
-            resString="16 BIT";
+            resString="MED";
             break;
         case 2:
-            resString="32 BIT";
+            resString="HI";
             break;
         default:
             resString="";

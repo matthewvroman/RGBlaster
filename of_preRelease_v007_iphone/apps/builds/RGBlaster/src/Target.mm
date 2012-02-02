@@ -42,7 +42,7 @@ void Target::changeColor(Color _color){
     sprite->animation.index = int(_color);
 }
 
-void Target::addTarget(Ship *ship){
+void Target::addTarget(BasicObject *ship){
     targets.push_back(ship);
     //play sfx
     SoundManager::getInstance()->targeted.play();
@@ -83,7 +83,7 @@ void Target::removeTarget(int _pos){
     
     if(_pos!=targets.size()-1){
         //Temporarily store our last element in the vector
-        Ship *holder=targets[targets.size()-1];
+        BasicObject *holder=targets[targets.size()-1];
         
         //move the ship we want to delete to the endof the position
         targets[targets.size()-1]=targets[_pos];

@@ -83,6 +83,20 @@ bool Finger::hitTest(Ship &ship){
     }
 }
 
+//Check if the touch has collided with any of the ships on-screen
+bool Finger::hitTest(Core &core){
+    
+    if(x - radius < core.x+core.width/2 && x + radius > core.x - core.width/2 &&
+       y - radius < core.y+core.height/2 && y + radius > core.y-core.height/2 &&
+       !core.targeted){
+        core.targeted=true;
+        target->addTarget(&core);
+        return true;
+    }else{
+        return false;
+    }
+}
+
 void Finger::powerUp(){
     scale=2;
     radius=30;

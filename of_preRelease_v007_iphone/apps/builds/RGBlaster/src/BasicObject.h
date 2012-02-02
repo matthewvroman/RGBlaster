@@ -79,6 +79,10 @@ public:
     float r;
     int a;
     
+    float speed;
+    
+    float scale;
+    
     //determines whether or not to run update & draw
     bool enabled;
     

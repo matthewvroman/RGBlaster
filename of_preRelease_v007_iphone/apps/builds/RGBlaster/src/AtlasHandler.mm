@@ -44,6 +44,16 @@ AtlasHandler::AtlasHandler(){
     explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 512, GL_NEAREST);
     sheets.push_back(explosionRenderer);
     
+    coreRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+    coreRenderer->loadTexture("sprites/cores_spriteSheet.png", 512, GL_NEAREST);
+    sheets.push_back(coreRenderer);
+    
+    multicoreShipRenderer = new ofxSpriteSheetRenderer(1,100,0,64);
+    multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
+    sheets.push_back(multicoreShipRenderer);
+    
+    
+    
     ofEnableAlphaBlending();
 
 }
@@ -56,6 +66,8 @@ AtlasHandler::~AtlasHandler(){
     delete greenShipRenderer;
     delete missileRenderer;
     delete explosionRenderer;
+    delete coreRenderer;
+    delete multicoreShipRenderer;
 }
 
 

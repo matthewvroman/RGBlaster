@@ -138,7 +138,6 @@ void Blaster::setSpawner(SpawnManager *_spawner){
 }
 
 void Blaster::switchColor(){
-    cout << "Switch color" << endl;
     updateSpriteSheet();
     finger->setColor(color);
     targetOverlay->changeColor(color);
@@ -192,6 +191,18 @@ void Blaster::update(){
                 }
             }
         }
+         for(short i=0; i<spawner->activeMulticoreShips.size(); i++){
+             for(short j=0; j<spawner->activeMulticoreShips[i]->cores.size(); j++){
+                 if(finger->hitTest(*spawner->activeMulticoreShips[i]->cores[j])){
+                     Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeMulticoreShips[i]->cores[j]);
+                     missiles.push_back(missile);
+                     
+                     sprite->animation = blasterAnimation;
+                     sprite->animation.index = tilesPerRow*int(resolution);
+                 }
+             }
+         }
+        
     }
     
     targetOverlay->update();

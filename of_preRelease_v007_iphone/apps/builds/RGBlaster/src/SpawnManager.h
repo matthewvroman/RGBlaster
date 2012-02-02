@@ -18,6 +18,7 @@
 
 #include "Group.h"
 #import "Ship.h"
+#import "MulticoreShip.h"
 #import "HUD.h"
 #import "SoundManager.h"
 #import "Notifier.h"
@@ -62,6 +63,7 @@ public:
     void notifyGameOver();
     
     vector<Group*>activeGroups;
+    vector<MulticoreShip*>activeMulticoreShips;
     
     void update();
     void draw();

@@ -13,7 +13,7 @@
 #include <iostream>
 #import "Missile.h"
 
-Missile::Missile(int posX, int posY, Color _color, Resolution _res, Ship *_target){
+Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject *_target){
     enabled=true;
     
     color=_color;
@@ -134,7 +134,7 @@ void Missile::draw() {
     ofPopMatrix();
 }
 
-bool Missile::hitTest(Ship &ship){
+bool Missile::hitTest(BasicObject &ship){
     //hit the ship
     if(x < ship.x+ship.width/2 && x > ship.x-ship.width/2 &&
        y < ship.y+ship.height/2 && y > ship.y-ship.height/2

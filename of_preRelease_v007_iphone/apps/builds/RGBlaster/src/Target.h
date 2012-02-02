@@ -17,6 +17,7 @@
 #import "Animations.h"
 
 #import "Ship.h"
+#import "Core.h"
 
 #import "SoundManager.h"
 
@@ -31,9 +32,10 @@ public:
     ofxSpriteSheetRenderer * spriteRenderer;
     basicSprite *sprite;
     
-    vector<Ship*>targets;
+    vector<BasicObject*>targets;
     
-    void addTarget(Ship *ship);
+    void addTarget(BasicObject *ship);
+    //void addTarget(Core *core);
     
     void removeTarget(int);
     void clearTargets();
