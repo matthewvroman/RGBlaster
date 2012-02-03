@@ -54,7 +54,7 @@ SpawnManager::SpawnManager(){
     
     //spawnGroup();
     
-    MulticoreShip *coreShip = new MulticoreShip(150, 150);
+    MulticoreShip *coreShip = new MulticoreShip(150,150,BIT16, 3,3, false);
     activeMulticoreShips.push_back(coreShip);
 }
 

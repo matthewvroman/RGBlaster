@@ -20,18 +20,26 @@ class Core : public BasicObject{
 public:
     
     //constructor
-    Core(float _x, float _y, float _scale, Color _color, Resolution _res):
+    Core(float _x, float _y, float _scale=1.0, Color _color=RED, Resolution _res=BIT8, bool _flashing=false, float _switchSpeed=1.0):
     BasicObject(_x,_y,32,32,"",true){
         setColor(_color);
         setResolution(_res);
-        initCore(_scale);
+        flashing=_flashing;
+        switchSpeed=_switchSpeed;
+        scale=_scale;
+        
+        initCore();
     };
     
     //destructor
     ~Core();
     
 private:
-    void initCore(float _s);
+    void initCore();
+    bool flashing;
+    bool multicolor;
+    
+    float switchSpeed;
     
 };
 

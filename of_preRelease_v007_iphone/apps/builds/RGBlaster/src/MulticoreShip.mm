@@ -25,16 +25,70 @@ void MulticoreShip::initCores(){
     
     speed=2;
     
-    addCore(0, -20);
-    addCore(-45, -10);
-    addCore(45,-10);
+    //we can't have more colors than cores
+    if(numColors>numCores){
+        numColors=numCores;
+    }
+    
+    this->setColor(Color(int(ofRandom(0, 3))));
+    
+    //middle core
+    if(numCores==1 || numCores>2){
+        addCore(0, -16);
+    }
+    
+    if(numCores>=2){
+        //left & right cores
+        addCore(-40, 0);
+        addCore(40,0);
+    }
     
     
 }
                            
 void MulticoreShip::addCore(float _x, float _y){
-    Core *tCore = new Core(x+_x,y+_y,1,RED,BIT8);
+    
+    //make sure the colors added are balanced
+    Color _coreColor;
+    if(numCores>1){
+        switch(numColors){
+            case 1:
+                if(cores.size()==0){
+                     _coreColor=Color(int(ofRandom(0, 3)));
+                }
+                break;
+            //2 colors
+            case 2:
+                if(cores.size()==0){
+                    _coreColor=this->getColor();
+                }else{
+                    _coreColor=this->incrementColor(this->getColor()); //+1
+                }
+                break;
+            case 3:
+                if(cores.size()==0){
+                    _coreColor=this->getColor();
+                }else{
+                    this->setColor(this->incrementColor(this->getColor())); //+1
+                    _coreColor=this->getColor();
+                }
+                break;
+        }
+    }else{
+        _coreColor=Color(int(ofRandom(0, 3)));
+    }
+    
+    Core *tCore = new Core(x+_x,y+_y,1,_coreColor,this->getRes());
     cores.push_back(tCore);
+}
+
+Color MulticoreShip::incrementColor(Color _color){
+    int _colorPos=int(_color);
+    _colorPos++;
+    if(_colorPos>=3){
+        _colorPos=0;
+    }
+    return Color(_colorPos);
 }
 
 //remove a ship from the vector
@@ -65,7 +119,9 @@ void MulticoreShip::removeCore(int _pos){
     //if we're out of cores then create a huge explosion for the ship
     if(cores.size()==0 && !destroyed){
         //spawn explosion
-        Explosion *explosion = new Explosion(this->getPosition().x,this->getPosition().y, this->getColor(), this->getRes(),10);
+        
+        //TODO: GRAY EXPLOSION
+        Explosion *explosion = new Explosion(this->getPosition().x,this->getPosition().y, RED, BIT8,10);
         explosions.push_back(explosion);
         destroyed=true;
     }
@@ -102,8 +158,8 @@ void MulticoreShip::removeExplosion(int _pos){
 void MulticoreShip::update(){
     if(!enabled) return;
     
-    spriteRenderer->clear(); // clear the sheet
-	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
+    //spriteRenderer->clear(); // clear the sheet
+	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
     if(sprite!=NULL && !dead && !destroyed){
         spriteRenderer->addCenteredTile(&sprite->animation,0,0);

@@ -14,9 +14,10 @@ Core::~Core(){
 }
 
 //called from constructor
-void Core::initCore(float _s){
+void Core::initCore(){
     cout << "INIT CORE" << endl;
     spriteRenderer=AtlasHandler::getInstance()->coreRenderer;
     
-    scale=_s;
+    sprite->animation=defaultAnimation;
+    sprite->animation.index = 16*int(this->getRes())+int(this->getColor());
 }

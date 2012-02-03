@@ -152,11 +152,11 @@ ofVec2f BasicObject::getPosition(){
 void BasicObject::update() {
     if(!enabled) return;
     
-    spriteRenderer->clear(); // clear the sheet
-	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
+    //spriteRenderer->clear(); // clear the sheet
+	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
     if(sprite!=NULL && !dead){
-        spriteRenderer->addCenteredTile(&sprite->animation,0,0);
+        spriteRenderer->addCenteredTile(&sprite->animation,x,y);
     }
     
 }
@@ -165,7 +165,7 @@ void BasicObject::draw() {
     if(!enabled) return;
     
     ofPushMatrix();
-    ofTranslate(x,y);
+    //ofTranslate(x,y);
     ofScale(scale, scale);
     spriteRenderer->draw();
     ofPopMatrix();

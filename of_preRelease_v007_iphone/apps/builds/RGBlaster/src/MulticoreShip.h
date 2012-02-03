@@ -23,8 +23,14 @@ class MulticoreShip : public BasicObject{
 public:
     
     //constructor
-    MulticoreShip(float _x, float _y):
+    MulticoreShip(float _x, float _y, Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false):
     BasicObject(_x,_y,64,64,"",true){
+        
+        this->setResolution(_res);
+        numColors=_numColors;
+        numCores=_numCores;
+        flashingColors=_flashingColors;
+        
         initCores();
     };
     
@@ -40,6 +46,8 @@ public:
     void update();
     void draw();
     
+    Color incrementColor(Color _color);
+    
     void move(float _x, float _y);
     
     void addCore(float _x, float _y);
@@ -48,6 +56,10 @@ private:
     void initCores();
     
     bool destroyed;
+    bool flashingColors;
+    
+    int numCores;
+    int numColors;
     
     Core *core1;
     Core *core2;
