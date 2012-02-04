@@ -10,7 +10,7 @@
 #include "Core.h"
 
 Core::~Core(){
-    
+    spriteRenderer=NULL;
 }
 
 //called from constructor
@@ -19,5 +19,10 @@ void Core::initCore(){
     spriteRenderer=AtlasHandler::getInstance()->coreRenderer;
     
     sprite->animation=defaultAnimation;
-    sprite->animation.index = 16*int(this->getRes())+int(this->getColor());
+    sprite->animation.index = 16*int(resolution)+int(color);
+}
+
+void Core::setColor(Color _color){
+    color=_color;
+    sprite->animation.index = 16*int(resolution)+int(color);
 }

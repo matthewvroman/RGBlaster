@@ -41,6 +41,9 @@ public:
     int maxShipSpeed;
     int maxMultiplier;
     int maxMovementLevel;
+    int coresPerShip;
+    int colorsPerMulticoreShip;
+    bool coresShouldFlash;
     
     int numWaves;
     
@@ -72,7 +75,11 @@ public:
     void removeMulticoreShip(int _pos);
     
     void removeAllGroups();
+    void removeAllMulticoreShips();
     
+    void spawnEnemy();
+    
+    void spawnMulticoreShip();
     void spawnGroup();
     
     void increaseDifficulty();
@@ -97,6 +104,8 @@ private:
     bool enabled;
     
     int colorStreak;
+    
+    float chanceToSpawnMulticore;
     
     string powerUpName;
     int powerUp;

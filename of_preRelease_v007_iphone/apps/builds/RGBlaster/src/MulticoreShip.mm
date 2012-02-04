@@ -160,6 +160,17 @@ void MulticoreShip::update(){
     
     //spriteRenderer->clear(); // clear the sheet
 	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
+    if(flashingColors){
+        timeCounter++;
+    
+        if(timeCounter>=switchSpeed){
+            timeCounter=0;
+            for(short i=0; i<cores.size(); i++){
+                cores[i]->setColor(this->incrementColor(cores[i]->getColor()));
+            }
+        }
+    }
+
     
     if(sprite!=NULL && !dead && !destroyed){
         spriteRenderer->addCenteredTile(&sprite->animation,0,0);

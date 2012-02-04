@@ -41,6 +41,10 @@ SpawnManager::SpawnManager(){
     maxShipSpeed=5;
     maxMultiplier=1;
     colorStreak=0;
+    chanceToSpawnMulticore=0.0;
+    coresPerShip=1;
+    colorsPerMulticoreShip=1;
+    coresShouldFlash=false;
     
     
     powerUpName = "";
@@ -53,9 +57,9 @@ SpawnManager::SpawnManager(){
     powerUpTimer=powerUpEndTime=0;
     
     //spawnGroup();
-    
-    MulticoreShip *coreShip = new MulticoreShip(150,150,BIT16, 3,3, false);
-    activeMulticoreShips.push_back(coreShip);
+    //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
+    MulticoreShip *shipTest = new MulticoreShip(150, 150, BIT8,3,3,true,1);
+    activeMulticoreShips.push_back(shipTest);
 }
 
 SpawnManager* SpawnManager::getInstance(){
@@ -199,13 +203,14 @@ void SpawnManager::notifyGameOver(){
     gameOver=true;
     hud->setHighScore(hud->getScore());
     removeAllGroups();
+    removeAllMulticoreShips();
 }
 
 void SpawnManager::update(){
     if(!gameOver){
         if(currentFrame>=spawnInterval){
             //spawn group
-            spawnGroup();
+            spawnEnemy();
         
             //reset frame counter
             currentFrame=0;
@@ -231,8 +236,8 @@ void SpawnManager::update(){
         short j=0;
         while(j<activeMulticoreShips.size()){
             activeMulticoreShips[j]->update();
-            if(activeMulticoreShips[i]!=nil && activeMulticoreShips[i]->dead)
-                removeMulticoreShip(i);
+            if(activeMulticoreShips[j]!=nil && activeMulticoreShips[j]->dead)
+                removeMulticoreShip(j);
             j++;
         }
         
@@ -258,11 +263,13 @@ void SpawnManager::update(){
     }
 }
 
-void SpawnManager::spawnGroup(){
-
-    Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)));
-    
-    activeGroups.push_back(group);
+void SpawnManager::spawnEnemy(){
+    float _randNum = ofRandom(1);
+    if(_randNum<chanceToSpawnMulticore){
+        spawnMulticoreShip();
+    }else{
+        spawnGroup();
+    }
     
     //increase difficulty every 5 waves
     numWaves++;
@@ -273,6 +280,18 @@ void SpawnManager::spawnGroup(){
     }
     
     applyPowerUp();
+}
+
+void SpawnManager::spawnMulticoreShip(){
+    MulticoreShip *coreShip = new MulticoreShip(ofRandom(600)+100,0,resolution, coresPerShip,colorsPerMulticoreShip, coresShouldFlash);
+    activeMulticoreShips.push_back(coreShip);
+}
+
+void SpawnManager::spawnGroup(){
+
+    Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)));
+    
+    activeGroups.push_back(group);
 
 }
 
@@ -327,6 +346,13 @@ void SpawnManager::removeAllGroups(){
     }
 }
 
+void SpawnManager::removeAllMulticoreShips(){
+    while(activeMulticoreShips.size()>0){
+        delete activeMulticoreShips[activeMulticoreShips.size()-1];
+        activeMulticoreShips.pop_back();
+    }
+}
+
 
 void SpawnManager::increaseDifficulty(){
     difficulty++;
@@ -344,6 +370,9 @@ void SpawnManager::increaseDifficulty(){
             maxShips=6;
             maxMultiplier=1;
             maxMovementLevel=2;
+            chanceToSpawnMulticore=0.7;
+            coresPerShip=3;
+            colorsPerMulticoreShip=3;
             break;
         case 3:
             maxColor=3;

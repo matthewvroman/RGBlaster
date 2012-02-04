@@ -86,9 +86,11 @@ public:
     //determines whether or not to run update & draw
     bool enabled;
     
-private:
+protected:
     Resolution resolution;
     Color color;
+    
+private:
     float deg2rad(float _deg);
 
 

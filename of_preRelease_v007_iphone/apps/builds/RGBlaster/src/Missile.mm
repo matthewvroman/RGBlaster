@@ -91,9 +91,9 @@ void Missile::update() {
     if(relativePos.x<speed && relativePos.x >-speed){
         direction.x=0;
     }else if(relativePos.x>speed){
-        direction.x=speed/2;
+        direction.x=speed/1.75;
     }else{
-        direction.x=-speed/2;
+        direction.x=-speed/1.75;
     }
     if(relativePos.y<speed && relativePos.y>-speed){
         direction.y=0;
