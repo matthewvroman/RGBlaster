@@ -40,10 +40,10 @@ public:
     ofxSpriteSheetRenderer * spriteRenderer;
     
     //movement methods
-    void move(int _x, int _y);
-    void circleMove(float _parentX, float _parentY, int _speed, int _radius);
-    void expandMove(float _parentX, float _parentY, int _speed, int _radius);
-    void zigZagMove(float _parentX, float _parentY, int _speed, int _radius);
+    void move(float _x, float _y);
+    void circleMove(float _parentX, float _parentY, float _speed, int _radius);
+    void expandMove(float _parentX, float _parentY, float _speed, int _radius);
+    void zigZagMove(float _parentX, float _parentY, float _speed, int _radius);
     
     bool derez();
     bool targeted;

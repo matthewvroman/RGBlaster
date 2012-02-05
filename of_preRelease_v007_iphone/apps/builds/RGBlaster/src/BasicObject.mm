@@ -89,13 +89,13 @@ void BasicObject::setSpriteTexture(string spriteTexture, int spriteSheetSize, in
     spriteRenderer->loadTexture(spriteTexture, spriteSheetSize, GL_NEAREST);
 }
 
-void BasicObject::move(int _x, int _y){
+void BasicObject::move(float _x, float _y){
     x+=_x;
     y+=_y;
 }
 
 //move object in a circlular pattern
-void BasicObject::circleMove(float _parentX, float _parentY, int _speed, int _radius){
+void BasicObject::circleMove(float _parentX, float _parentY, float _speed, int _radius){
     float radian = deg2rad(a);
     x =_parentX + _radius * cos(radian);
     y =_parentY + _radius * sin(radian);
@@ -105,7 +105,7 @@ void BasicObject::circleMove(float _parentX, float _parentY, int _speed, int _ra
 }
 
 //move object in-and-out from a centralized point
-void BasicObject::expandMove(float _parentX, float _parentY, int _speed, int _radius){
+void BasicObject::expandMove(float _parentX, float _parentY, float _speed, int _radius){
     float radian = deg2rad(a);
     x =_parentX + _radius * cos(radian);
     y =_parentY + _radius * sin(radian);
@@ -113,7 +113,7 @@ void BasicObject::expandMove(float _parentX, float _parentY, int _speed, int _ra
 }
 
 //zig-zag back and forth while moving downwards
-void BasicObject::zigZagMove(float _parentX, float _parentY, int _speed, int _radius){
+void BasicObject::zigZagMove(float _parentX, float _parentY, float _speed, int _radius){
     float radian = deg2rad(_radius);
     x =_parentX + _radius * cos(radian);
     y =_parentY + _radius * cos(radian)-a;

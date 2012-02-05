@@ -44,6 +44,7 @@ public:
     int coresPerShip;
     int colorsPerMulticoreShip;
     bool coresShouldFlash;
+    float coreFlashSpeed;
     
     int numWaves;
     

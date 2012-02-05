@@ -23,7 +23,7 @@ class MulticoreShip : public BasicObject{
 public:
     
     //constructor
-    MulticoreShip(float _x, float _y, Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0):
+    MulticoreShip(float _x, float _y, float _speed=2.0, Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0):
     BasicObject(_x,_y,64,64,"",true){
         
         this->setResolution(_res);
@@ -32,6 +32,7 @@ public:
         flashingColors=_flashingColors;
         switchSpeed=_switchTime*60;
         timeCounter=0;
+        speed=_speed;
         
         initCores();
     };

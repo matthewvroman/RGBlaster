@@ -79,6 +79,10 @@ void HUD::draw(){
     ofPushMatrix();
     
     //TOP HUD
+    //ofFill();
+    //ofSetColor(0,0,0,255);
+    //ofRect(0, 0, 768, 65);
+    
     //r
     ofSetColor(255,0,0);
     blockFont.drawString("SCORE", 15, 30);

@@ -32,19 +32,20 @@ SpawnManager::SpawnManager(){
     difficulty=1;
     
     numWaves=0;
-    nextDifficultyIncrease=4;
+    nextDifficultyIncrease=3;
     
     maxMovementLevel=0;
     maxResolution=0;
     maxColor=0;
     maxShips=5;
-    maxShipSpeed=5;
+    maxShipSpeed=1.5;
     maxMultiplier=1;
     colorStreak=0;
     chanceToSpawnMulticore=0.0;
     coresPerShip=1;
     colorsPerMulticoreShip=1;
     coresShouldFlash=false;
+    coreFlashSpeed=2;
     
     
     powerUpName = "";
@@ -58,7 +59,7 @@ SpawnManager::SpawnManager(){
     
     //spawnGroup();
     //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
-    MulticoreShip *shipTest = new MulticoreShip(150, 150, BIT8,3,3,true,1);
+    MulticoreShip *shipTest = new MulticoreShip(150, 150, maxShipSpeed, BIT8,3,1,false,1);
     activeMulticoreShips.push_back(shipTest);
 }
 
@@ -94,7 +95,7 @@ void SpawnManager::setNotifier(Notifier *_notifier){
 void SpawnManager::notifyShipDestroyed(){
     if(hud!=nil){
         hud->incrementScore(5*maxMultiplier*(resolution+1));
-        hud->increaseHealth(1);
+        hud->increaseHealth(10);
         SoundManager::getInstance()->missileSuccess.play();
         incrementColorStreak(1);
     }
@@ -283,13 +284,13 @@ void SpawnManager::spawnEnemy(){
 }
 
 void SpawnManager::spawnMulticoreShip(){
-    MulticoreShip *coreShip = new MulticoreShip(ofRandom(600)+100,0,resolution, coresPerShip,colorsPerMulticoreShip, coresShouldFlash);
+    MulticoreShip *coreShip = new MulticoreShip(ofRandom(600)+100,0,maxShipSpeed-1,resolution, coresPerShip,colorsPerMulticoreShip, coresShouldFlash);
     activeMulticoreShips.push_back(coreShip);
 }
 
 void SpawnManager::spawnGroup(){
 
-    Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)));
+    Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)),maxShipSpeed);
     
     activeGroups.push_back(group);
 
@@ -360,6 +361,72 @@ void SpawnManager::increaseDifficulty(){
     switch(difficulty){
         case 1:
             maxColor=1;
+            maxMovementLevel=0;
+            maxShipSpeed=1.5;
+            maxShips=5;
+            break;
+        case 2:
+            maxMovementLevel=1;
+        case 3:
+            maxColor=2;
+            break;
+        case 4:
+            maxMovementLevel=2;
+            break;
+        case 5:
+            maxColor=3;
+            break;
+        case 6:
+            maxShipSpeed=2;
+            maxShips=7;
+            break;
+        case 7:
+            chanceToSpawnMulticore=0.2;
+            coresPerShip=2;
+            colorsPerMulticoreShip=1;
+            break;
+        case 8:
+            coresPerShip=2;
+            colorsPerMulticoreShip=2;
+            break;
+        case 9:
+            coresShouldFlash=YES;
+            break;
+        case 10:
+            coresPerShip=3;
+            coresShouldFlash=NO;
+            chanceToSpawnMulticore=0.25;
+            break;
+        case 11:
+            maxShips=9;
+            colorsPerMulticoreShip=3;
+            break;
+        case 12:
+            coresShouldFlash=YES;
+            break;
+        case 13:
+            maxShipSpeed=2.25;
+            break;
+        case 14:
+            coreFlashSpeed=1.85;
+            chanceToSpawnMulticore=0.3;
+            break;
+        default:
+            if(coreFlashSpeed>=0.25){
+                coreFlashSpeed-=0.05;
+            }
+            if(maxShipSpeed<4.5){
+                maxShipSpeed+=0.05;
+            }
+            if(chanceToSpawnMulticore<0.5){
+                chanceToSpawnMulticore+=0.05;
+            }
+            break;
+            
+            
+            /*
+        case 1:
+            maxColor=1;
             maxShips=5;
             maxMultiplier=1;
             maxMovementLevel=0;
@@ -370,9 +437,6 @@ void SpawnManager::increaseDifficulty(){
             maxShips=6;
             maxMultiplier=1;
             maxMovementLevel=2;
-            chanceToSpawnMulticore=0.7;
-            coresPerShip=3;
-            colorsPerMulticoreShip=3;
             break;
         case 3:
             maxColor=3;
@@ -409,6 +473,7 @@ void SpawnManager::increaseDifficulty(){
             maxShips=14;
             maxMultiplier=4;
             break;
+             */
     }
 }
 

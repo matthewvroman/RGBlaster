@@ -15,19 +15,23 @@
 #include <iostream>
 #include "ScreenManager.h"
 
-ScreenManager::ScreenManager(){
+
+ScreenManager::ScreenManager(){	
+    
     // Initialize screen manager
     currentScreen = 0;
     switchScreens(currentScreen);
     
     mainBackground.loadImage("sprites/background-low.png");
+    
 }
 
 ScreenManager::~ScreenManager(){
-    cout << "deleting screen manager" << endl;
+    cout << "removing screen manager" << endl;
 }
 
 void ScreenManager::update(){
+    
     // Determines if a switch screen is needed
     switch (currentScreen) {
         case 0: // MENU
@@ -57,6 +61,7 @@ void ScreenManager::update(){
 
 //--------------------------------------------------------------
 void ScreenManager::draw(){
+    
     ofSetColor( 255, 255, 255 );
     
     // Determine which screen object to draw

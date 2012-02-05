@@ -21,11 +21,10 @@
 #import "AboutScreen.h"
 #import "SoundManager.h"
 
-class ScreenManager{
+class ScreenManager : public ofxiPhoneApp {
 public:
     ScreenManager();
     ~ScreenManager();
-    
     int currentScreen;
     
     GameScreen *gameScreen;
@@ -41,7 +40,6 @@ public:
     void draw();
     
 private:
-    
     
 };
 

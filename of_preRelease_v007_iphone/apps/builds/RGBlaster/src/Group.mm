@@ -30,7 +30,7 @@ Group::Group(){
 }
 
 //Group spawned from SpawnManager with arguments based on difficulty
-Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movement){
+Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movement, float _speed){
     enabled=true;
     
     dead=false;
@@ -41,7 +41,7 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     
     x=ofRandom(600)+100;
     
-    speed=privSpeed=2;
+    speed=privSpeed=_speed;
     
     numShips=_numShips;
     
@@ -172,7 +172,7 @@ void Group::move(float _x, float _y){
 }
 
 //move the group in a circular motion
-void Group::circleMove(int _speed,int _radius){
+void Group::circleMove(float _speed,int _radius){
     //start unexpanded
     if(r<_radius){
         r+=_speed;
@@ -188,7 +188,7 @@ void Group::circleMove(int _speed,int _radius){
 }
 
 //move the group in and out from a central point
-void Group::expandMove(int _speed,int _maxRadius){
+void Group::expandMove(float _speed,int _maxRadius){
     
     if(expanding){
         r+=_speed;
@@ -211,7 +211,7 @@ void Group::expandMove(int _speed,int _maxRadius){
 }
 
 //move the group in and out from a central point while rotating around that center
-void Group::expandCircleMove(int _speed, int _maxRadius){
+void Group::expandCircleMove(float _speed, int _maxRadius){
     if(expanding){
         r+=_speed;
         if(r>=_maxRadius)
@@ -233,7 +233,7 @@ void Group::expandCircleMove(int _speed, int _maxRadius){
 }
 
 //move the group in a zig zag pattern
-void Group::zigZagMove(int _speed, int _maxRadius){
+void Group::zigZagMove(float _speed, int _maxRadius){
     if(expanding){
         r+=_speed;
         if(r>=_maxRadius)
@@ -255,7 +255,7 @@ void Group::zigZagMove(int _speed, int _maxRadius){
     y+=_speed;
 }
 
-void Group::lineMove(int _speed, int _spacing){
+void Group::lineMove(float _speed, int _spacing){
     
     int _spacer=_spacing;
     

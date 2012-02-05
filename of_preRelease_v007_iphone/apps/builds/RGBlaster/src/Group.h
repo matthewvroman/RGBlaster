@@ -28,7 +28,7 @@ class Group{
 public:
     //constructors
     Group();
-    Group(int _numShips, Color _color, Resolution _res, MovementType _movement);
+    Group(int _numShips, Color _color, Resolution _res, MovementType _movement, float _speed=2);
     
     //destructor
     ~Group();
@@ -36,11 +36,11 @@ public:
     //movement methods
     void updatePos(float _x, float _y);
     void move(float _x, float _y);
-    void lineMove(int _speed, int _spacing);
-    void circleMove(int _speed, int _radius);
-    void expandMove(int _speed, int _maxRadius);
-    void expandCircleMove(int _speed, int _maxRadius);
-    void zigZagMove(int _speed, int _maxRadius);
+    void lineMove(float _speed, int _spacing);
+    void circleMove(float _speed, int _radius);
+    void expandMove(float _speed, int _maxRadius);
+    void expandCircleMove(float _speed, int _maxRadius);
+    void zigZagMove(float _speed, int _maxRadius);
     
     void distributeAngles();
     
