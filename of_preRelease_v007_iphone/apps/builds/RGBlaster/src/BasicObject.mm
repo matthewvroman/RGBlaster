@@ -32,6 +32,7 @@ BasicObject::BasicObject(){
     scale=1;
     
     dead=false;
+    saturation=255;
 
 }
 
@@ -66,6 +67,8 @@ BasicObject::BasicObject(float _x, float _y, int _width, int _height,string _spr
     dead=false;
     
     type = SHIP;
+    
+    saturation=255;
 }
 
 //destructor
@@ -156,7 +159,7 @@ void BasicObject::update() {
 	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
     if(sprite!=NULL && !dead){
-        spriteRenderer->addCenteredTile(&sprite->animation,x,y);
+                spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, scale, 0, saturation,saturation,saturation,255); 
     }
     
 }
@@ -164,11 +167,7 @@ void BasicObject::update() {
 void BasicObject::draw() {
     if(!enabled) return;
     
-    ofPushMatrix();
-    //ofTranslate(x,y);
-    ofScale(scale, scale);
     spriteRenderer->draw();
-    ofPopMatrix();
 }
 
 float BasicObject::deg2rad(float _deg){

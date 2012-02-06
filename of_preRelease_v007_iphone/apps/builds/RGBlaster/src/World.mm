@@ -140,12 +140,18 @@ void World::drawBackground(){
             background8.draw(0,0);
             break;
     }
+
 }
 
 
 void World::draw(){
     if(!enabled) return;
     drawBackground();
+    /*
+    ofFill();
+    ofSetColor(225, 225, 225);
+    ofRect(0, 0, 768, 1024);
+     */
     notifier->draw();
     spawner->draw();
     blaster->draw();

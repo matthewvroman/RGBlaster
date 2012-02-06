@@ -231,7 +231,8 @@ void Blaster::update(){
     colorWheelRenderer->clear();
     colorWheelRenderer->update(ofGetElapsedTimeMillis());
     if(colorWheelSprite!=NULL && !dead){
-        colorWheelRenderer->addCenteredTile(&colorWheelSprite->animation, 0, 0);
+        //colorWheelRenderer->addCenteredTile(&colorWheelSprite->animation, 0, 0);
+        colorWheelRenderer->addCenterRotatedTile(&colorWheelSprite->animation,0,0, -1, 1, F_NONE, 1.0, 0, saturation,saturation,saturation,255); 
     }
 
     

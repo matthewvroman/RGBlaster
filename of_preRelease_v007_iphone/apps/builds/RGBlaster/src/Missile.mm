@@ -111,7 +111,7 @@ void Missile::update() {
         if(r<0){
             r=360+r;
         }
-        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, 255, 255, 255,255); 
+        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, saturation,saturation,saturation,255); 
     }
     
     //check if we hit the target

@@ -173,7 +173,8 @@ void MulticoreShip::update(){
 
     
     if(sprite!=NULL && !dead && !destroyed){
-        spriteRenderer->addCenteredTile(&sprite->animation,0,0);
+        //spriteRenderer->addCenteredTile(&sprite->animation,0,0);
+        spriteRenderer->addCenteredTile(&sprite->animation, x,y,-1,F_NONE,scale);
     }
     
     short i=0;
@@ -223,11 +224,7 @@ void MulticoreShip::draw(){
     if(!enabled) return;
     
     if(!destroyed){
-        ofPushMatrix();
-        ofTranslate(x,y);
-        ofScale(scale, scale);
         spriteRenderer->draw();
-        ofPopMatrix();
     }
     
     short i=0;

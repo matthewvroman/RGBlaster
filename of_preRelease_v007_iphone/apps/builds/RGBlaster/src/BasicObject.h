@@ -78,6 +78,7 @@ public:
     float y;
     float r;
     int a;
+    int saturation;
     
     float speed;
     

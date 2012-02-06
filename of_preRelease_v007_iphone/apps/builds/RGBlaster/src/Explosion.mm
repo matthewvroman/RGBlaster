@@ -54,7 +54,7 @@ void Explosion::update(){
     if(!enabled) return;
     if(sprite!=NULL && !dead){
         //positioning is handled in the draw func
-        spriteRenderer->addCenteredTile(&sprite->animation, 0,0);
+        spriteRenderer->addCenteredTile(&sprite->animation, x,y,-1,F_NONE,scale,saturation,saturation,saturation,255);
     }
     
     move(0, -speed);
@@ -71,9 +71,5 @@ void Explosion::update(){
 void Explosion::draw(){
     if(!enabled) return;
     
-    ofPushMatrix();
-    ofTranslate(x, y);
-    ofScale(scale,scale);
     spriteRenderer->draw();
-    ofPopMatrix();
 }
