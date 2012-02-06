@@ -88,3 +88,16 @@ static animation_t blasterAnimation = {
     -1,
     1
 };
+
+static animation_t multicoreShipAnimation = {
+    0,
+    0,
+    6,
+    1,
+    1,
+    150,
+    0,
+    -1,
+    -1,
+    1
+};

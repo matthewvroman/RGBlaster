@@ -72,13 +72,6 @@ bool Missile::derez(){
 void Missile::update() {
     if(!enabled) return;
     
-    if(sprite!=NULL && !dead){
-        //position is handled in the draw func by ofTranslate
-        spriteRenderer->addCenteredTile(
-                                        &sprite->animation,0,0
-                                        );
-    }
-    
     //Get the targets position and adjust path accordingly
     if(target->dead!=true){
         relativePos = target->getPosition()-this->getPosition();
@@ -114,6 +107,13 @@ void Missile::update() {
     }
     r=-asin(_percent) *180/3.141592;
     
+    if(sprite!=NULL && !dead){
+        if(r<0){
+            r=360+r;
+        }
+        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, 255, 255, 255,255); 
+    }
+    
     //check if we hit the target
     hitTest(*target);
     
@@ -127,11 +127,11 @@ void Missile::update() {
 void Missile::draw() {
     if(!enabled) return;
     
-    ofPushMatrix();
-    ofTranslate(x,y);
-    ofRotateZ(r);
+    //ofPushMatrix();
+    //ofTranslate(x,y);
+    //ofRotateZ(r);
     spriteRenderer->draw();
-    ofPopMatrix();
+    //ofPopMatrix();
 }
 
 bool Missile::hitTest(BasicObject &ship){

@@ -33,7 +33,6 @@ public:
         switchSpeed=_switchTime*60;
         timeCounter=0;
         speed=_speed;
-        
         initCores();
     };
     

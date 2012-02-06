@@ -23,20 +23,7 @@ World::World(){
     notifier = new Notifier();
     
     spawner = SpawnManager::getInstance();
-    spawner->gameOver = false;
-    spawner->resolution=Resolution(0);
-    spawner->currentFrame=0;
-    spawner->spawnInterval=260; //in frames //game runs at 60fps
-    spawner->spawnDecrementer=5;
-    spawner->difficulty=1;
-    spawner->numWaves=0;
-    spawner->nextDifficultyIncrease=4;
-    spawner->maxMovementLevel=0;
-    spawner->maxResolution=0;
-    spawner->maxColor=0;
-    spawner->maxShips=5;
-    spawner->maxShipSpeed=5;
-    spawner->maxMultiplier=1;
+    spawner->setInitialValues();
     spawner->setNotifier(notifier);
     
     spawnBlaster();

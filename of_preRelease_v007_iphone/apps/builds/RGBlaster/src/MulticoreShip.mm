@@ -23,8 +23,6 @@ void MulticoreShip::initCores(){
     
     scale=2.5;
     
-    speed=2;
-    
     //we can't have more colors than cores
     if(numColors>numCores){
         numColors=numCores;
@@ -34,14 +32,16 @@ void MulticoreShip::initCores(){
     
     //middle core
     if(numCores==1 || numCores>2){
-        addCore(0, -16);
+        addCore(0, -25);
     }
     
     if(numCores>=2){
         //left & right cores
-        addCore(-40, 0);
-        addCore(40,0);
+        addCore(-35, -10);
+        addCore(35,-10);
     }
+    
+    sprite->animation = multicoreShipAnimation;
     
     
 }

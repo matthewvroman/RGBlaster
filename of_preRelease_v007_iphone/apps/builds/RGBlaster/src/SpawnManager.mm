@@ -17,13 +17,24 @@ SpawnManager::SpawnManager(){
 
     enabled=true;
     
-    resolution=Resolution(0);
-    
     hud=nil;
     notifier=nil;
     finger=nil;
     
+    setInitialValues();
+    
+
+    //spawnGroup();
+    //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
+    MulticoreShip *shipTest = new MulticoreShip(150, 150, 0.5, BIT16,3,1,false,1);
+    activeMulticoreShips.push_back(shipTest);
+}
+
+void SpawnManager::setInitialValues(){
+    
     gameOver=false;
+    
+    resolution=Resolution(0);
     
     currentFrame=0;
     spawnInterval=260; //in frames //game runs at 60fps
@@ -47,7 +58,6 @@ SpawnManager::SpawnManager(){
     coresShouldFlash=false;
     coreFlashSpeed=2;
     
-    
     powerUpName = "";
     
     powerUp=-1;
@@ -56,11 +66,6 @@ SpawnManager::SpawnManager(){
     powerUpLength=10;
     
     powerUpTimer=powerUpEndTime=0;
-    
-    //spawnGroup();
-    //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
-    MulticoreShip *shipTest = new MulticoreShip(150, 150, maxShipSpeed, BIT8,3,1,false,1);
-    activeMulticoreShips.push_back(shipTest);
 }
 
 SpawnManager* SpawnManager::getInstance(){
@@ -95,7 +100,7 @@ void SpawnManager::setNotifier(Notifier *_notifier){
 void SpawnManager::notifyShipDestroyed(){
     if(hud!=nil){
         hud->incrementScore(5*maxMultiplier*(resolution+1));
-        hud->increaseHealth(10);
+        hud->increaseHealth(1);
         SoundManager::getInstance()->missileSuccess.play();
         incrementColorStreak(1);
     }
@@ -290,6 +295,7 @@ void SpawnManager::spawnMulticoreShip(){
 
 void SpawnManager::spawnGroup(){
 
+    cout << "Group: " << maxShipSpeed << endl;
     Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)),maxShipSpeed);
     
     activeGroups.push_back(group);
@@ -357,7 +363,7 @@ void SpawnManager::removeAllMulticoreShips(){
 
 void SpawnManager::increaseDifficulty(){
     difficulty++;
-    
+    cout << "NEW DIFFICULTY: " << difficulty << endl;
     switch(difficulty){
         case 1:
             maxColor=1;
@@ -367,6 +373,7 @@ void SpawnManager::increaseDifficulty(){
             break;
         case 2:
             maxMovementLevel=1;
+            break;
         case 3:
             maxColor=2;
             break;
@@ -423,57 +430,6 @@ void SpawnManager::increaseDifficulty(){
             }
             break;
             
-            
-            /*
-        case 1:
-            maxColor=1;
-            maxShips=5;
-            maxMultiplier=1;
-            maxMovementLevel=0;
-            break;
-        case 2:
-            maxResolution=1;
-            maxColor=2;
-            maxShips=6;
-            maxMultiplier=1;
-            maxMovementLevel=2;
-            break;
-        case 3:
-            maxColor=3;
-            maxShips=7;
-            maxMultiplier=2;
-            maxMovementLevel=2;
-            break;
-        case 4:
-            maxColor=3;
-            maxShips=8;
-            maxMultiplier=2;
-            break;
-        case 5:
-            maxResolution=3;
-            maxShips=9;
-            maxMultiplier=3;
-            break;
-        case 6:
-            maxShips=10;
-            maxMultiplier=2;
-        case 7:
-            maxShips=10;
-        case 8:
-            maxShips=10;
-        case 9:
-            maxShips=12;
-            maxMultiplier=3;
-        case 10:
-            maxShips=12;
-        default:
-            maxMovementLevel=2;
-            maxColor=3;
-            maxResolution=3;
-            maxShips=14;
-            maxMultiplier=4;
-            break;
-             */
     }
 }
 

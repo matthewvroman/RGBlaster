@@ -64,7 +64,7 @@ public:
     float a;
     float r; //radius
     
-    int speed;
+    float speed;
     
     //used for better collision detection
     float width;
@@ -92,7 +92,7 @@ private:
     bool enabled;
     ofxSpriteSheetRenderer *renderer;
     
-    int privSpeed;
+    float privSpeed;
 
 };
 

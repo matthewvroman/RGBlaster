@@ -38,7 +38,7 @@ public:
     int maxColor;
     int maxResolution;
     int maxShips;
-    int maxShipSpeed;
+    float maxShipSpeed;
     int maxMultiplier;
     int maxMovementLevel;
     int coresPerShip;
@@ -57,6 +57,8 @@ public:
     void setHUD(HUD *_hud);
     
     void setFinger(Finger *_finger);
+    
+    void setInitialValues();
     
     //Missile.mm needs to find us
     static SpawnManager* getInstance();
