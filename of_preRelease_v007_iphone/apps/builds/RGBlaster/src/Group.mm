@@ -361,7 +361,7 @@ void Group::update(){
         }
         //check pos
         if(objects[i]->getPosition().y>995){
-            SpawnManager::getInstance()->notifyShipCrashed(5);
+            SpawnManager::getInstance()->notifyShipCrashed(10);
             objects[i]->dead=true;
             objects[i]->enabled=false;
         }

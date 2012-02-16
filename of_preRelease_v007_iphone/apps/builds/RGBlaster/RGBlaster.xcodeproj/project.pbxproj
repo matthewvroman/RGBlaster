@@ -82,6 +82,7 @@
 		ACD769C5145B67E4006A369B /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACD769C4145B67E3006A369B /* Group.mm */; };
 		ACDB7D2B1473518F00F732A5 /* SoundManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACDB7D2A1473518F00F732A5 /* SoundManager.mm */; };
 		ACDB7D2F1473544300F732A5 /* target_sfx.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB7D2D1473544300F732A5 /* target_sfx.caf */; };
+		ACE1E87714E0B32F00B61183 /* smoke_trail_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE1E87614E0B32F00B61183 /* smoke_trail_spriteSheet.png */; };
 		ACEDC634146C5EDE009CDD3C /* SpawnManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACEDC633146C5EDE009CDD3C /* SpawnManager.mm */; };
 		ACEDC637146CAF55009CDD3C /* Blaster.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACEDC635146CAF55009CDD3C /* Blaster.mm */; };
 		BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD10F2B2A9500518274 /* OpenGLES.framework */; };
@@ -222,6 +223,7 @@
 		ACDB7D281473517800F732A5 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		ACDB7D2A1473518F00F732A5 /* SoundManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundManager.mm; sourceTree = "<group>"; };
 		ACDB7D2D1473544300F732A5 /* target_sfx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = target_sfx.caf; path = sound/target_sfx.caf; sourceTree = "<group>"; };
+		ACE1E87614E0B32F00B61183 /* smoke_trail_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke_trail_spriteSheet.png; path = sprites/smoke_trail_spriteSheet.png; sourceTree = "<group>"; };
 		ACEDC632146C5ED0009CDD3C /* SpawnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnManager.h; sourceTree = "<group>"; };
 		ACEDC633146C5EDE009CDD3C /* SpawnManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpawnManager.mm; sourceTree = "<group>"; };
 		ACEDC635146CAF55009CDD3C /* Blaster.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Blaster.mm; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		AC9529501453C36A001AB0BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ACE1E87614E0B32F00B61183 /* smoke_trail_spriteSheet.png */,
 				ACC67B6114DA587E00BDAB88 /* multicore_ship_sprite.png */,
 				ACC67B5C14DA55D800BDAB88 /* cores_spriteSheet.png */,
 				ACC67B5114D7728A00BDAB88 /* colorWheel_sprite.png */,
@@ -672,6 +675,7 @@
 				ACC67B5414D7CD2900BDAB88 /* cannon-shot.wav in Resources */,
 				ACC67B5D14DA55D900BDAB88 /* cores_spriteSheet.png in Resources */,
 				ACC67B6214DA587F00BDAB88 /* multicore_ship_sprite.png in Resources */,
+				ACE1E87714E0B32F00B61183 /* smoke_trail_spriteSheet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,8 +750,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
@@ -760,7 +764,8 @@
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "2262781D-BBBE-4185-B946-3599AE47208F";
+				PROVISIONING_PROFILE = "C298584A-E600-40F1-8402-3538F38710D0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C298584A-E600-40F1-8402-3538F38710D0";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -768,8 +773,8 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -781,8 +786,8 @@
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "2262781D-BBBE-4185-B946-3599AE47208F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2262781D-BBBE-4185-B946-3599AE47208F";
+				PROVISIONING_PROFILE = "C298584A-E600-40F1-8402-3538F38710D0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C298584A-E600-40F1-8402-3538F38710D0";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -793,7 +798,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -809,7 +814,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "2262781D-BBBE-4185-B946-3599AE47208F";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";
@@ -822,7 +827,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -836,7 +841,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "2262781D-BBBE-4185-B946-3599AE47208F";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";

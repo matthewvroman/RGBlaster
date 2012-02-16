@@ -46,6 +46,7 @@ public:
     basicSprite *sprite;
     
     ofxSpriteSheetRenderer *spriteRenderer;
+    ofxSpriteSheetRenderer *smokeRenderer;
     
     ofVec2f relativePos;
     
@@ -63,7 +64,12 @@ public:
     
 private:
     bool enabled;
-    PixelTexture texture;
+    
+    basicSprite *smokeSprite;
+    
+    float smokeTrailRotation;
+    
+    float generateRotation(float _x, float _y);
 };
 
 

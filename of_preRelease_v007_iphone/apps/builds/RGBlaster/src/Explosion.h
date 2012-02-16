@@ -26,7 +26,7 @@
 class Explosion : public BasicObject{
 public:
     //constructor
-    Explosion(int posX, int posY, Color _color, Resolution _res, float _scale=3);
+    Explosion(int posX, int posY, Color _color, Resolution _res, float _scale=3, bool _gray=false);
     
     //destructor
     ~Explosion();
@@ -36,6 +36,7 @@ public:
     basicSprite *sprite;
     
     ofxSpriteSheetRenderer *spriteRenderer;
+    ofxSpriteSheetRenderer *smokeRenderer;
     
     void update();
     void draw();
@@ -45,6 +46,7 @@ public:
     
 private:
     bool enabled;
+    
 };
 
 

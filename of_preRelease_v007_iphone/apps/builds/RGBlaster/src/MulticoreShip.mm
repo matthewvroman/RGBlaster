@@ -121,7 +121,7 @@ void MulticoreShip::removeCore(int _pos){
         //spawn explosion
         
         //TODO: GRAY EXPLOSION
-        Explosion *explosion = new Explosion(this->getPosition().x,this->getPosition().y, RED, resolution,10);
+        Explosion *explosion = new Explosion(this->getPosition().x,this->getPosition().y, RED, resolution,10,true);
         explosions.push_back(explosion);
         destroyed=true;
     }

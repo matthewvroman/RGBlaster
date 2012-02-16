@@ -21,6 +21,7 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     
     spriteRenderer=AtlasHandler::getInstance()->missileRenderer;
+    smokeRenderer=AtlasHandler::getInstance()->smokeTrailRenderer;
     
     ofEnableAlphaBlending(); // turn on alpha blending. important!
     
@@ -31,13 +32,18 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     sprite->speed=1; //set its speed
     sprite->animation = defaultAnimation; //set its animation to the walk animation we declared
-    sprite->animation.frame_duration = 5; //adjust its frame duration based on how fast it is walking (faster = smaller)
     //spritesheet is loaded in as 256x256px, 32x32px tiles (256/32=8 tiles per row)
     sprite->animation.index = 8*int(resolution)+int(color);
     
+    
+    smokeSprite = new basicSprite();
+    smokeSprite->pos.set(0,0);
+    smokeSprite->animation = smokeTrailAnimation;
+    smokeSprite->animation.index=0;
+    
     target=_target;
     
-    speed=10;
+    speed=5;
     
     r=0;
     
@@ -58,6 +64,8 @@ Missile::~Missile(){
     
     //remove self-contained calls to update & draw
     enabled=false;
+    
+    delete smokeSprite;
 
     //delete allocated memory
     delete sprite;
@@ -98,19 +106,14 @@ void Missile::update() {
     
     move(direction.x,direction.y);
     
+    r = generateRotation(x, y);
     
-    float _percent = (target->getPosition().x-x)/(target->getPosition().y-y);
-    if(_percent>maxRotation){
-        _percent=maxRotation;
-    }else if(_percent<-maxRotation){
-        _percent=-maxRotation;
-    }
-    r=-asin(_percent) *180/3.141592;
-    
+    float _modX=x+32*cos(deg2rad(r));
+    float _modY=y+32*sin(deg2rad(r));
+    //cout << "R: " << r << endl;
     if(sprite!=NULL && !dead){
-        if(r<0){
-            r=360+r;
-        }
+        smokeRenderer->addCenterRotatedTile(&smokeSprite->animation,_modX,_modY, -1, 1, F_NONE, 1.0, r); 
+        //cout << _modX << ", " << _modY << endl;
         spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, saturation,saturation,saturation,255); 
     }
     
@@ -124,14 +127,27 @@ void Missile::update() {
     
 }
 
+float Missile::generateRotation(float _x, float _y){
+    float _percent = (target->getPosition().x-_x)/(target->getPosition().y-_y);
+    if(_percent>maxRotation){
+        _percent=maxRotation;
+    }else if(_percent<-maxRotation){
+        _percent=-maxRotation;
+    }
+    float _rotation =-asin(_percent) *180/3.141592;
+    
+    if(_rotation<0){
+        _rotation=360+_rotation;
+    }
+
+    return _rotation;
+}
+
 void Missile::draw() {
     if(!enabled) return;
     
-    //ofPushMatrix();
-    //ofTranslate(x,y);
-    //ofRotateZ(r);
+    //smokeRenderer->draw();
     spriteRenderer->draw();
-    //ofPopMatrix();
 }
 
 bool Missile::hitTest(BasicObject &ship){

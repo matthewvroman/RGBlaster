@@ -149,6 +149,8 @@ void HUD::draw(){
     ofSetColor(255,255,0);
     smallBlockFont.drawString(resString + " RESOLUTION",305,1015);
     
+    ofSetColor(0,0,0);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString)-2, 997);
     ofSetColor(255,255,255);
     blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), 995);
     

@@ -18,7 +18,7 @@
 SoundManager* SoundManager::instance = NULL;
 
 SoundManager::SoundManager(){
-    /*
+    
     //load all the sounds and put them in the proper arrays
     
     mainMenuMusic.loadSound("sound/fuelship-theme.wav");
@@ -37,7 +37,7 @@ SoundManager::SoundManager(){
     click.loadSound("sound/blip.wav");
     spin.loadSound("sound/blaster-spin.wav");
     //spin.loadSound("sound/cannon_rotation.wav");
-    */
+    
     sfx.push_back(targeted);
     sfx.push_back(explosion);
     sfx.push_back(missileSuccess);

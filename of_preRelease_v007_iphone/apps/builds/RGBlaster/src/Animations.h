@@ -69,7 +69,7 @@ static animation_t explodeAnimation = {
     8,
     1,
     1,
-    75,
+    45,
     0,
     -1,
     -1,
@@ -96,6 +96,19 @@ static animation_t multicoreShipAnimation = {
     1,
     1,
     150,
+    0,
+    -1,
+    -1,
+    1
+};
+
+static animation_t smokeTrailAnimation = {
+    0,
+    0,
+    3,
+    1,
+    1,
+    350,
     0,
     -1,
     -1,

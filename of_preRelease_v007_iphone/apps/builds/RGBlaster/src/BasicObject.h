@@ -90,9 +90,9 @@ public:
 protected:
     Resolution resolution;
     Color color;
+    float deg2rad(float _deg);
     
 private:
-    float deg2rad(float _deg);
 
 
 };

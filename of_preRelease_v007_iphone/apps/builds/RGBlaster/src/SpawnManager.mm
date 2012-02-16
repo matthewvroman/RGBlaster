@@ -21,12 +21,14 @@ SpawnManager::SpawnManager(){
     notifier=nil;
     finger=nil;
     
+    goldenRatio = 1.6180339887;
+    
     setInitialValues();
     
 
     //spawnGroup();
     //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
-    MulticoreShip *shipTest = new MulticoreShip(150, 150, 0.5, BIT16,3,1,false,1);
+    MulticoreShip *shipTest = new MulticoreShip(150, 150, 0.5, BIT8,3,1,false,1);
     activeMulticoreShips.push_back(shipTest);
 }
 
@@ -37,13 +39,13 @@ void SpawnManager::setInitialValues(){
     resolution=Resolution(0);
     
     currentFrame=0;
-    spawnInterval=260; //in frames //game runs at 60fps
-    spawnDecrementer=5;
+    spawnInterval=220; //in frames //game runs at 60fps
+    spawnDecrementer=2;
     
     difficulty=1;
     
     numWaves=0;
-    nextDifficultyIncrease=3;
+    nextDifficultyIncrease=difficultyUpTimeGap=15; //difficulty increases every 15 seconds
     
     maxMovementLevel=0;
     maxResolution=0;
@@ -109,7 +111,7 @@ void SpawnManager::notifyShipDestroyed(){
 void SpawnManager::incrementColorStreak(int _incremenet){
     colorStreak+=_incremenet;
     
-    if(colorStreak==45){
+    if(colorStreak==75){
         generatePowerUp();
     }
 }
@@ -162,7 +164,6 @@ void SpawnManager::applyPowerUp(){
 }
 
 void SpawnManager::removePowerUp(){
-    cout << "removing power up" << endl;
     powerUpName = "";
     switch (powerUp) {
         case 0:
@@ -222,7 +223,7 @@ void SpawnManager::update(){
             currentFrame=0;
         
             //decrement time between spawns
-            if(spawnInterval-spawnDecrementer>60)
+            if(spawnInterval-spawnDecrementer>90)
                 spawnInterval-=spawnDecrementer;
             else
                 spawnInterval=60;
@@ -271,18 +272,16 @@ void SpawnManager::update(){
 
 void SpawnManager::spawnEnemy(){
     float _randNum = ofRandom(1);
+    
     if(_randNum<chanceToSpawnMulticore){
         spawnMulticoreShip();
-    }else{
-        spawnGroup();
     }
     
-    //increase difficulty every 5 waves
-    numWaves++;
-    if(numWaves>=nextDifficultyIncrease){
+    spawnGroup();
+    
+    if(hud->getTime() > nextDifficultyIncrease){
+        nextDifficultyIncrease+=difficultyUpTimeGap;
         increaseDifficulty();
-        numWaves=0;
-        //nextDifficultyIncrease*=nextDifficultyIncrease;
     }
     
     applyPowerUp();
@@ -295,7 +294,6 @@ void SpawnManager::spawnMulticoreShip(){
 
 void SpawnManager::spawnGroup(){
 
-    cout << "Group: " << maxShipSpeed << endl;
     Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)),maxShipSpeed);
     
     activeGroups.push_back(group);
@@ -341,7 +339,6 @@ void SpawnManager::removeMulticoreShip(int _pos){
     
     //resize the vector
     activeMulticoreShips.pop_back();
-    cout << "removed multicore ship" << endl;
     
     
 }
@@ -372,61 +369,52 @@ void SpawnManager::increaseDifficulty(){
             maxShips=5;
             break;
         case 2:
-            maxMovementLevel=1;
-            break;
-        case 3:
             maxColor=2;
-            break;
-        case 4:
-            maxMovementLevel=2;
-            break;
-        case 5:
-            maxColor=3;
-            break;
-        case 6:
-            maxShipSpeed=2;
-            maxShips=7;
-            break;
-        case 7:
-            chanceToSpawnMulticore=0.2;
+            maxMovementLevel=1;
+            chanceToSpawnMulticore=0.05;
             coresPerShip=2;
             colorsPerMulticoreShip=1;
             break;
-        case 8:
+        case 3:
+            maxShipSpeed=1.75;
+            maxMovementLevel=2;
+            maxColor=3;
+            maxShips=7;
+            break;
+        case 4:
+            maxShipSpeed=2;
             coresPerShip=2;
             colorsPerMulticoreShip=2;
             break;
-        case 9:
+        case 5:
             coresShouldFlash=YES;
             break;
-        case 10:
+        case 6:
             coresPerShip=3;
             coresShouldFlash=NO;
-            chanceToSpawnMulticore=0.25;
+            chanceToSpawnMulticore=0.1;
             break;
-        case 11:
+        case 7:
             maxShips=9;
             colorsPerMulticoreShip=3;
             break;
-        case 12:
+        case 8:
             coresShouldFlash=YES;
-            break;
-        case 13:
             maxShipSpeed=2.25;
             break;
-        case 14:
-            coreFlashSpeed=1.85;
-            chanceToSpawnMulticore=0.3;
+        case 9:
+            coreFlashSpeed=6;
+            chanceToSpawnMulticore=0.125;
             break;
         default:
-            if(coreFlashSpeed>=0.25){
-                coreFlashSpeed-=0.05;
+            if(coreFlashSpeed>=2){
+                coreFlashSpeed-=0.1;
             }
-            if(maxShipSpeed<4.5){
-                maxShipSpeed+=0.05;
+            if(maxShipSpeed<3.75){
+                maxShipSpeed+=0.025;
             }
-            if(chanceToSpawnMulticore<0.5){
-                chanceToSpawnMulticore+=0.05;
+            if(chanceToSpawnMulticore<0.175){
+                chanceToSpawnMulticore+=0.015;
             }
             break;
             

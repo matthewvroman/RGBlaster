@@ -15,7 +15,7 @@ Core::~Core(){
 
 //called from constructor
 void Core::initCore(){
-    cout << "INIT CORE" << endl;
+    //cout << "INIT CORE" << endl;
     spriteRenderer=AtlasHandler::getInstance()->coreRenderer;
     
     sprite->animation=defaultAnimation;

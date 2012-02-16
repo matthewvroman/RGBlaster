@@ -110,6 +110,11 @@ private:
     
     float chanceToSpawnMulticore;
     
+    double goldenRatio;
+    int difficultyLevel;
+    
+    int difficultyUpTimeGap;
+    
     string powerUpName;
     int powerUp;
     int powerUpLength;

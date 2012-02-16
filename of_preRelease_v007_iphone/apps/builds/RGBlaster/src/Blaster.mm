@@ -216,6 +216,25 @@ void Blaster::update(){
         }
     }
     
+    if(lastGameOverCheck==false && spawner->gameOver==true){
+        Explosion *explosion = new Explosion(this->x, this->y-45, this->color, this->resolution,14,true);
+        Explosion *explosion2 = new Explosion(this->x-40, this->y-25, this->color, this->resolution,10,true);
+        Explosion *explosion3 = new Explosion(this->x+40, this->y-25, this->color, this->resolution,10,true);
+        explosions.push_back(explosion);
+        explosions.push_back(explosion2);
+        explosions.push_back(explosion3);
+    }
+    
+    lastGameOverCheck=spawner->gameOver;
+    
+    for(short i=0; i<explosions.size(); i++){
+        explosions.at(i)->update();
+        if(explosions[i]->dead){
+            //remove explosion
+            removeExplosion(i);
+        }
+    }
+    
     if(sprite->animation.frame==2 || sprite->animation.frame==10 || sprite->animation.frame==18){
         sprite->animation = defaultAnimation;
         sprite->animation.index = tilesPerRow*int(resolution);
@@ -239,6 +258,33 @@ void Blaster::update(){
     //BasicObject::update();
 }
 
+//remove a ship from the vector
+void Blaster::removeExplosion(int _pos){
+
+    //Temporarily store our last element in the vector
+    Explosion *holder=explosions[explosions.size()-1];
+        
+    //move the ship we want to delete to the endof the position
+    explosions[explosions.size()-1]=explosions[_pos];
+        
+    //put the old last element in the TBDeleted spot
+    explosions[_pos]=holder;
+        
+    
+    
+    //delete the explosion
+    delete explosions[explosions.size()-1];
+    
+    //resize the vector
+    explosions.pop_back();
+    
+    //check if our group should still exist
+    if(explosions.size()==0){
+        
+    }
+    
+}
+
 void Blaster::removeMissile(int _pos){
     if(_pos!=missiles.size()-1){
         //Temporarily store our last element in the vector
@@ -259,6 +305,12 @@ void Blaster::removeMissile(int _pos){
 
 void Blaster::draw(){
     if(!enabled) return;
+    
+    for(short i=0; i<explosions.size(); i++){
+       explosions.at(i)->draw();
+    }
+    
+    if(spawner->gameOver) return;
     
     targetOverlay->draw();
     

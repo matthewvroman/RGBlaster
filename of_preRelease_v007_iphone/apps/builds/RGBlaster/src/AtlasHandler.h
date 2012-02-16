@@ -38,6 +38,7 @@ public:
     ofxSpriteSheetRenderer *greenShipRenderer;
     ofxSpriteSheetRenderer *missileRenderer;
     ofxSpriteSheetRenderer *explosionRenderer;
+    ofxSpriteSheetRenderer *smokeTrailRenderer;
     ofxSpriteSheetRenderer *coreRenderer;
     ofxSpriteSheetRenderer *multicoreShipRenderer;
 

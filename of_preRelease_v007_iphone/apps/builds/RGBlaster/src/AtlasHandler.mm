@@ -44,6 +44,10 @@ AtlasHandler::AtlasHandler(){
     explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 512, GL_NEAREST);
     sheets.push_back(explosionRenderer);
     
+    smokeTrailRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+    smokeTrailRenderer->loadTexture("sprites/smoke_trail_spriteSheet.png", 128, GL_NEAREST);
+    sheets.push_back(smokeTrailRenderer);
+    
     coreRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
     coreRenderer->loadTexture("sprites/cores_spriteSheet.png", 512, GL_NEAREST);
     sheets.push_back(coreRenderer);
@@ -66,6 +70,7 @@ AtlasHandler::~AtlasHandler(){
     delete greenShipRenderer;
     delete missileRenderer;
     delete explosionRenderer;
+    delete smokeTrailRenderer;
     delete coreRenderer;
     delete multicoreShipRenderer;
 }

@@ -23,6 +23,7 @@
 #import "Missile.h"
 #import "Finger.h"
 #import "SpawnManager.h"
+#import "Explosion.h"
 
 class Blaster : public BasicObject{
 public:
@@ -62,6 +63,9 @@ private:
     
     void removeMissile(int);
     
+    vector<Explosion*>explosions;
+    void removeExplosion(int _pos);
+    
     int         leeway;
     ofVec2f     lastTouch;
     
@@ -76,6 +80,8 @@ private:
     float maxRotation;
     
     bool switchingColor;
+    
+    bool lastGameOverCheck;
     
     void switchColor();
     
