@@ -50,5 +50,7 @@ public:
 	bool			touchedDown;			// diff than pressed because pressed is immediately reset
 	
 private:
-	
+    void glow();
+    int saturation;
+    bool goingDown;
 };

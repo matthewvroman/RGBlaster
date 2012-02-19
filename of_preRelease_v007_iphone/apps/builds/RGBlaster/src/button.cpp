@@ -30,6 +30,7 @@ void button::init( int _buttonId, bool _alive, string _buttonLabel, ofTrueTypeFo
 	hideBtn = false;
     ArcadeClassic = font;
     offset = _offset;
+    saturation=255;
 }
 
 void button::setup() {
@@ -57,22 +58,23 @@ void button:: show() {
 
 void button::draw() {
     if(!hideBtn){
+        //glow();
         // Draw background
         if(buttonId==1)
-            ofSetColor( 255, 0, 0 );
+            ofSetColor( saturation, 0, 0 );
         else if(buttonId==2)
-            ofSetColor( 0, 255, 0 );
+            ofSetColor( 0, saturation, 0 );
         else if(buttonId==3)
-            ofSetColor( 0, 0, 255 );
-        ofRect( x - 3, y - 3, width + 6, height + 6 );
+            ofSetColor( 0, 0, saturation );
+        //ofRect( x - 3, y - 3, width + 6, height + 6 );
         ofSetColor( 8, 7, 27 );
-        ofRect( x, y, width, height );
+        //ofRect( x, y, width, height );
         if(buttonId==1)
-            ofSetColor( 255, 0, 0 );
+            ofSetColor( saturation, 0, 0 );
         else if(buttonId==2)
-            ofSetColor( 0, 255, 0 );
+            ofSetColor( 0, saturation, 0 );
         else if(buttonId==3)
-            ofSetColor( 0, 0, 255 );
+            ofSetColor( 0, 0, saturation );
         
         // Draw the label text
         ArcadeClassic.drawString( buttonLabel, x + offset, y + (height/2) + 15 );
@@ -80,6 +82,24 @@ void button::draw() {
         ofSetColor( 255, 255, 255 );
     }
 }
+
+void button::glow(){
+    if(saturation<150){
+        goingDown=false;
+    }else if(saturation==255){
+        goingDown=true;
+    }
+    
+    if(goingDown){
+        saturation-=3;
+    }else{
+        saturation+=3;
+    }
+    
+    cout << saturation << endl;
+}
+
+
 
 void button::exit() {
 }

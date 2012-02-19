@@ -40,7 +40,9 @@ public:
     void draw();
     
 private:
-    
+    bool fading;
+    int saturation;
+    void fade();
 };
 
 

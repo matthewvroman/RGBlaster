@@ -75,10 +75,20 @@ void ScreenManager::draw(){
             break;
         case 2: // HELP
             mainBackground.draw(0,0);
+            ofEnableAlphaBlending(); 
+            ofSetColor(0,0,0,127);
+            ofRect(0, 0, 768, 1024);
+            ofDisableAlphaBlending(); 
+            ofSetColor( 255, 255, 255 );
             helpScreen->draw();
             break;
         case 3: // ABOUT
             mainBackground.draw(0,0);
+            ofEnableAlphaBlending(); 
+            ofSetColor(0,0,0,127);
+            ofRect(0, 0, 768, 1024);
+            ofDisableAlphaBlending(); 
+            ofSetColor( 255, 255, 255 );
             aboutScreen->draw();
             break;
         default:
