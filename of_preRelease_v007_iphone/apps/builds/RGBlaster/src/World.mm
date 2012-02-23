@@ -35,11 +35,10 @@ World::World(){
     
     spawner->setHUD(hud);
     
-    motivator.loadImage("sprites/motivator.png");
+    background8=AtlasHandler::getInstance()->background8;
+    background16=AtlasHandler::getInstance()->background16;
+    background32=AtlasHandler::getInstance()->background32;
     
-    background8.loadImage("sprites/background-low.png");
-    background16.loadImage("sprites/background-med.png");
-    background32.loadImage("sprites/background-hi.png");
     
     enabled=true;
     if(!SoundManager::getInstance()->backgroundMusic.getIsPlaying())
@@ -80,7 +79,7 @@ void World::rezUp(){
 
 //res down everything in the world
 void World::rezDown(){
-
+    /*
     if(resolution>0){
         resolution=Resolution(int(resolution)-1);
         spawner->setResolution(resolution);
@@ -88,12 +87,21 @@ void World::rezDown(){
         notifier->displayNotification("RES DOWN!");
         hud->resetHealth();
         SoundManager::getInstance()->resDown.play();
-    }else{
+    }else{*/
         hud->gameOver=true;
         spawner->notifyGameOver();
         SoundManager::getInstance()->gameOver.play();
         SoundManager::getInstance()->backgroundMusic.stop();
-    }
+    //}
+
+}
+
+void World::derezAll(){
+    hud->gameOver=true;
+    spawner->notifyGameOver();
+    SoundManager::getInstance()->resDown.play();
+    SoundManager::getInstance()->gameOver.play();
+    SoundManager::getInstance()->backgroundMusic.stop();
 
 }
 

@@ -76,7 +76,7 @@ void HUD::update(){
 
 //draw the HUD
 void HUD::draw(){
-    ofPushMatrix();
+    //ofPushMatrix();
     
     //TOP HUD
     //ofFill();
@@ -150,13 +150,13 @@ void HUD::draw(){
     smallBlockFont.drawString(resString + " RESOLUTION",305,1015);
     
     ofSetColor(0,0,0);
-    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString)-2, 997);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString)-2, 510);
     ofSetColor(255,255,255);
-    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), 995);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), 512);
     
     ofSetColor(255,255,255);
     
-    ofPopMatrix();
+    //ofPopMatrix();
 }
 
 //returns an X value that will position the string in the center of the screen
@@ -211,6 +211,8 @@ void HUD::setHighScore(int _score){
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         highScore=_score;
+        
+        Stats::getInstance()->reportScore("ScoreBoard_01" , _score);
     }
     highScoreToString();
 }

@@ -166,6 +166,7 @@ bool Missile::hitTest(BasicObject &ship){
         }else{
             SpawnManager::getInstance()->resetColorStreak();
             SoundManager::getInstance()->missileFailure.play();
+            Stats::getInstance()->incrementStat(@"colorBlind", 1);
         }
         return true;
     }else{

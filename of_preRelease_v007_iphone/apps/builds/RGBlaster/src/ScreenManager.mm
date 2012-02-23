@@ -22,6 +22,9 @@ ScreenManager::ScreenManager(){
     currentScreen = 0;
     switchScreens(currentScreen);
     
+    //on first load this will generate all the stats and set them at 0
+    Stats::getInstance();
+    
     mainBackground.loadImage("sprites/background-low.png");
     
 }

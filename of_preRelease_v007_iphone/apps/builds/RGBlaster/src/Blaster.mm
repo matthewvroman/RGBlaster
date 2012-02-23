@@ -81,16 +81,9 @@ Blaster::~Blaster(){
 }
 
 void Blaster::touchDown(ofTouchEventArgs &touch) {
-
-    //hit test that requires you to touch the blaster at start of swipe
-    /*if(touch.x < this->x+this->width/2 && touch.x > this->x-this->width/2 &&
-       touch.y < this->y+this->height/2 && touch.y > this->y-this->height/2){*/
-    
-    //hit test that requires you to just be at the same y coordinates as the blaster
-    if(touch.y < this->y+this->height/2 && touch.y > this->y-this->height/2){
+    if(touch.y>this->y-this->height){
         lastTouch.x=touch.x;
         lastTouch.y=touch.y;
-        
     }else{
         lastTouch=nil;
     }

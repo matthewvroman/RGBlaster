@@ -17,6 +17,8 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
+#import "Stats.h"
+
 class HUD{
 public:
     

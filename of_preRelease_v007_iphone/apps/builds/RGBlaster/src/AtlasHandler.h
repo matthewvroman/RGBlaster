@@ -41,6 +41,10 @@ public:
     ofxSpriteSheetRenderer *smokeTrailRenderer;
     ofxSpriteSheetRenderer *coreRenderer;
     ofxSpriteSheetRenderer *multicoreShipRenderer;
+    
+    ofImage background8;
+    ofImage background16;
+    ofImage background32;
 
     
 private:

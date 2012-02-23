@@ -37,7 +37,9 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     
     expanding=false;
     
-    y=a=r=0;
+    a=r=0;
+    
+    y=-ofRandom(400);
     
     x=ofRandom(600)+100;
     
@@ -247,11 +249,48 @@ void Group::zigZagMove(float _speed, int _maxRadius){
     }
     
     short i=0;
+    ofVec2f _prevShipPos;
+    short _middle = int(objects.size()/2);
     while(i<objects.size()){
-        objects.at(i)->zigZagMove(this->x, this->y, _speed, this->r);
+        //if we're the middle
+        if(i==int(objects.size()/2)){
+            _prevShipPos = ofVec2f(this->x,this->y);
+        }else if(i>_middle){
+            _prevShipPos = objects.at(i-1)->getPosition();
+        }else if(i<_middle){
+            _prevShipPos = objects.at(i+1)->getPosition();
+        }
+        objects.at(i)->zigZagMove(_prevShipPos.x, this->y, _speed, this->r);
         i++;
     }
     
+    y+=_speed;
+}
+
+void Group::swirlMove(float _speed, int _spacing){
+    short _middle = int(objects.size()/2);
+    short i=0;
+    float _shipSpeed=_speed;
+    //cout << "MIDDLE IS: " << _middle << endl;
+    while(i<objects.size()){
+        if(i==_middle){
+            r=0;
+            cout << i << "HIT MIDDLE" << endl;
+            _shipSpeed=_speed;
+        }else{
+            r+=_spacing;
+            cout << i << endl;
+        }
+        if(i>_middle){
+            //r+=_spacing;
+            _shipSpeed=(i-_middle);
+        }else if(i<_middle){
+            //r-=_spacing;
+            _shipSpeed=(_middle-i);
+        }
+        objects.at(i)->circleMove(this->x, this->y, _shipSpeed, r);
+        i++;
+    }
     y+=_speed;
 }
 
@@ -303,6 +342,14 @@ void Group::removeFromVector(int _pos){
         enabled=false;
     }*/
     
+    if(this->color == RED){
+        Stats::getInstance()->incrementStat(@"totalRedKilled", 1);
+    }else if(this->color == GREEN){
+        Stats::getInstance()->incrementStat(@"totalGreenKilled", 1);
+    }else if(this->color == BLUE){
+        Stats::getInstance()->incrementStat(@"totalBlueKilled", 1);
+    }
+    
 }
 
 //remove a ship from the vector
@@ -340,6 +387,8 @@ void Group::update(){
     switch (movement) {
         case 0:
             //lineMove(speed,40);
+            //zigZagMove(speed,50);
+            //swirlMove(speed, 50);
             circleMove(speed, 50);
             break;
         case 1:

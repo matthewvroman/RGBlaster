@@ -28,6 +28,8 @@
 #import "SoundManager.h"
 #import "AtlasHandler.h"
 
+#import "Stats.h"
+
 class Missile : public BasicObject{
 public:
     //constructor

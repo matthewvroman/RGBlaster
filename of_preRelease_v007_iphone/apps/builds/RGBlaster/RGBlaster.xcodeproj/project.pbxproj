@@ -63,10 +63,11 @@
 		AC98DA5C14CFFE1E007F549D /* explosion_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */; };
 		AC98DA5E14D137E6007F549D /* ship_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5D14D137E6007F549D /* ship_explosion.wav */; };
 		AC98DA6014D138A1007F549D /* missile_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC98DA5F14D138A0007F549D /* missile_explosion.wav */; };
+		AC9973A614F5F4C400733F9A /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9973A514F5F4C400733F9A /* icon_72.png */; };
+		AC9973AF14F5F81F00733F9A /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9973AE14F5F81F00733F9A /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		ACA73BAD148DE8BD00F60A22 /* res_up_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */; };
 		ACA9588814976AB900967B01 /* fuelship-theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588714976AB900967B01 /* fuelship-theme.wav */; };
 		ACA9588C14976F2C00967B01 /* res_down_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA9588B14976F2C00967B01 /* res_down_sfx.wav */; };
-		ACA9589314977F7900967B01 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA9589214977F6300967B01 /* icon.png */; };
 		ACA95895149789C400967B01 /* the-voyage.wav in Resources */ = {isa = PBXBuildFile; fileRef = ACA95894149789C300967B01 /* the-voyage.wav */; };
 		ACADA37014633534001CD87D /* BasicObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACADA36F14633533001CD87D /* BasicObject.mm */; };
 		ACB54894147323F500B32CE4 /* Missile.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACB54893147323F500B32CE4 /* Missile.mm */; };
@@ -82,6 +83,7 @@
 		ACD769C5145B67E4006A369B /* Group.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACD769C4145B67E3006A369B /* Group.mm */; };
 		ACDB7D2B1473518F00F732A5 /* SoundManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACDB7D2A1473518F00F732A5 /* SoundManager.mm */; };
 		ACDB7D2F1473544300F732A5 /* target_sfx.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACDB7D2D1473544300F732A5 /* target_sfx.caf */; };
+		ACDE34AC14F23ACF00115649 /* Stats.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACDE34AB14F23ACF00115649 /* Stats.mm */; };
 		ACE1E87714E0B32F00B61183 /* smoke_trail_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE1E87614E0B32F00B61183 /* smoke_trail_spriteSheet.png */; };
 		ACEDC634146C5EDE009CDD3C /* SpawnManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACEDC633146C5EDE009CDD3C /* SpawnManager.mm */; };
 		ACEDC637146CAF55009CDD3C /* Blaster.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACEDC635146CAF55009CDD3C /* Blaster.mm */; };
@@ -196,10 +198,11 @@
 		AC98DA5B14CFFE1D007F549D /* explosion_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion_spriteSheet.png; path = sprites/explosion_spriteSheet.png; sourceTree = "<group>"; };
 		AC98DA5D14D137E6007F549D /* ship_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ship_explosion.wav; path = sound/ship_explosion.wav; sourceTree = "<group>"; };
 		AC98DA5F14D138A0007F549D /* missile_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = missile_explosion.wav; path = sound/missile_explosion.wav; sourceTree = "<group>"; };
+		AC9973A514F5F4C400733F9A /* icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_72.png; sourceTree = "<group>"; };
+		AC9973AE14F5F81F00733F9A /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		ACA73BAC148DE8BD00F60A22 /* res_up_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_up_sfx.wav; path = sound/res_up_sfx.wav; sourceTree = "<group>"; };
 		ACA9588714976AB900967B01 /* fuelship-theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fuelship-theme.wav"; path = "sound/fuelship-theme.wav"; sourceTree = "<group>"; };
 		ACA9588B14976F2C00967B01 /* res_down_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = res_down_sfx.wav; path = sound/res_down_sfx.wav; sourceTree = "<group>"; };
-		ACA9589214977F6300967B01 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		ACA95894149789C300967B01 /* the-voyage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "the-voyage.wav"; path = "sound/the-voyage.wav"; sourceTree = "<group>"; };
 		ACADA36E14633526001CD87D /* BasicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicObject.h; sourceTree = "<group>"; };
 		ACADA36F14633533001CD87D /* BasicObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BasicObject.mm; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 		ACDB7D281473517800F732A5 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		ACDB7D2A1473518F00F732A5 /* SoundManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundManager.mm; sourceTree = "<group>"; };
 		ACDB7D2D1473544300F732A5 /* target_sfx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = target_sfx.caf; path = sound/target_sfx.caf; sourceTree = "<group>"; };
+		ACDE34AA14F23AB300115649 /* Stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stats.h; sourceTree = "<group>"; };
+		ACDE34AB14F23ACF00115649 /* Stats.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Stats.mm; sourceTree = "<group>"; };
 		ACE1E87614E0B32F00B61183 /* smoke_trail_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke_trail_spriteSheet.png; path = sprites/smoke_trail_spriteSheet.png; sourceTree = "<group>"; };
 		ACEDC632146C5ED0009CDD3C /* SpawnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnManager.h; sourceTree = "<group>"; };
 		ACEDC633146C5EDE009CDD3C /* SpawnManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpawnManager.mm; sourceTree = "<group>"; };
@@ -252,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */,
+				AC9973AF14F5F81F00733F9A /* GameKit.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -281,8 +287,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				AC9973AE14F5F81F00733F9A /* GameKit.framework */,
+				AC9973A514F5F4C400733F9A /* icon_72.png */,
 				AC98DA5014CFECC0007F549D /* Default-Portrait~ipad.png */,
-				ACA9589214977F6300967B01 /* icon.png */,
 				E4D8936A11527B74007E1F53 /* src */,
 				BB24DD8B10DA77E000E9C588 /* data */,
 				BB24E1F710DAA51900E9C588 /* openFrameworks */,
@@ -328,6 +335,8 @@
 		AC92E7AA148AC8BC00F79242 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
+				ACDE34AA14F23AB300115649 /* Stats.h */,
+				ACDE34AB14F23ACF00115649 /* Stats.mm */,
 				ACEDC632146C5ED0009CDD3C /* SpawnManager.h */,
 				ACEDC633146C5EDE009CDD3C /* SpawnManager.mm */,
 				ACDB7D281473517800F732A5 /* SoundManager.h */,
@@ -661,7 +670,6 @@
 				AC901316149702AD0010F64B /* help1.png in Resources */,
 				ACA9588814976AB900967B01 /* fuelship-theme.wav in Resources */,
 				ACA9588C14976F2C00967B01 /* res_down_sfx.wav in Resources */,
-				ACA9589314977F7900967B01 /* icon.png in Resources */,
 				ACA95895149789C400967B01 /* the-voyage.wav in Resources */,
 				AC95C01714A3F63700EF40BC /* finger_sprite.png in Resources */,
 				AC98DA4D14CF81DE007F549D /* background-hi.png in Resources */,
@@ -676,6 +684,7 @@
 				ACC67B5D14DA55D900BDAB88 /* cores_spriteSheet.png in Resources */,
 				ACC67B6214DA587F00BDAB88 /* multicore_ship_sprite.png in Resources */,
 				ACE1E87714E0B32F00B61183 /* smoke_trail_spriteSheet.png in Resources */,
+				AC9973A614F5F4C400733F9A /* icon_72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +740,7 @@
 				AC98DA5A14CFFC05007F549D /* Explosion.mm in Sources */,
 				ACC67B5B14D9237D00BDAB88 /* MulticoreShip.mm in Sources */,
 				ACC67B6014DA56D900BDAB88 /* Core.mm in Sources */,
+				ACDE34AC14F23ACF00115649 /* Stats.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,8 +760,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
@@ -764,8 +774,8 @@
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "C298584A-E600-40F1-8402-3538F38710D0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C298584A-E600-40F1-8402-3538F38710D0";
+				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -773,8 +783,8 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (2UXVHHGR22)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -786,8 +796,8 @@
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "C298584A-E600-40F1-8402-3538F38710D0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C298584A-E600-40F1-8402-3538F38710D0";
+				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -798,8 +808,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -814,7 +824,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";
@@ -827,8 +838,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (9HA5934RR5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5VX53A8EGG)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -841,7 +852,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BEE4A3AE-777F-40B6-887B-879AFA3D2C76";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";

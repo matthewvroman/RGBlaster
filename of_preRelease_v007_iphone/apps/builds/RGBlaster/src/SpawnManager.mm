@@ -24,12 +24,11 @@ SpawnManager::SpawnManager(){
     goldenRatio = 1.6180339887;
     
     setInitialValues();
-    
 
     //spawnGroup();
     //Resolution _res=BIT8, int _numCores=3, int _numColors=3, bool _flashingColors=false, float _switchTime=1.0)
-    MulticoreShip *shipTest = new MulticoreShip(150, 150, 0.5, BIT8,3,1,false,1);
-    activeMulticoreShips.push_back(shipTest);
+    //MulticoreShip *shipTest = new MulticoreShip(150, 150, 0.5, BIT8,3,1,false,1);
+    //activeMulticoreShips.push_back(shipTest);
 }
 
 void SpawnManager::setInitialValues(){
@@ -45,13 +44,13 @@ void SpawnManager::setInitialValues(){
     difficulty=1;
     
     numWaves=0;
-    nextDifficultyIncrease=difficultyUpTimeGap=15; //difficulty increases every 15 seconds
+    nextDifficultyIncrease=difficultyUpTimeGap=10; //difficulty increases every 15 seconds
     
     maxMovementLevel=0;
     maxResolution=0;
     maxColor=0;
-    maxShips=5;
-    maxShipSpeed=1.5;
+    maxShips=minShips=4;
+    maxShipSpeed=minShipSpeed=1.5;
     maxMultiplier=1;
     colorStreak=0;
     chanceToSpawnMulticore=0.0;
@@ -59,6 +58,8 @@ void SpawnManager::setInitialValues(){
     colorsPerMulticoreShip=1;
     coresShouldFlash=false;
     coreFlashSpeed=2;
+    chanceToSpawnExtras=0;
+    maxExtras=1;
     
     powerUpName = "";
     
@@ -202,7 +203,8 @@ void SpawnManager::resetColorStreak(){
 }
 
 void SpawnManager::notifyShipCrashed(int _dmg){
-    hud->decreaseHealth(_dmg+maxMultiplier);
+    //hud->decreaseHealth(_dmg+maxMultiplier);
+    hud->decreaseHealth(300);
     SoundManager::getInstance()->explosion.play();
 }
 
@@ -274,7 +276,16 @@ void SpawnManager::spawnEnemy(){
     float _randNum = ofRandom(1);
     
     if(_randNum<chanceToSpawnMulticore){
-        spawnMulticoreShip();
+        //spawnMulticoreShip();
+    }
+    
+    _randNum=ofRandom(1);
+    if(_randNum < chanceToSpawnExtras){
+        _randNum=int(ofRandom(1,maxExtras));
+        for(short i=0; i<_randNum; i++){
+            cout << "SPAWNING EXTRA GROUP: " << i << endl;
+            spawnGroup();
+        }
     }
     
     spawnGroup();
@@ -294,7 +305,7 @@ void SpawnManager::spawnMulticoreShip(){
 
 void SpawnManager::spawnGroup(){
 
-    Group *group = new Group(maxShips, Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)),maxShipSpeed);
+    Group *group = new Group(int(ofRandom(minShips,maxShips)), Color(int(ofRandom(0, maxColor))), resolution, MovementType(int(maxMovementLevel)),ofRandom(minShipSpeed,maxShipSpeed));
     
     activeGroups.push_back(group);
 
@@ -372,6 +383,7 @@ void SpawnManager::increaseDifficulty(){
             maxColor=2;
             maxMovementLevel=1;
             chanceToSpawnMulticore=0.05;
+            chanceToSpawnExtras=0.2;
             coresPerShip=2;
             colorsPerMulticoreShip=1;
             break;
@@ -380,11 +392,13 @@ void SpawnManager::increaseDifficulty(){
             maxMovementLevel=2;
             maxColor=3;
             maxShips=7;
+            maxExtras=1;
             break;
         case 4:
             maxShipSpeed=2;
             coresPerShip=2;
             colorsPerMulticoreShip=2;
+            chanceToSpawnExtras=0.2;
             break;
         case 5:
             coresShouldFlash=YES;
@@ -393,6 +407,7 @@ void SpawnManager::increaseDifficulty(){
             coresPerShip=3;
             coresShouldFlash=NO;
             chanceToSpawnMulticore=0.1;
+            maxExtras=2;
             break;
         case 7:
             maxShips=9;
@@ -401,21 +416,38 @@ void SpawnManager::increaseDifficulty(){
         case 8:
             coresShouldFlash=YES;
             maxShipSpeed=2.25;
+            chanceToSpawnExtras=0.3;
             break;
         case 9:
+            maxShipSpeed=3;
             coreFlashSpeed=6;
             chanceToSpawnMulticore=0.125;
+            maxExtras=3;
             break;
         default:
+            
+            if (difficultyUpTimeGap<30) {
+                difficultyUpTimeGap+=3;
+            }
             if(coreFlashSpeed>=2){
                 coreFlashSpeed-=0.1;
             }
-            if(maxShipSpeed<3.75){
+            if(maxShipSpeed<7){
                 maxShipSpeed+=0.025;
+            }
+            if(minShipSpeed<5){
+                minShipSpeed+=0.025;
             }
             if(chanceToSpawnMulticore<0.175){
                 chanceToSpawnMulticore+=0.015;
             }
+            if(chanceToSpawnExtras<0.45){
+                chanceToSpawnExtras+=0.05;
+            }
+            if(minShips<maxShips){
+                minShips++;
+            }
+            
             break;
             
     }

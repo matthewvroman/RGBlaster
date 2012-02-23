@@ -23,6 +23,7 @@
 #import "SoundManager.h"
 #import "Notifier.h"
 #import "Finger.h"
+#import "Stats.h"
 
 class SpawnManager{
 
@@ -38,6 +39,7 @@ public:
     int maxColor;
     int maxResolution;
     int maxShips;
+    int minShips;
     float maxShipSpeed;
     int maxMultiplier;
     int maxMovementLevel;
@@ -109,6 +111,11 @@ private:
     int colorStreak;
     
     float chanceToSpawnMulticore;
+    float chanceToSpawnExtras;
+    
+    int maxExtras;
+    
+    float minShipSpeed;
     
     double goldenRatio;
     int difficultyLevel;

@@ -24,6 +24,8 @@
 
 #import "Enums.h"
 
+#import "Stats.h"
+
 class Group{
 public:
     //constructors
@@ -41,6 +43,7 @@ public:
     void expandMove(float _speed, int _maxRadius);
     void expandCircleMove(float _speed, int _maxRadius);
     void zigZagMove(float _speed, int _maxRadius);
+    void swirlMove(float _speed, int _spacing);
     
     void distributeAngles();
     

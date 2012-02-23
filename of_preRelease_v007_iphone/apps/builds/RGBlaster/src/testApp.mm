@@ -13,7 +13,7 @@
 //
 
 #include "testApp.h"
-
+#include "AtlasHandler.h"
 //Create a screen manager instance to handle the different screen states
 //--------------------------------------------------------------
 void testApp::setup(){	
@@ -29,6 +29,8 @@ void testApp::setup(){
 	ofSetFrameRate(60);
     
     screenManager = new ScreenManager();
+    
+    AtlasHandler::getInstance();
 
 }
 
@@ -45,4 +47,11 @@ void testApp::draw(){
     ofScale(appIphoneScale, appIphoneScale);
     screenManager->draw();
     ofPopMatrix();
+}
+
+void testApp::exit(){
+    //cleanup
+    
+    //sync
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }

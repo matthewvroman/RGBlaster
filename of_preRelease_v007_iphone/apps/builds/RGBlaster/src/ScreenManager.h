@@ -20,6 +20,7 @@
 #import "HelpScreen.h"
 #import "AboutScreen.h"
 #import "SoundManager.h"
+#import "Stats.h"
 
 class ScreenManager : public ofxiPhoneApp {
 public:

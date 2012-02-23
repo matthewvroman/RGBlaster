@@ -56,7 +56,11 @@ AtlasHandler::AtlasHandler(){
     multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
     sheets.push_back(multicoreShipRenderer);
     
+    cout << "Loaded Atlas Handler" << endl;
     
+    background8.loadImage("sprites/background-low.png");
+    background16.loadImage("sprites/background-med.png");
+    background32.loadImage("sprites/background-hi.png");
     
     ofEnableAlphaBlending();
 

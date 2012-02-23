@@ -73,6 +73,7 @@ class World{
     
         void        rezUp();
         void        rezDown();
+        void        derezAll();
     
         void        drawBackground();
     
