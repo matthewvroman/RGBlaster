@@ -43,6 +43,7 @@ void button::setup() {
 }
 
 void button::update() {
+    if(hideBtn) return; 
 	// So a press only registers once
 	if(pressed)
 		pressed = false;
@@ -50,10 +51,12 @@ void button::update() {
 
 void button:: hide() {
     hideBtn = true;
+    enabled=false;
 }
 
 void button:: show() {
     hideBtn = false;
+    enabled=true;
 }
 
 void button::draw() {

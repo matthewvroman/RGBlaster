@@ -19,6 +19,7 @@
 #include "ofxiPhoneExtras.h"
 
 #include "ScreenManager.h"
+#import "Stats.h"
 
 class testApp : public ofxiPhoneApp {
 	

@@ -70,6 +70,8 @@ Blaster::Blaster(){
     missileSpawnPos=currentMissileSpawnPos=ofVec2f(386,930);
     
     switchingColor=false;
+    
+    maxMissilesOnScreen=75;
 }
 
 Blaster::~Blaster(){
@@ -175,7 +177,7 @@ void Blaster::update(){
     if(finger->down && spawner != nil){
         for(short i=0; i<spawner->activeGroups.size(); i++){
             for(short j=0; j<spawner->activeGroups[i]->objects.size(); j++){
-                if(finger->hitTest(*spawner->activeGroups[i]->objects[j])){
+                if(finger->hitTest(*spawner->activeGroups[i]->objects[j])&&missiles.size()<maxMissilesOnScreen){
                     Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups[i]->objects[j]);
                     missiles.push_back(missile);
                     
@@ -227,10 +229,11 @@ void Blaster::update(){
             removeExplosion(i);
         }
     }
-    
-    if(sprite->animation.frame==2 || sprite->animation.frame==10 || sprite->animation.frame==18){
-        sprite->animation = defaultAnimation;
-        sprite->animation.index = tilesPerRow*int(resolution);
+    if(sprite!=NULL){
+        if(sprite->animation.frame==2 || sprite->animation.frame==10 || sprite->animation.frame==18){
+            sprite->animation = defaultAnimation;
+            sprite->animation.index = tilesPerRow*int(resolution);
+        }
     }
     
     spriteRenderer->clear(); // clear the sheet

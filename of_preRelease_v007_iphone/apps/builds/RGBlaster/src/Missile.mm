@@ -21,7 +21,6 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     
     spriteRenderer=AtlasHandler::getInstance()->missileRenderer;
-    smokeRenderer=AtlasHandler::getInstance()->smokeTrailRenderer;
     
     ofEnableAlphaBlending(); // turn on alpha blending. important!
     
@@ -34,12 +33,6 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     sprite->animation = defaultAnimation; //set its animation to the walk animation we declared
     //spritesheet is loaded in as 256x256px, 32x32px tiles (256/32=8 tiles per row)
     sprite->animation.index = 8*int(resolution)+int(color);
-    
-    
-    smokeSprite = new basicSprite();
-    smokeSprite->pos.set(0,0);
-    smokeSprite->animation = smokeTrailAnimation;
-    smokeSprite->animation.index=0;
     
     target=_target;
     
@@ -64,8 +57,6 @@ Missile::~Missile(){
     
     //remove self-contained calls to update & draw
     enabled=false;
-    
-    delete smokeSprite;
 
     //delete allocated memory
     delete sprite;
@@ -81,11 +72,11 @@ void Missile::update() {
     if(!enabled) return;
     
     //Get the targets position and adjust path accordingly
-    if(target->dead!=true){
-        relativePos = target->getPosition()-this->getPosition();
+    if(target->dead==false){
+        relativePos.set(target->getPosition()-this->getPosition());
     }else{
         dead=true;
-        relativePos=this->getPosition();
+        relativePos.set(this->getPosition());
     }
     
     ofVec2f direction;
@@ -108,20 +99,18 @@ void Missile::update() {
     
     r = generateRotation(x, y);
     
-    float _modX=x+32*cos(deg2rad(r));
-    float _modY=y+32*sin(deg2rad(r));
+    //float _modX=x+32*cos(deg2rad(r));
+    //float _modY=y+32*sin(deg2rad(r));
     //cout << "R: " << r << endl;
     if(sprite!=NULL && !dead){
-        smokeRenderer->addCenterRotatedTile(&smokeSprite->animation,_modX,_modY, -1, 1, F_NONE, 1.0, r); 
         //cout << _modX << ", " << _modY << endl;
         spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, saturation,saturation,saturation,255); 
     }
     
-    //check if we hit the target
-    hitTest(*target);
-    
-    //if we're dead, remove body
-    if(dead){
+    if(!dead){
+        //check if we hit the target
+        hitTest(*target);
+    }else{
         enabled=false;
     }
     
@@ -146,7 +135,6 @@ float Missile::generateRotation(float _x, float _y){
 void Missile::draw() {
     if(!enabled) return;
     
-    //smokeRenderer->draw();
     spriteRenderer->draw();
 }
 
@@ -166,7 +154,7 @@ bool Missile::hitTest(BasicObject &ship){
         }else{
             SpawnManager::getInstance()->resetColorStreak();
             SoundManager::getInstance()->missileFailure.play();
-            Stats::getInstance()->incrementStat(@"colorBlind", 1);
+            Stats::getInstance()->incrementStat("colorBlind", 1);
         }
         return true;
     }else{

@@ -23,6 +23,7 @@ Stats::Stats(){
 		authenticateLocalPlayer();
 	}
     authenticateLocalPlayer();
+    
     retrieveStats();
 }
 
@@ -53,6 +54,7 @@ void Stats::authenticateLocalPlayer(){
                 // Insert code here to handle a successful authentication.
                 NSLog(@"succesfully authenticated");
                 isAuthenticated=true;
+                retrieveAchievementMetadata();
             }
             else
             {
@@ -64,6 +66,27 @@ void Stats::authenticateLocalPlayer(){
     }
 }
 
+static GKAchievementDescription* a;
+
+void Stats::retrieveAchievementMetadata(){
+    achievementsDescDictionary = [[NSMutableDictionary alloc] initWithCapacity:2];
+    
+    [GKAchievementDescription loadAchievementDescriptionsWithCompletionHandler:
+     ^(NSArray *descriptions, NSError *error) {
+         if (error != nil) {
+             NSLog(@"Error %@", error);
+             
+         } else {        
+             if (descriptions != nil){
+                 for (a in descriptions) {
+                     [achievementsDescDictionary setObject: a forKey: a.identifier];
+                     //NSLog(@"Identity: %@",a.identifier);
+                 }
+             }
+         }
+     }];
+}
+
 void Stats::reportScore(string _category, int _score){
         if (!isAuthenticated) {
             authenticateLocalPlayer();
@@ -73,6 +96,8 @@ void Stats::reportScore(string _category, int _score){
 		NSString * category = [NSString stringWithUTF8String: _category.c_str()];
 		GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:category] autorelease];
 		scoreReporter.value = score;
+        
+        NSLog(@"Reporting score of %lld to %@",score,category);
 		[scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
 			if (error != nil){
 				// handle the reporting error
@@ -80,6 +105,7 @@ void Stats::reportScore(string _category, int _score){
 			}
 		}];
 }
+
 void Stats::reportAchievement(string _ach, float percent){
         if (!isAuthenticated) {
             authenticateLocalPlayer();
@@ -90,9 +116,16 @@ void Stats::reportAchievement(string _ach, float percent){
         
 		NSString * identifier = [NSString stringWithUTF8String: _ach.c_str()];
         GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
+        achievement.showsCompletionBanner = NO;
         if (achievement)
         {
+            NSLog(@"reporting achievement: %@", identifier);
             achievement.percentComplete = percent;
+            if(achievement.percentComplete==100){
+                //Show banners manually
+                GKAchievementDescription *desc = [achievementsDescDictionary objectForKey:identifier]; //Update pull achievement description for dictionary
+                [[GKAchievementHandler defaultHandler] notifyAchievement:desc];  //Display to user
+            }
             [achievement reportAchievementWithCompletionHandler:^(NSError *error)
              {
                  if (error != nil){
@@ -104,6 +137,7 @@ void Stats::reportAchievement(string _ach, float percent){
 
 
 void Stats::retrieveStats(){
+    
     totalRedKilled = getStat(@"totalRedKilled");
     totalGreenKilled = getStat(@"totalRedKilled");
     totalBlueKilled = getStat(@"totalBlueKilled");
@@ -122,6 +156,59 @@ void Stats::retrieveStats(){
     colorBlind = getStat(@"colorBlind");
 }
 
+//brings the userdefault stats up to speed
+void Stats::updateStats(){
+    cout << "UPDATING ALL STATS!" << endl;
+    setStat(@"totalRedKilled", totalRedKilled);
+    setStat(@"totalGreenKilled", totalGreenKilled);
+    setStat(@"totalBlueKilled", totalBlueKilled);
+    
+    setStat(@"colorBlind", colorBlind);
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    //achievement ref name
+    //achievemtn currNum
+    //achievement maxNum
+    //achievement complete
+    
+    reportAchievement("RedKills_01", float(totalRedKilled)/100.0f);     //RED ALERT
+
+    reportAchievement("RedKills_02", float(totalRedKilled)/500.0f);     //RED RAMPAGE
+
+    reportAchievement("RedKills_03", float(totalRedKilled)/1000.0f);    //RED DEAD
+    
+
+    reportAchievement("GreenKills_01", float(totalGreenKilled)/200.0f);     //GOING GREEN 
+
+    reportAchievement("GreenKills_02", float(totalGreenKilled)/750.0f);     //GREEN GEEZER
+
+    reportAchievement("GreenKills_03", float(totalGreenKilled)/1500.0f);    //SOYLENT GREEN
+
+
+
+    reportAchievement("BlueKills_01", float(totalBlueKilled)/300.0f);     //BLUE'S CLUES
+
+    reportAchievement("BlueKills_02", float(totalBlueKilled)/1000.0f);     //BLUE BLOODED
+
+    reportAchievement("BlueKills_03", float(totalBlueKilled)/2000.0f);    //BLUE BOMBER
+
+    
+
+    reportAchievement("AllKill_01", float(totalKilled)/1000.0f);       //MATERIAL DEFENDER
+
+    reportAchievement("AllKill_02", float(totalKilled)/5000.0f);       //CAPTAIN CANNON
+
+    reportAchievement("AllKill_03", float(totalKilled)/10000.0f);      //MASTER BLASTER
+
+    reportAchievement("AllKill_04", float(totalKilled)/20000.0f);      //LAST OF MASTER
+    
+
+    reportAchievement("ColorBlind01", float(colorBlind)/500.0f);       //COLOR BLIND
+
+}
+
 void Stats::setDefault(NSString* _statName){
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:_statName]==nil){
@@ -133,68 +220,7 @@ void Stats::setStat(NSString* _statName, int newValue){
     //set stat
     [[NSUserDefaults standardUserDefaults] setInteger:newValue forKey:_statName];
     
-}
-
-void Stats::checkAchievementRequirements(NSString* _statName){
-    //RED KILLS
-    if([_statName isEqualToString:@"totalRedKilled"]){
-        totalRedKilled=getStat(@"totalRedKilled");
-        if(totalRedKilled<=100){
-            reportAchievement("RedKills_01", float(totalRedKilled)/100.0f);     //RED ALERT
-        }if(totalRedKilled<=500){
-            reportAchievement("RedKills_02", float(totalRedKilled)/500.0f);     //RED RAMPAGE
-        }if(totalRedKilled<=1000){
-            reportAchievement("RedKills_03", float(totalRedKilled)/1000.0f);    //RED DEAD
-        }
-    }
     
-    //GREEN KILLS
-    if([_statName isEqualToString:@"totalGreenKilled"]){
-        totalGreenKilled=getStat(@"totalGreenKilled");
-        if(totalGreenKilled<=200){
-            reportAchievement("GreenKills_01", float(totalGreenKilled)/200.0f);     //GOING GREEN 
-        }if(totalGreenKilled<=750){
-            reportAchievement("GreenKills_02", float(totalGreenKilled)/750.0f);     //GREEN GEEZER
-        }if(totalGreenKilled<=1500){
-            reportAchievement("GreenKills_03", float(totalGreenKilled)/1500.0f);    //SOYLENT GREEN
-        }
-    }
-    
-    //BLUE KILLS
-    if([_statName isEqualToString:@"totalBlueKilled"]){
-        totalBlueKilled=getStat(@"totalBlueKilled");
-        if(totalBlueKilled<=300){
-            reportAchievement("BlueKills_01", float(totalBlueKilled)/300.0f);     //BLUE'S CLUES
-        }if(totalBlueKilled<=1000){
-            reportAchievement("BlueKills_02", float(totalBlueKilled)/1000.0f);     //BLUE BLOODED
-        }if(totalBlueKilled<=2000){
-            reportAchievement("BlueKills_03", float(totalBlueKilled)/2000.0f);    //BLUE BOMBER
-        }
-    }
-    
-    if([_statName isEqualToString:@"totalRedKilled"] || [_statName isEqualToString:@"totalGreenKilled"] || [_statName isEqualToString:@"totalBlueKilled"]){
-        totalKilled=totalGreenKilled+totalBlueKilled+totalRedKilled;
-        if(totalKilled<1000){
-            reportAchievement("AllKills_01", float(totalKilled)/1000.0f);       //MATERIAL DEFENDER
-        }
-        if(totalKilled<5000){
-            reportAchievement("AllKills_02", float(totalKilled)/5000.0f);       //CAPTAIN CANNON
-        }
-        if(totalKilled<10000){
-            reportAchievement("AllKills_03", float(totalKilled)/10000.0f);      //MASTER BLASTER
-        }
-        if(totalKilled<20000){
-            reportAchievement("AllKills_04", float(totalKilled)/20000.0f);      //LAST OF MASTER
-        }
-    }
-    
-    if([_statName isEqualToString:@"colorBlind"]){
-        colorBlind=getStat(@"colorBlind");
-        if(colorBlind<=500){
-            reportAchievement("ColorBlind01", float(colorBlind)/500.0f);       //COLOR BLIND
-        }
-    }
-
 }
 
 int Stats::getStat(NSString* _statName){
@@ -207,18 +233,68 @@ int Stats::getStat(NSString* _statName){
     return [[NSUserDefaults standardUserDefaults] integerForKey:_statName];
 }
 
-void Stats::incrementStat(NSString* _statName, int increment){
-    //if the stat doesn't exist set it to the increment
-    if([[NSUserDefaults standardUserDefaults] objectForKey:_statName]==nil){
-        [[NSUserDefaults standardUserDefaults] setInteger:increment forKey:_statName];
-    }else{
-        //add increment to previous stat
-        [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:_statName]+increment forKey:_statName];
+void Stats::incrementStat(string _statName, int increment){
+
+    //RED KILLS
+    if(_statName=="totalRedKilled"){
+        totalRedKilled+=increment;
+        if(totalRedKilled==100){
+            reportAchievement("RedKills_01", float(totalRedKilled)/100.0f);     //RED ALERT
+        }if(totalRedKilled==500){
+            reportAchievement("RedKills_02", float(totalRedKilled)/500.0f);     //RED RAMPAGE
+        }if(totalRedKilled==1000){
+            reportAchievement("RedKills_03", float(totalRedKilled)/1000.0f);    //RED DEAD
+        }
     }
     
-    checkAchievementRequirements(_statName);
+    //GREEN KILLS
+    if(_statName=="totalGreenKilled"){
+        totalGreenKilled+=increment;
+        if(totalGreenKilled==200){
+            reportAchievement("GreenKills_01", float(totalGreenKilled)/200.0f);     //GOING GREEN 
+        }if(totalGreenKilled==750){
+            reportAchievement("GreenKills_02", float(totalGreenKilled)/750.0f);     //GREEN GEEZER
+        }if(totalGreenKilled==1500){
+            reportAchievement("GreenKills_03", float(totalGreenKilled)/1500.0f);    //SOYLENT GREEN
+        }
+    }
+    
+    //BLUE KILLS
+    if(_statName=="totalBlueKilled"){
+        totalBlueKilled+=increment;
+        if(totalBlueKilled==300){
+            reportAchievement("BlueKills_01", float(totalBlueKilled)/300.0f);     //BLUE'S CLUES
+        }if(totalBlueKilled==1000){
+            reportAchievement("BlueKills_02", float(totalBlueKilled)/1000.0f);     //BLUE BLOODED
+        }if(totalBlueKilled==2000){
+            reportAchievement("BlueKills_03", float(totalBlueKilled)/2000.0f);    //BLUE BOMBER
+        }
+    }
+    
+    if(_statName=="totalRedKilled" || _statName=="totalGreenKilled" || _statName=="totalBlueKilled"){
+        totalKilled=totalGreenKilled+totalBlueKilled+totalRedKilled;
+        if(totalKilled==1000){
+            reportAchievement("AllKill_01", float(totalKilled)/1000.0f);       //MATERIAL DEFENDER
+        }
+        if(totalKilled==5000){
+            reportAchievement("AllKill_02", float(totalKilled)/5000.0f);       //CAPTAIN CANNON
+        }
+        if(totalKilled==10000){
+            reportAchievement("AllKill_03", float(totalKilled)/10000.0f);      //MASTER BLASTER
+        }
+        if(totalKilled==20000){
+            reportAchievement("AllKill_04", float(totalKilled)/20000.0f);      //LAST OF MASTER
+        }
+    }
+    
+    if(_statName=="colorBlind"){
+        colorBlind+=increment;
+        if(colorBlind==500){
+            reportAchievement("ColorBlind01", float(colorBlind)/500.0f);       //COLOR BLIND
+        }
+    }
+
 }
 
 Stats::~Stats(){
-    
 }

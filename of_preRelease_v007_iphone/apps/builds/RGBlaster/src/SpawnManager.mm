@@ -144,6 +144,8 @@ void SpawnManager::applyPowerUp(){
             for (short i=0; i<activeGroups.size(); i++) {
                 activeGroups.at(i)->speed=1;
             }
+            currSpawnInterval=spawnInterval;
+            spawnInterval=360;
             break;
         case 1:
             //reticule radius increase
@@ -166,6 +168,7 @@ void SpawnManager::applyPowerUp(){
 
 void SpawnManager::removePowerUp(){
     powerUpName = "";
+    
     switch (powerUp) {
         case 0:
             //slow time
@@ -173,6 +176,7 @@ void SpawnManager::removePowerUp(){
             for (short i=0; i<activeGroups.size(); i++) {
                 activeGroups.at(i)->resetSpeed();
             }
+            spawnInterval=currSpawnInterval;
             break;
         case 1:
             //reticule radius increase
@@ -210,6 +214,8 @@ void SpawnManager::notifyShipCrashed(int _dmg){
 
 void SpawnManager::notifyGameOver(){
     gameOver=true;
+    Stats::getInstance()->reportScore("default" , hud->getScore());
+    Stats::getInstance()->updateStats();
     hud->setHighScore(hud->getScore());
     removeAllGroups();
     removeAllMulticoreShips();
@@ -225,10 +231,10 @@ void SpawnManager::update(){
             currentFrame=0;
         
             //decrement time between spawns
-            if(spawnInterval-spawnDecrementer>90)
+            if(spawnInterval-spawnDecrementer>80)
                 spawnInterval-=spawnDecrementer;
             else
-                spawnInterval=60;
+                spawnInterval=80;
         
         }else{
             currentFrame++;

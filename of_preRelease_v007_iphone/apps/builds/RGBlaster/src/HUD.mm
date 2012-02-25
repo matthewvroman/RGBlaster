@@ -212,7 +212,6 @@ void HUD::setHighScore(int _score){
         
         highScore=_score;
         
-        Stats::getInstance()->reportScore("ScoreBoard_01" , _score);
     }
     highScoreToString();
 }

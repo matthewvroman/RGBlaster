@@ -20,14 +20,14 @@
          </Actions>
       </SymbolicBreakpoint>
       <SymbolicBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          symbolName = "malloc_printf"
          moduleName = "">
       </SymbolicBreakpoint>
       <SymbolicBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          symbolName = "szone_error"

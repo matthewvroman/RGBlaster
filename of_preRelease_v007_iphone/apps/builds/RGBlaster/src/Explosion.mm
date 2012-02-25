@@ -24,7 +24,6 @@ Explosion::Explosion(int posX, int posY, Color _color, Resolution _res,float _sc
     sprite->animation = explodeAnimation; //set its animation to the walk animation we declared
     sprite->animation.index = (48*int(_res)+16*int(_color));
     if(_gray){
-        cout << "GRAY!!" << endl;
         sprite->animation.index=(160+16*int(_res));
     }
     //sprite->animation.index = (int(_color)*16)*(3*_res);

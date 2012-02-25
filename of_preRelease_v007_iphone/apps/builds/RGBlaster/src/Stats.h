@@ -10,7 +10,15 @@
 #define RGBlaster_Stats_h
 
 #import <GameKit/GameKit.h>
+#import "GKAchievementHandler.h"
+
 using namespace std;
+
+struct stat{
+    string sIdentifier;
+    int currPoints;
+    int pointsNeeded;
+};
 
 class Stats{
 public:
@@ -40,9 +48,7 @@ public:
     
     int getStat(NSString* _statName);
     
-    void incrementStat(NSString* _statName, int increment);
-    
-    void checkAchievementRequirements(NSString* _statName);
+    void incrementStat(string _statName, int increment);
     
     
     //gamecenter
@@ -53,7 +59,10 @@ public:
 	void reportAchievement(string _ach, float percent);
     
 	bool isAuthenticated;
+    void updateStats();
     
+    void retrieveAchievementMetadata();
+    NSMutableDictionary *achievementsDescDictionary;
     
     
 private:

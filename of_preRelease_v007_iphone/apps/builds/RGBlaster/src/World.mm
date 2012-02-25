@@ -163,6 +163,6 @@ void World::draw(){
     notifier->draw();
     spawner->draw();
     blaster->draw();
-    hud->draw();
+    //hud->draw();
 
 }

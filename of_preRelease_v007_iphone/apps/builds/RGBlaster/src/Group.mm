@@ -343,11 +343,11 @@ void Group::removeFromVector(int _pos){
     }*/
     
     if(this->color == RED){
-        Stats::getInstance()->incrementStat(@"totalRedKilled", 1);
+        Stats::getInstance()->incrementStat("totalRedKilled", 1);
     }else if(this->color == GREEN){
-        Stats::getInstance()->incrementStat(@"totalGreenKilled", 1);
+        Stats::getInstance()->incrementStat("totalGreenKilled", 1);
     }else if(this->color == BLUE){
-        Stats::getInstance()->incrementStat(@"totalBlueKilled", 1);
+        Stats::getInstance()->incrementStat("totalBlueKilled", 1);
     }
     
 }

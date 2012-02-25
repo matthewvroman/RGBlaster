@@ -85,6 +85,8 @@ private:
     
     void switchColor();
     
+    int maxMissilesOnScreen;
+    
 
 };
 

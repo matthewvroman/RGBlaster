@@ -35,6 +35,7 @@ public:
     int spawnDecrementer;
     int currentFrame;
     int spawnInterval;
+    int currSpawnInterval;
     
     int maxColor;
     int maxResolution;

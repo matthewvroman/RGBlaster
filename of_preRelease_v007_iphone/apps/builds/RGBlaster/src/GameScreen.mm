@@ -47,22 +47,24 @@ void GameScreen::update(){
     // Update world
     world->update();
     
+    if(world->hud->gameOver==true){
     // Check for button press after game over
-    if(btn_mainMenu.pressed) {
-        // Return to main menu
-        SoundManager::getInstance()->click.play();
-        nextScreen = 0;
-        btn_replay.hide();
-        btn_mainMenu.hide();
-    } else if(btn_replay.pressed) {
-        // Reset game
-        SoundManager::getInstance()->click.play();
-        delete world;
-        soundManager = SoundManager::getInstance();
-        world = new World();
-        world->soundManager = soundManager;
-        btn_replay.hide();
-        btn_mainMenu.hide();
+        if(btn_mainMenu.pressed) {
+            // Return to main menu
+            SoundManager::getInstance()->click.play();
+            nextScreen = 0;
+            btn_replay.hide();
+            btn_mainMenu.hide();
+        } else if(btn_replay.pressed) {
+            // Reset game
+            SoundManager::getInstance()->click.play();
+            delete world;
+            soundManager = SoundManager::getInstance();
+            world = new World();
+            world->soundManager = soundManager;
+            btn_replay.hide();
+            btn_mainMenu.hide();
+        }
     }
 }
 

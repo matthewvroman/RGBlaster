@@ -153,6 +153,11 @@ void CollageTexture::pasteImage(int x, int y, string textureName, int glType)
 
 void CollageTexture::pasteImage(int x, int y, int w, int h, unsigned char * pxls, int glType)
 {	
+    
+    if(!h){
+        cout << "can't find h" << endl;
+        h=w;
+    }
 	int bpp;
 	
 	if(glType == GL_RGB)

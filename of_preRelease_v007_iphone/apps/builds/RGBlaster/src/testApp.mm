@@ -52,6 +52,6 @@ void testApp::draw(){
 void testApp::exit(){
     //cleanup
     
-    //sync
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    //sync user defaults & gamecenter data
+    Stats::getInstance()->updateStats();
 }
