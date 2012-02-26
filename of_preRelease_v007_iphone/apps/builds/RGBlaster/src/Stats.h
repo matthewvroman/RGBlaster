@@ -12,6 +12,7 @@
 #import <GameKit/GameKit.h>
 #import "GKAchievementHandler.h"
 
+#include <string>
 using namespace std;
 
 struct stat{

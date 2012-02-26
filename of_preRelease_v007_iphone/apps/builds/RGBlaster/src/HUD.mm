@@ -160,7 +160,7 @@ void HUD::draw(){
 }
 
 //returns an X value that will position the string in the center of the screen
-float HUD::centerFontPos(ofTrueTypeFont font,string _letters){
+float HUD::centerFontPos(ofTrueTypeFont &font,string _letters){
     return 384-font.stringWidth(_letters)/2;
 }
 

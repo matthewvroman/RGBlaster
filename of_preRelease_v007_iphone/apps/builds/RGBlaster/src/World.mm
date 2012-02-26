@@ -79,21 +79,10 @@ void World::rezUp(){
 
 //res down everything in the world
 void World::rezDown(){
-    /*
-    if(resolution>0){
-        resolution=Resolution(int(resolution)-1);
-        spawner->setResolution(resolution);
-        blaster->setResolution(resolution);
-        notifier->displayNotification("RES DOWN!");
-        hud->resetHealth();
-        SoundManager::getInstance()->resDown.play();
-    }else{*/
-        hud->gameOver=true;
-        spawner->notifyGameOver();
-        SoundManager::getInstance()->gameOver.play();
-        SoundManager::getInstance()->backgroundMusic.stop();
-    //}
-
+    hud->gameOver=true;
+    spawner->notifyGameOver();
+    SoundManager::getInstance()->gameOver.play();
+    SoundManager::getInstance()->backgroundMusic.stop();
 }
 
 void World::derezAll(){
@@ -163,6 +152,6 @@ void World::draw(){
     notifier->draw();
     spawner->draw();
     blaster->draw();
-    //hud->draw();
+    hud->draw();
 
 }

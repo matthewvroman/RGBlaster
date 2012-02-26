@@ -71,12 +71,12 @@ void Finger::setColor(Color _color){
 
 //Check if the touch has collided with any of the ships on-screen
 bool Finger::hitTest(Ship &ship){
-
+    
     if(x - radius < ship.x+ship.width/2 && x + radius > ship.x - ship.width/2 &&
        y - radius < ship.y+ship.height/2 && y + radius > ship.y-ship.height/2 &&
        !ship.targeted){
         ship.targeted=true;
-        target->addTarget(&ship);
+        target->addTarget(ship);
         return true;
     }else{
         return false;
@@ -90,7 +90,7 @@ bool Finger::hitTest(Core &core){
        y - radius < core.y+core.height/2 && y + radius > core.y-core.height/2 &&
        !core.targeted){
         core.targeted=true;
-        target->addTarget(&core);
+        target->addTarget(core);
         return true;
     }else{
         return false;

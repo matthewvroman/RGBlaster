@@ -21,6 +21,7 @@
 #import "AboutScreen.h"
 #import "SoundManager.h"
 #import "Stats.h"
+#import "AtlasHandler.h"
 
 class ScreenManager : public ofxiPhoneApp {
 public:
@@ -33,7 +34,7 @@ public:
     HelpScreen *helpScreen;
     AboutScreen *aboutScreen;
     
-    ofImage mainBackground;
+    ofImage *mainBackground;
     
     void switchScreens(int screen);
     

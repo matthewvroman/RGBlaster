@@ -44,10 +44,6 @@ AtlasHandler::AtlasHandler(){
     explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 512, GL_NEAREST);
     sheets.push_back(explosionRenderer);
     
-    smokeTrailRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
-    smokeTrailRenderer->loadTexture("sprites/smoke_trail_spriteSheet.png", 128, GL_NEAREST);
-    sheets.push_back(smokeTrailRenderer);
-    
     coreRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
     coreRenderer->loadTexture("sprites/cores_spriteSheet.png", 512, GL_NEAREST);
     sheets.push_back(coreRenderer);
@@ -56,27 +52,46 @@ AtlasHandler::AtlasHandler(){
     multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
     sheets.push_back(multicoreShipRenderer);
     
-    cout << "Loaded Atlas Handler" << endl;
+    cout << "Loaded Sprite Sheets" << endl;
     
     background8.loadImage("sprites/background-low.png");
+    cout << "Loaded 8-bit Handler" << endl;
     background16.loadImage("sprites/background-med.png");
+    cout << "Loaded 16-bit Handler" << endl;
     background32.loadImage("sprites/background-hi.png");
     
     ofEnableAlphaBlending();
+    
+    cout << "Loaded Atlas Handler" << endl;
 
+}
+
+ofxSpriteSheetRenderer* AtlasHandler::getSpriteSheetRenderer(string _renderer){
+    ofxSpriteSheetRenderer* renderer;
+    if(_renderer=="RedEnemy"){
+        //explosionRenderer->texture;
+    }else if(_renderer=="BlueEnemy"){
+        
+    }else if(_renderer=="GreenEnemy"){
+        
+    }
+    
+    return renderer;
 }
 
 //deletes all dynamically allocated memory
 AtlasHandler::~AtlasHandler(){
+    //clear should dealloc each renderer
     sheets.clear();
+    /*
     delete redShipRenderer;
     delete blueShipRenderer;
     delete greenShipRenderer;
     delete missileRenderer;
     delete explosionRenderer;
-    delete smokeTrailRenderer;
     delete coreRenderer;
     delete multicoreShipRenderer;
+     */
 }
 
 

@@ -19,9 +19,7 @@ Stats* Stats::getInstance(){
 
 Stats::Stats(){
     isAuthenticated=false;
-	if (isAvailable()) {
-		authenticateLocalPlayer();
-	}
+    
     authenticateLocalPlayer();
     
     retrieveStats();

@@ -95,6 +95,8 @@ private:
     bool enabled;
     ofxSpriteSheetRenderer *renderer;
     
+    Stats *stats;
+    
     float privSpeed;
 
 };

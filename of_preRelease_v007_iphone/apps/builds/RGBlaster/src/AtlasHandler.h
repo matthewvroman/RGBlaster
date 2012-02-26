@@ -19,7 +19,6 @@
 
 #import "ofxSpriteSheetRenderer.h"
 
-
 class AtlasHandler{
 public:
     
@@ -31,6 +30,8 @@ public:
     
     void loadTextureAtlases();
     
+    ofxSpriteSheetRenderer* getSpriteSheetRenderer(string);
+    
     void update();
     
     ofxSpriteSheetRenderer *redShipRenderer;
@@ -38,7 +39,6 @@ public:
     ofxSpriteSheetRenderer *greenShipRenderer;
     ofxSpriteSheetRenderer *missileRenderer;
     ofxSpriteSheetRenderer *explosionRenderer;
-    ofxSpriteSheetRenderer *smokeTrailRenderer;
     ofxSpriteSheetRenderer *coreRenderer;
     ofxSpriteSheetRenderer *multicoreShipRenderer;
     

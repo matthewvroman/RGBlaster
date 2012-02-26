@@ -25,6 +25,8 @@ Group::Group(){
     x=y=a=0;
     
     speed=privSpeed=2;
+    
+    stats=Stats::getInstance();
 
     
 }
@@ -80,6 +82,8 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     
     addShips(numShips);
     
+    stats=Stats::getInstance();
+    
 
 }
 
@@ -92,11 +96,12 @@ Group::~Group(){
     //disable update/draw
     enabled=false;
     
+    /*
     //delete all ships
     while(objects.size()>0){
         delete objects[objects.size()-1];
         objects.pop_back();
-    }
+    }*/
     
     //clear the vector for good measure
     objects.clear();
@@ -343,11 +348,11 @@ void Group::removeFromVector(int _pos){
     }*/
     
     if(this->color == RED){
-        Stats::getInstance()->incrementStat("totalRedKilled", 1);
+        stats->incrementStat("totalRedKilled", 1);
     }else if(this->color == GREEN){
-        Stats::getInstance()->incrementStat("totalGreenKilled", 1);
+        stats->incrementStat("totalGreenKilled", 1);
     }else if(this->color == BLUE){
-        Stats::getInstance()->incrementStat("totalBlueKilled", 1);
+        stats->incrementStat("totalBlueKilled", 1);
     }
     
 }

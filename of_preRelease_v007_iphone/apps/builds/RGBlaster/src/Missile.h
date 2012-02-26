@@ -45,13 +45,9 @@ public:
     Color color;
     Resolution resolution;
     
-    basicSprite *sprite;
-    
-    ofxSpriteSheetRenderer *spriteRenderer;
+    //ofxSpriteSheetRenderer *spriteRenderer;
     
     ofVec2f relativePos;
-    
-    bool derez();
     
     bool hitTest(BasicObject &ship);
     
@@ -64,7 +60,6 @@ public:
     
     
 private:
-    bool enabled;
     
     float generateRotation(float _x, float _y);
 };

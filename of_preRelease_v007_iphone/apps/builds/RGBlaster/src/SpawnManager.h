@@ -106,6 +106,7 @@ private:
     HUD *hud;
     Notifier *notifier;
     Finger *finger;
+    Stats *stats;
     
     bool enabled;
     

@@ -34,7 +34,7 @@ public:
     
     vector<BasicObject*>targets;
     
-    void addTarget(BasicObject *ship);
+    void addTarget(BasicObject &ship);
     //void addTarget(Core *core);
     
     void removeTarget(int);

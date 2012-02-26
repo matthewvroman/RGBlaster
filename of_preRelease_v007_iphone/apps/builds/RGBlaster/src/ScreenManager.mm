@@ -25,7 +25,7 @@ ScreenManager::ScreenManager(){
     //on first load this will generate all the stats and set them at 0
     Stats::getInstance();
     
-    mainBackground.loadImage("sprites/background-low.png");
+    mainBackground=&AtlasHandler::getInstance()->background8;
     
 }
 
@@ -70,14 +70,14 @@ void ScreenManager::draw(){
     // Determine which screen object to draw
     switch (currentScreen) {
         case 0: // MENU
-            mainBackground.draw(0,0);
+            mainBackground->draw(0,0);
             menuScreen->draw();
             break;
         case 1: // GAME
             gameScreen->draw();
             break;
         case 2: // HELP
-            mainBackground.draw(0,0);
+            mainBackground->draw(0,0);
             ofEnableAlphaBlending(); 
             ofSetColor(0,0,0,127);
             ofRect(0, 0, 768, 1024);
@@ -86,7 +86,7 @@ void ScreenManager::draw(){
             helpScreen->draw();
             break;
         case 3: // ABOUT
-            mainBackground.draw(0,0);
+            mainBackground->draw(0,0);
             ofEnableAlphaBlending(); 
             ofSetColor(0,0,0,127);
             ofRect(0, 0, 768, 1024);

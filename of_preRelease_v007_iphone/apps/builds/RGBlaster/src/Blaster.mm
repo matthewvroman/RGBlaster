@@ -113,7 +113,6 @@ void Blaster::touchUp(ofTouchEventArgs &touch) {
             currentR=0;
             switchingColor=true;
             SoundManager::getInstance()->spin.play();
-                
         }
     }
     
@@ -125,7 +124,6 @@ void Blaster::addTarget(BasicObject *target){
         target->targeted = true;
     }
     sprite->animation = blasterAnimation;
-    cout << "ADDED TARGET" << endl;
 }
 
 void Blaster::setSpawner(SpawnManager *_spawner){
@@ -141,6 +139,8 @@ void Blaster::switchColor(){
 //check finger collisions & spawn a missile if there'sa hit
 void Blaster::update(){
     if(!enabled) return;
+    
+    finger->update();
     
     //determine rotation based on where the user is touching
     if(finger->down && finger->y < 930 && !switchingColor){
@@ -174,11 +174,11 @@ void Blaster::update(){
         }
     }
     
-    if(finger->down && spawner != nil){
+    if(finger->down && spawner != nil && missiles.size()<maxMissilesOnScreen){
         for(short i=0; i<spawner->activeGroups.size(); i++){
-            for(short j=0; j<spawner->activeGroups[i]->objects.size(); j++){
-                if(finger->hitTest(*spawner->activeGroups[i]->objects[j])&&missiles.size()<maxMissilesOnScreen){
-                    Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups[i]->objects[j]);
+            for(short j=0; j<spawner->activeGroups.at(i)->objects.size(); j++){
+                if(finger->hitTest(*spawner->activeGroups.at(i)->objects.at(j))){
+                    Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j));
                     missiles.push_back(missile);
                     
                     sprite->animation = blasterAnimation;
@@ -201,8 +201,6 @@ void Blaster::update(){
     }
     
     targetOverlay->update();
-    
-    finger->update();
     
     for(short i=0; i<missiles.size(); i++){
         missiles.at(i)->update();
@@ -283,7 +281,7 @@ void Blaster::removeExplosion(int _pos){
 
 void Blaster::removeMissile(int _pos){
     if(_pos!=missiles.size()-1){
-        //Temporarily store our last element in the vector
+        //Temporarily store our last element in the holder
         Missile *holder=missiles[missiles.size()-1];
         
         //move the element we want to delete to the endof the position
@@ -297,6 +295,15 @@ void Blaster::removeMissile(int _pos){
     
     //resize the vector
     missiles.pop_back();
+    
+    /*
+    //pos now needs to be swapped all the way to the back
+    while (_pos<missiles.size()-1 && missiles.size()>=2) {
+        Missile *holder=missiles[_pos+1];
+        missiles[_pos+1]=missiles[_pos];
+        missiles[_pos]=holder;
+        _pos++;
+    }*/
 }
 
 void Blaster::draw(){

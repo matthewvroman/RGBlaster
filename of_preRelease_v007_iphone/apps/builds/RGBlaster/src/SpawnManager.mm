@@ -20,6 +20,7 @@ SpawnManager::SpawnManager(){
     hud=nil;
     notifier=nil;
     finger=nil;
+    stats=Stats::getInstance();
     
     goldenRatio = 1.6180339887;
     
@@ -204,6 +205,7 @@ void SpawnManager::decrementColorStreak(int _decrement){
 
 void SpawnManager::resetColorStreak(){
     colorStreak=0;
+    stats->incrementStat("colorBlind", 1);
 }
 
 void SpawnManager::notifyShipCrashed(int _dmg){
@@ -214,8 +216,8 @@ void SpawnManager::notifyShipCrashed(int _dmg){
 
 void SpawnManager::notifyGameOver(){
     gameOver=true;
-    Stats::getInstance()->reportScore("default" , hud->getScore());
-    Stats::getInstance()->updateStats();
+    stats->reportScore("default" , hud->getScore());
+    stats->updateStats();
     hud->setHighScore(hud->getScore());
     removeAllGroups();
     removeAllMulticoreShips();
@@ -289,7 +291,6 @@ void SpawnManager::spawnEnemy(){
     if(_randNum < chanceToSpawnExtras){
         _randNum=int(ofRandom(1,maxExtras));
         for(short i=0; i<_randNum; i++){
-            cout << "SPAWNING EXTRA GROUP: " << i << endl;
             spawnGroup();
         }
     }
@@ -365,6 +366,7 @@ void SpawnManager::removeAllGroups(){
         delete activeGroups[activeGroups.size()-1];
         activeGroups.pop_back();
     }
+    //activeGroups.clear();
 }
 
 void SpawnManager::removeAllMulticoreShips(){

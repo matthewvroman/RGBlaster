@@ -24,7 +24,7 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     ofEnableAlphaBlending(); // turn on alpha blending. important!
     
-    sprite = new basicSprite(); // create a new sprite
+    //sprite = new basicSprite(); // create a new sprite
     
     sprite->pos.set(0,0); //set its position
     
@@ -48,35 +48,28 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     dead = false;
     
-    enabled=true;
-    
     
 }
 
 Missile::~Missile(){
-    
     //remove self-contained calls to update & draw
     enabled=false;
-
-    //delete allocated memory
-    delete sprite;
     
 }
 
-
-bool Missile::derez(){
-    return true;
-}
 
 void Missile::update() {
-    if(!enabled) return;
-    
+    if(dead){
+        return;
+    }
+
     //Get the targets position and adjust path accordingly
-    if(target->dead==false){
+    if(target && !target->dead){
         relativePos.set(target->getPosition()-this->getPosition());
     }else{
         dead=true;
-        relativePos.set(this->getPosition());
+        return;
+        //relativePos.set(this->getPosition());
     }
     
     ofVec2f direction;
@@ -102,17 +95,14 @@ void Missile::update() {
     //float _modX=x+32*cos(deg2rad(r));
     //float _modY=y+32*sin(deg2rad(r));
     //cout << "R: " << r << endl;
+    
     if(sprite!=NULL && !dead){
         //cout << _modX << ", " << _modY << endl;
-        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r, saturation,saturation,saturation,255); 
+        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r); 
     }
     
-    if(!dead){
-        //check if we hit the target
-        hitTest(*target);
-    }else{
-        enabled=false;
-    }
+    //check if we hit the target
+    hitTest(*target);
     
 }
 
@@ -133,8 +123,7 @@ float Missile::generateRotation(float _x, float _y){
 }
 
 void Missile::draw() {
-    if(!enabled) return;
-    
+    if(dead) return;
     spriteRenderer->draw();
 }
 
@@ -143,8 +132,6 @@ bool Missile::hitTest(BasicObject &ship){
     if(x < ship.x+ship.width/2 && x > ship.x-ship.width/2 &&
        y < ship.y+ship.height/2 && y > ship.y-ship.height/2
        ){
-        if(derez())
-            dead=true;
         if(ship.getColor() == this->color){ 
             if(ship.derez()){   //if ship is the same color & on last life, destroy it
                 SpawnManager::getInstance()->notifyShipDestroyed();
@@ -154,7 +141,9 @@ bool Missile::hitTest(BasicObject &ship){
         }else{
             SpawnManager::getInstance()->resetColorStreak();
             SoundManager::getInstance()->missileFailure.play();
-            Stats::getInstance()->incrementStat("colorBlind", 1);
+        }
+        if(derez()){
+            dead=true;
         }
         return true;
     }else{

@@ -88,7 +88,7 @@ private:
     float currentHealthBarWidth;
     float maxHealthBarWidth;
     
-    float centerFontPos(ofTrueTypeFont,string);
+    float centerFontPos(ofTrueTypeFont&,string);
     
     string scoreString;
     string highScoreString;

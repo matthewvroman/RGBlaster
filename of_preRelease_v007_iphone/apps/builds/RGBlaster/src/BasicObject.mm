@@ -73,7 +73,6 @@ BasicObject::BasicObject(float _x, float _y, int _width, int _height,string _spr
 
 //destructor
 BasicObject::~BasicObject(){
-    
     enabled=false;
     
     sprite=NULL;
@@ -147,13 +146,12 @@ void BasicObject::setPosition(float _x, float _y){
 
 ofVec2f BasicObject::getPosition(){
     ofVec2f _pos;
-    _pos.x=x;
-    _pos.y=y;
+    _pos.set(x,y);
     return _pos;
 }
 
 void BasicObject::update() {
-    if(!enabled) return;
+    if(!enabled || dead) return;
     
     //spriteRenderer->clear(); // clear the sheet
 	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
@@ -165,7 +163,7 @@ void BasicObject::update() {
 }
 
 void BasicObject::draw() {
-    if(!enabled) return;
+    if(!enabled || dead) return;
     
     spriteRenderer->draw();
 }

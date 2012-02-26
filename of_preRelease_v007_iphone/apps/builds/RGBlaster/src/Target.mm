@@ -29,12 +29,11 @@ Target::Target(){
     sprite->animation.frame_duration = 5; //adjust its frame duration based on how fast it is walking (faster = smaller)
     sprite->animation.index = 0; //change the start index of our sprite. we have 4 rows of animations and our spritesheet is 8 tiles wide, so our possible start indicies are 0, 8, 16, and 24
     
-    //reserve 10 spots for ships
-    targets.reserve(10);
 }
 
 Target::~Target(){
     enabled=false;
+    delete sprite;
     delete spriteRenderer;
 }
 
@@ -42,17 +41,15 @@ void Target::changeColor(Color _color){
     sprite->animation.index = int(_color);
 }
 
-void Target::addTarget(BasicObject *ship){
-    targets.push_back(ship);
+void Target::addTarget(BasicObject &ship){
+    targets.push_back(&ship);
     //play sfx
-    SoundManager::getInstance()->targeted.play();
+    //SoundManager::getInstance()->targeted.play();
 }
 
 void Target::clearTargets(){
-    short i=0;
-    while(i<targets.size()){
+    for(int i=0; i<targets.size(); i++){
         targets.at(i)->targeted=false;
-        i++;
     }
     targets.clear();
 }
@@ -64,11 +61,11 @@ void Target::update(){
 	spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     short i=0;
     while(i<targets.size()){
-        if(targets[i]!=NULL && !targets[i]->dead){
+        if(targets.at(i)!=NULL && !targets.at(i)->dead){
             spriteRenderer->addCenteredTile(
                                         &sprite->animation, 
-                                        targets[i]->getPosition().x, 
-                                        targets[i]->getPosition().y
+                                        targets.at(i)->getPosition().x, 
+                                        targets.at(i)->getPosition().y
                                         );
         }else{
             removeTarget(i);
@@ -92,7 +89,7 @@ void Target::removeTarget(int _pos){
         targets[_pos]=holder;
         
     }
-    
+    cout << "remove target: " << targets.size() << " left." << endl;
     //resize the vector
     targets.pop_back();
     

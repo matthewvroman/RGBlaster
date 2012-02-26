@@ -86,11 +86,19 @@
 	
 	glView = [[EAGLView alloc] initWithFrame:screenBounds andDepth:iPhoneGetOFWindow()->isDepthEnabled() andAA:iPhoneGetOFWindow()->isAntiAliasingEnabled() andNumSamples:iPhoneGetOFWindow()->getAntiAliasingSampleCount() andRetina:iPhoneGetOFWindow()->isRetinaSupported()];
 	
-	[window addSubview:glView];
+	//[window addSubview:glView];
 	//	[glView release];	// do not release, incase app wants to removeFromSuper and add later
 	
 	// make window active
 	[window makeKeyAndVisible];
+    
+    
+    //we need a rootviewcontroller to make Apple happy - just put the glView on a new view controller instead of directly on the window (line 89)
+    UIViewController *mRootViewController = [[UIViewController alloc] init];
+    [window setRootViewController:mRootViewController];
+    [mRootViewController setView:glView];
+    [mRootViewController release];
+    
 	
 	//----- DAMIAN
 	// set data path root for ofToDataPath()

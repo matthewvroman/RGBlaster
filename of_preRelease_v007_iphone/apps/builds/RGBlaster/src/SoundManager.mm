@@ -63,7 +63,7 @@ SoundManager::SoundManager(){
     }
     
     backgroundMusic.setVolume(1.0);
-
+     
 }
 
 //stop all music currently playing
