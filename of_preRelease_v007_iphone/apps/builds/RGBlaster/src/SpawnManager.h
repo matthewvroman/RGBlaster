@@ -100,6 +100,8 @@ public:
     
     void setNotifier(Notifier *_notifier);
     
+    ~SpawnManager();
+    
 private:
     //singleton has a private constructor called by getInstance()
     SpawnManager();

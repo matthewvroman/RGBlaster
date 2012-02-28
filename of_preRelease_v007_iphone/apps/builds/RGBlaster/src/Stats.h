@@ -13,13 +13,7 @@
 #import "GKAchievementHandler.h"
 
 #include <string>
-using namespace std;
-
-struct stat{
-    string sIdentifier;
-    int currPoints;
-    int pointsNeeded;
-};
+//using namespace std;
 
 class Stats{
 public:
@@ -34,9 +28,11 @@ public:
     int totalBlueKilled;
     int totalKilled;
     
+    int totalPoints;
+    int highScore;
+    
     int colorBlind;
     
-    int totalPoints;
     int totalGamesPlayed;
     
     int totalTimePlayed;
@@ -49,20 +45,23 @@ public:
     
     int getStat(NSString* _statName);
     
-    void incrementStat(string _statName, int increment);
+    void incrementStat(std::string _statName, int increment);
     
     
     //gamecenter
     bool isAvailable();
 	void authenticateLocalPlayer();
     
-	void reportScore(string _category, int _score);
-	void reportAchievement(string _ach, float percent);
+	void reportScore(std::string _category, int _score);
+	void reportAchievement(std::string _ach, float percent);
     
 	bool isAuthenticated;
     void updateStats();
     
+    void retrieveAchievements();
+    
     void retrieveAchievementMetadata();
+    NSMutableDictionary *achievementsDictionary;
     NSMutableDictionary *achievementsDescDictionary;
     
     

@@ -19,7 +19,8 @@ button::button() {
 }
 
 button::~button() {
-	disableTouchEvents();
+    if(touchEventsEnabled)
+        disableTouchEvents();
 }
 
 void button::init( int _buttonId, bool _alive, string _buttonLabel, ofTrueTypeFont &font, float _offset ) {
@@ -52,11 +53,15 @@ void button::update() {
 void button:: hide() {
     hideBtn = true;
     enabled=false;
+    if(touchEventsEnabled)
+        disableTouchEvents();
 }
 
 void button:: show() {
     hideBtn = false;
     enabled=true;
+    if(!touchEventsEnabled)
+        enableTouchEvents();
 }
 
 void button::draw() {

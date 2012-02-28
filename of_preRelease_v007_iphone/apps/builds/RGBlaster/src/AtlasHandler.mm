@@ -52,6 +52,10 @@ AtlasHandler::AtlasHandler(){
     multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
     sheets.push_back(multicoreShipRenderer);
     
+    targetRenderer = new ofxSpriteSheetRenderer(1, 1000, 0, 64);
+    targetRenderer->loadTexture("sprites/targeting_spriteSheet.png", 256, GL_NEAREST);
+    sheets.push_back(targetRenderer);
+    
     cout << "Loaded Sprite Sheets" << endl;
     
     background8.loadImage("sprites/background-low.png");
@@ -83,6 +87,7 @@ ofxSpriteSheetRenderer* AtlasHandler::getSpriteSheetRenderer(string _renderer){
 AtlasHandler::~AtlasHandler(){
     //clear should dealloc each renderer
     sheets.clear();
+    delete instance;
     /*
     delete redShipRenderer;
     delete blueShipRenderer;

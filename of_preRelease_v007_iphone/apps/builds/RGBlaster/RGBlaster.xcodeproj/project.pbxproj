@@ -15,8 +15,8 @@
 		7EA0316E14873778002853A6 /* GameScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0316D14873778002853A6 /* GameScreen.mm */; };
 		7EA0317014873FC8002853A6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA0316F14873FC8002853A6 /* logo.png */; };
 		7EA0317314874011002853A6 /* MenuScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0317214874011002853A6 /* MenuScreen.mm */; };
-		7EA0317614874493002853A6 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0317414874493002853A6 /* button.cpp */; };
-		7EA03179148744F3002853A6 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.cpp */; };
+		7EA0317614874493002853A6 /* button.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0317414874493002853A6 /* button.mm */; };
+		7EA03179148744F3002853A6 /* ofxMSAInteractiveObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.mm */; };
 		AC0FBD3A14843BC20058BAF2 /* missile_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0FBD2F14843BC20058BAF2 /* missile_spriteSheet.png */; };
 		AC23A4A51482E1E100171457 /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC23A4A41482E1E000171457 /* HUD.mm */; };
 		AC23A4BC1482E88F00171457 /* ArcadeClassic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC23A4BB1482E88F00171457 /* ArcadeClassic.ttf */; };
@@ -127,9 +127,9 @@
 		7EA0316F14873FC8002853A6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		7EA0317114874011002853A6 /* MenuScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScreen.h; sourceTree = "<group>"; };
 		7EA0317214874011002853A6 /* MenuScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScreen.mm; sourceTree = "<group>"; };
-		7EA0317414874493002853A6 /* button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cpp; sourceTree = "<group>"; };
+		7EA0317414874493002853A6 /* button.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = button.mm; sourceTree = "<group>"; };
 		7EA0317514874493002853A6 /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
-		7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
+		7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxMSAInteractiveObject.mm; sourceTree = "<group>"; };
 		7EA03178148744F3002853A6 /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
 		AC0FBD2F14843BC20058BAF2 /* missile_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = missile_spriteSheet.png; path = sprites/missile_spriteSheet.png; sourceTree = "<group>"; };
 		AC23A4A31482E1D100171457 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
@@ -468,9 +468,9 @@
 				7EA0316C14873778002853A6 /* GameScreen.h */,
 				7EA0316D14873778002853A6 /* GameScreen.mm */,
 				7EA0317514874493002853A6 /* button.h */,
-				7EA0317414874493002853A6 /* button.cpp */,
+				7EA0317414874493002853A6 /* button.mm */,
 				7EA03178148744F3002853A6 /* ofxMSAInteractiveObject.h */,
-				7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.cpp */,
+				7EA03177148744F3002853A6 /* ofxMSAInteractiveObject.mm */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -745,8 +745,8 @@
 				AC23A4A51482E1E100171457 /* HUD.mm in Sources */,
 				7EA0316E14873778002853A6 /* GameScreen.mm in Sources */,
 				7EA0317314874011002853A6 /* MenuScreen.mm in Sources */,
-				7EA0317614874493002853A6 /* button.cpp in Sources */,
-				7EA03179148744F3002853A6 /* ofxMSAInteractiveObject.cpp in Sources */,
+				7EA0317614874493002853A6 /* button.mm in Sources */,
+				7EA03179148744F3002853A6 /* ofxMSAInteractiveObject.mm in Sources */,
 				AC92E7A9148AC8AC00F79242 /* AtlasHandler.mm in Sources */,
 				AC2F6C4014956BFA00EA8F1E /* ScreenManager.mm in Sources */,
 				AC2F6C4114956BFA00EA8F1E /* HelpScreen.mm in Sources */,
@@ -775,13 +775,14 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;

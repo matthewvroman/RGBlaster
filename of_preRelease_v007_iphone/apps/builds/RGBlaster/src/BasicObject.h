@@ -67,6 +67,8 @@ public:
     void update();
     void draw();
     
+    void kill();
+    
     
     //object variables
     int width;

@@ -32,16 +32,19 @@ MenuScreen::MenuScreen(){
 	font.loadFont("fonts/ArcadeClassic.ttf", 45, true, true, false);
     visitorFont.loadFont("fonts/visitor1.ttf", 27, true, true, false);
     
+    btn_start = new button();
+    btn_about = new button();
+    btn_help = new button();
     // Initialize buttons
-    btn_start.init( 1, true, "Start Game", font, 20 );
-    btn_about.init( 3, true, "About", font, 110 );
-    btn_help.init( 2, true, "Help", font, 120 );
-    btn_start.setPosAndSize( 200, 390, 368, 80 );
-    btn_help.setPosAndSize( 200, 510, 368, 80 );
-    btn_about.setPosAndSize( 200, 630, 368, 80 );
-    btn_start.show();
-    btn_help.show();
-    btn_about.show();
+    btn_start->init( 1, true, "Start Game", font, 20 );
+    btn_about->init( 3, true, "About", font, 110 );
+    btn_help->init( 2, true, "Help", font, 120 );
+    btn_start->setPosAndSize( 200, 390, 368, 80 );
+    btn_help->setPosAndSize( 200, 510, 368, 80 );
+    btn_about->setPosAndSize( 200, 630, 368, 80 );
+    btn_start->show();
+    btn_help->show();
+    btn_about->show();
     
     // Assign screen ID
     nextScreen = 0;
@@ -51,16 +54,16 @@ MenuScreen::MenuScreen(){
 //--------------------------------------------------------------
 void MenuScreen::update(){
     // Check for button press
-    if(btn_start.pressed) {
-        btn_start.setPosAndSize( 200, 390, 368, 80 );
-        btn_help.setPosAndSize( 200, 510, 368, 80 );
-        btn_about.setPosAndSize( 200, 630, 368, 80 );
+    if(btn_start->pressed) {
+        btn_start->setPosAndSize( 200, 390, 368, 80 );
+        btn_help->setPosAndSize( 200, 510, 368, 80 );
+        btn_about->setPosAndSize( 200, 630, 368, 80 );
         nextScreen = 1;
         SoundManager::getInstance()->click.play();
-    } else if (btn_help.pressed) {
+    } else if (btn_help->pressed) {
         nextScreen = 2;
         SoundManager::getInstance()->click.play();
-    } else if (btn_about.pressed) {
+    } else if (btn_about->pressed) {
         nextScreen = 3;
         SoundManager::getInstance()->click.play();
     }
@@ -85,7 +88,10 @@ void MenuScreen::draw(){
 
 MenuScreen::~MenuScreen(){
     // Hide buttons
-    btn_start.hide();
-    btn_help.hide();
-    btn_about.hide();
+    btn_start->hide();
+    btn_help->hide();
+    btn_about->hide();
+    delete btn_start;
+    delete btn_help;
+    delete btn_about;
 }

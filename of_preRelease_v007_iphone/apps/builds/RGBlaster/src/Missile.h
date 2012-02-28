@@ -38,8 +38,6 @@ public:
     //destructor
     ~Missile();
     
-    float speed;
-    
     BasicObject *target;
     
     Color color;
@@ -49,12 +47,16 @@ public:
     
     ofVec2f relativePos;
     
-    bool hitTest(BasicObject &ship);
+    bool hitTest(BasicObject *ship);
     
     void update();
     void draw();
     
     float maxRotation;
+    
+    basicSprite *targetSprite;
+    
+    ofxSpriteSheetRenderer *targetRenderer;
     
     
     
@@ -62,6 +64,7 @@ public:
 private:
     
     float generateRotation(float _x, float _y);
+    void moveTowardsTarget();
 };
 
 

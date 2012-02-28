@@ -16,6 +16,8 @@ class ofxMSAInteractiveObject : public ofRectangle {
 public:
 	bool		enabled;				// set this to false to temporarily disable all events
 	bool		verbose;
+    
+    bool        touchEventsEnabled;
 	
 	// these are so the touchUp hitTest is measured from initial touch, not where finger currently is.
 	// if it was the latter, dragging the finger outside the button and releasing does not fire the hitTest

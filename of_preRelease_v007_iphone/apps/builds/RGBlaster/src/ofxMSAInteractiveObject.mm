@@ -44,6 +44,7 @@ void ofxMSAInteractiveObject::enableTouchEvents() {
 	ofAddListener(ofEvents.touchDown, this, &ofxMSAInteractiveObject::_touchisDown);
 	ofAddListener(ofEvents.touchUp, this, &ofxMSAInteractiveObject::_touchisUp);
 	ofAddListener(ofEvents.touchMoved, this, &ofxMSAInteractiveObject::_touchisMoved);
+    touchEventsEnabled=true;
 	
 }
 
@@ -51,6 +52,7 @@ void ofxMSAInteractiveObject::disableTouchEvents() {
 	ofRemoveListener(ofEvents.touchDown, this, &ofxMSAInteractiveObject::_touchisDown);
 	ofRemoveListener(ofEvents.touchUp, this, &ofxMSAInteractiveObject::_touchisUp);
 	ofRemoveListener(ofEvents.touchMoved, this, &ofxMSAInteractiveObject::_touchisMoved);
+    touchEventsEnabled=false;
 }
 
 void ofxMSAInteractiveObject::enableAppEvents() {
@@ -113,7 +115,7 @@ void ofxMSAInteractiveObject::_touchisDown(ofTouchEventArgs &e) {
 	float y = e.y;
 	mTouchX = x;
 	mTouchY = y;
-	
+
 	if(hitTest(x, y)) {						// if mouse is over
 		onTouchDown(x, y);
 		currentlyTouched = true;

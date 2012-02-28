@@ -30,7 +30,7 @@ Finger::Finger(){
     sprite = new basicSprite();
     sprite->animation = defaultAnimation; //set its animation to the walk animation we declared
     sprite->animation.index = 0;
-    
+
     renderer = new ofxSpriteSheetRenderer(1,100,0,56);
     renderer->loadTexture("sprites/finger_sprite.png", 512, GL_NEAREST);
 }
@@ -40,7 +40,9 @@ Finger::~Finger(){
     ofRemoveListener(ofEvents.touchDown, this, &Finger::touchDown);
 	ofRemoveListener(ofEvents.touchMoved, this, &Finger::touchMoved);
 	ofRemoveListener(ofEvents.touchUp, this, &Finger::touchUp);
-    
+
+    delete sprite;
+    delete target;
     delete renderer;
 }
 
@@ -70,7 +72,20 @@ void Finger::setColor(Color _color){
 }
 
 //Check if the touch has collided with any of the ships on-screen
-bool Finger::hitTest(Ship &ship){
+bool Finger::hitTest(BasicObject *ship){
+    if(x - radius < ship->x+ship->width/2 && x + radius > ship->x - ship->width/2 &&
+       y - radius < ship->y+ship->height/2 && y + radius > ship->y-ship->height/2 &&
+       !ship->targeted){
+        target->addTarget(ship);
+        return true;
+    }else{
+        return false;
+    }
+}
+
+/*
+//Check if the touch has collided with any of the ships on-screen
+bool Finger::hitTest(BasicObject &ship){
     
     if(x - radius < ship.x+ship.width/2 && x + radius > ship.x - ship.width/2 &&
        y - radius < ship.y+ship.height/2 && y + radius > ship.y-ship.height/2 &&
@@ -95,7 +110,7 @@ bool Finger::hitTest(Core &core){
     }else{
         return false;
     }
-}
+}*/
 
 void Finger::powerUp(){
     scale=2;

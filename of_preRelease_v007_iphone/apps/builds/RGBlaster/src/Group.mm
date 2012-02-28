@@ -340,13 +340,6 @@ void Group::removeFromVector(int _pos){
     //resize the vector
     objects.pop_back();
     
-    //THIS IS HANDLED IN removeExplosion()
-    /*check if our group should still exist
-    if(objects.size()==0){
-        dead=true;
-        enabled=false;
-    }*/
-    
     if(this->color == RED){
         stats->incrementStat("totalRedKilled", 1);
     }else if(this->color == GREEN){

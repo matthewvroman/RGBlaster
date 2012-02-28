@@ -30,7 +30,7 @@ void testApp::setup(){
     
     screenManager = new ScreenManager();
     
-    AtlasHandler::getInstance();
+    //AtlasHandler::getInstance();
 
 }
 

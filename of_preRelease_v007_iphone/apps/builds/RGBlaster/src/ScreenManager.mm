@@ -106,6 +106,7 @@ void ScreenManager::switchScreens(int screen){
     if(screen != currentScreen){
         switch (currentScreen) {
             case 0:
+                cout << "deleted main menu" << endl;
                 delete menuScreen;
                 break;
             case 1:

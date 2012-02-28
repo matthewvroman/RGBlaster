@@ -114,3 +114,16 @@ static animation_t smokeTrailAnimation = {
     -1,
     1
 };
+
+static animation_t targetAnimation = {
+    0,
+    0,
+    4,
+    1,
+    1,
+    50,
+    0,
+    -1,
+    -1,
+    1
+};

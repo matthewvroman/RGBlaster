@@ -15,8 +15,6 @@ Explosion::Explosion(int posX, int posY, Color _color, Resolution _res,float _sc
     
     ofEnableAlphaBlending(); // turn on alpha blending. important!
     
-    sprite = new basicSprite(); // create a new sprite
-    
     sprite->pos.set(0,0); //set its position
     
     
@@ -46,22 +44,19 @@ Explosion::~Explosion(){
     //remove self-contained calls to update & draw
     enabled=false;
     
-    //delete allocated memory
-    delete sprite;
-    
 }
 
 void Explosion::update(){
-    if(!enabled) return;
+    if(!enabled || dead) return;
     if(sprite!=NULL && !dead){
         //positioning is handled in the draw func
         spriteRenderer->addCenteredTile(&sprite->animation, x,y,-1,F_NONE,scale,saturation,saturation,saturation,255);
+        if(sprite->animation.frame==7){
+            dead=true;
+        }
     }
     
     move(0, -speed);
-    if(sprite->animation.frame==7){
-        dead=true;
-    }
 
     //if we're dead, remove body
     if(dead){
@@ -70,7 +65,7 @@ void Explosion::update(){
 }
 
 void Explosion::draw(){
-    if(!enabled) return;
+    if(!enabled || dead) return;
     
     spriteRenderer->draw();
 }

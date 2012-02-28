@@ -32,9 +32,9 @@ public:
     
     ofTrueTypeFont font;
     ofTrueTypeFont visitorFont;
-    button btn_start;
-    button btn_about;
-    button btn_help;
+    button *btn_start;
+    button *btn_about;
+    button *btn_help;
     
     int nextScreen;
 };

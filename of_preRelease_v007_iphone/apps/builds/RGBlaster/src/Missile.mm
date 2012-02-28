@@ -34,11 +34,20 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     //spritesheet is loaded in as 256x256px, 32x32px tiles (256/32=8 tiles per row)
     sprite->animation.index = 8*int(resolution)+int(color);
     
+    targetSprite = new basicSprite();
+    targetSprite->pos.set(0,0);
+    targetSprite->animation = defaultAnimation; //targetAnimation
+    targetSprite->animation.index=int(color)*4; //4 tiles per row
+    
+    targetRenderer=AtlasHandler::getInstance()->targetRenderer;
+    
     target=_target;
     
     speed=5;
     
     r=0;
+    
+    a=0;
     
     type = MISSILE;
     
@@ -46,7 +55,13 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     
     this->setPosition(posX, posY);
     
-    dead = false;
+    relativePos.set(this->getPosition());
+    
+    if(target==NULL){
+        dead=true;
+    }else{
+        dead = false;
+    }
     
     
 }
@@ -54,22 +69,38 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
 Missile::~Missile(){
     //remove self-contained calls to update & draw
     enabled=false;
+    delete targetSprite;
     
 }
 
 
 void Missile::update() {
-    if(dead){
-        return;
-    }
+    if(dead) return;
 
+    moveTowardsTarget();
+    
+    if(sprite!=NULL){
+        //cout << _modX << ", " << _modY << endl;
+        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, 0, 1, F_NONE, 1.0, r); 
+    }
+    if(targetSprite!=NULL){
+        targetRenderer->addCenterRotatedTile(&targetSprite->animation,target->getPosition().x,target->getPosition().y, 0, 1, F_NONE, 1.0, 0);
+    }
+    
+    if(target!=NULL){
+    //check if we hit the target
+        hitTest(target);
+    }
+    
+}
+
+void Missile::moveTowardsTarget(){
     //Get the targets position and adjust path accordingly
-    if(target && !target->dead){
+    if(target!=NULL && !target->dead){
         relativePos.set(target->getPosition()-this->getPosition());
     }else{
         dead=true;
         return;
-        //relativePos.set(this->getPosition());
     }
     
     ofVec2f direction;
@@ -91,22 +122,11 @@ void Missile::update() {
     move(direction.x,direction.y);
     
     r = generateRotation(x, y);
-    
-    //float _modX=x+32*cos(deg2rad(r));
-    //float _modY=y+32*sin(deg2rad(r));
-    //cout << "R: " << r << endl;
-    
-    if(sprite!=NULL && !dead){
-        //cout << _modX << ", " << _modY << endl;
-        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, 1.0, r); 
-    }
-    
-    //check if we hit the target
-    hitTest(*target);
-    
 }
 
 float Missile::generateRotation(float _x, float _y){
+    if(target==NULL || target->dead) return 0.0;
+    
     float _percent = (target->getPosition().x-_x)/(target->getPosition().y-_y);
     if(_percent>maxRotation){
         _percent=maxRotation;
@@ -125,23 +145,25 @@ float Missile::generateRotation(float _x, float _y){
 void Missile::draw() {
     if(dead) return;
     spriteRenderer->draw();
+    targetRenderer->draw();
 }
 
-bool Missile::hitTest(BasicObject &ship){
+bool Missile::hitTest(BasicObject *ship){
     //hit the ship
-    if(x < ship.x+ship.width/2 && x > ship.x-ship.width/2 &&
-       y < ship.y+ship.height/2 && y > ship.y-ship.height/2
+    if(x < ship->x+ship->width/2 && x > ship->x-ship->width/2 &&
+       y < ship->y+ship->height/2 && y > ship->y-ship->height/2
        ){
-        if(ship.getColor() == this->color){ 
-            if(ship.derez()){   //if ship is the same color & on last life, destroy it
+        if(ship->getColor() == this->color){ 
+            if(ship->derez()){   //if ship is the same color & on last life, destroy it
                 SpawnManager::getInstance()->notifyShipDestroyed();
-                ship.dead=true;
-                SoundManager::getInstance()->missileSuccess.play();
+                ship->kill();
+                //SoundManager::getInstance()->missileSuccess.play();
             }
         }else{
             SpawnManager::getInstance()->resetColorStreak();
-            SoundManager::getInstance()->missileFailure.play();
+            //SoundManager::getInstance()->missileFailure.play();
         }
+        ship->targeted=false;
         if(derez()){
             dead=true;
         }

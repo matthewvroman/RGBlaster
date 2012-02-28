@@ -66,6 +66,12 @@ SoundManager::SoundManager(){
      
 }
 
+SoundManager::~SoundManager(){
+    sfx.clear();
+    music.clear();
+    delete instance;
+}
+
 //stop all music currently playing
 void SoundManager::stopAll(){
     for(int i=0; i<sfx.size(); i++){

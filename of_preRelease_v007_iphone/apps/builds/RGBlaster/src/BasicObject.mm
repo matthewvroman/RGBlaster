@@ -69,16 +69,21 @@ BasicObject::BasicObject(float _x, float _y, int _width, int _height,string _spr
     type = SHIP;
     
     saturation=255;
+
 }
 
 //destructor
 BasicObject::~BasicObject(){
     enabled=false;
     
-    sprite=NULL;
+    //sprite=NULL;
     //delete allocated memory
     delete sprite;
 
+}
+
+void BasicObject::kill(){
+    dead=true;
 }
 
 bool BasicObject::derez(){
@@ -157,7 +162,7 @@ void BasicObject::update() {
 	//spriteRenderer->update(ofGetElapsedTimeMillis()); //update the time in the renderer, this is necessary for animations to advance
     
     if(sprite!=NULL && !dead){
-                spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, scale, 0, saturation,saturation,saturation,255); 
+        spriteRenderer->addCenterRotatedTile(&sprite->animation,x,y, -1, 1, F_NONE, scale, 0, saturation,saturation,saturation,255); 
     }
     
 }

@@ -41,6 +41,7 @@ public:
     ofxSpriteSheetRenderer *explosionRenderer;
     ofxSpriteSheetRenderer *coreRenderer;
     ofxSpriteSheetRenderer *multicoreShipRenderer;
+    ofxSpriteSheetRenderer *targetRenderer;
     
     ofImage background8;
     ofImage background16;

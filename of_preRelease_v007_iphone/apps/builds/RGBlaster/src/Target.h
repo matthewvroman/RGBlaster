@@ -34,10 +34,11 @@ public:
     
     vector<BasicObject*>targets;
     
-    void addTarget(BasicObject &ship);
+    void addTarget(BasicObject *ship);
     //void addTarget(Core *core);
     
     void removeTarget(int);
+    void removeTarget(BasicObject *mem);
     void clearTargets();
     
     void changeColor(Color _color);

@@ -72,6 +72,8 @@ Blaster::Blaster(){
     switchingColor=false;
     
     maxMissilesOnScreen=75;
+    
+    missiles.reserve(maxMissilesOnScreen);
 }
 
 Blaster::~Blaster(){
@@ -177,18 +179,17 @@ void Blaster::update(){
     if(finger->down && spawner != nil && missiles.size()<maxMissilesOnScreen){
         for(short i=0; i<spawner->activeGroups.size(); i++){
             for(short j=0; j<spawner->activeGroups.at(i)->objects.size(); j++){
-                if(finger->hitTest(*spawner->activeGroups.at(i)->objects.at(j))){
-                    Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j));
-                    missiles.push_back(missile);
-                    
+                if(finger->hitTest(spawner->activeGroups.at(i)->objects.at(j))){
+                    //Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j));
+                    missiles.push_back(new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j)));
                     sprite->animation = blasterAnimation;
                     sprite->animation.index = tilesPerRow*int(resolution);
                 }
             }
-        }
+        }/*
          for(short i=0; i<spawner->activeMulticoreShips.size(); i++){
              for(short j=0; j<spawner->activeMulticoreShips[i]->cores.size(); j++){
-                 if(finger->hitTest(*spawner->activeMulticoreShips[i]->cores[j])){
+                 if(finger->hitTest(spawner->activeMulticoreShips[i]->cores[j])){
                      Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeMulticoreShips[i]->cores[j]);
                      missiles.push_back(missile);
                      
@@ -196,16 +197,16 @@ void Blaster::update(){
                      sprite->animation.index = tilesPerRow*int(resolution);
                  }
              }
-         }
+         }*/
         
     }
     
     targetOverlay->update();
     
-    for(short i=0; i<missiles.size(); i++){
-        missiles.at(i)->update();
-        if(missiles.at(i)->dead){
-            removeMissile(i);
+    for(int k=0; k<missiles.size(); k++){
+        missiles.at(k)->update();
+        if(missiles.at(k)==NULL || missiles.at(k)->dead){
+            removeMissile(k);
         }
     }
     
@@ -254,16 +255,18 @@ void Blaster::update(){
 
 //remove a ship from the vector
 void Blaster::removeExplosion(int _pos){
-
-    //Temporarily store our last element in the vector
-    Explosion *holder=explosions[explosions.size()-1];
+    
+    Explosion *holder;
+    if(_pos!=explosions.size()-1){
+        //Temporarily store our last element in the vector
+        holder=explosions[explosions.size()-1];
         
-    //move the ship we want to delete to the endof the position
-    explosions[explosions.size()-1]=explosions[_pos];
+        //move the ship we want to delete to the endof the position
+        explosions[explosions.size()-1]=explosions[_pos];
         
-    //put the old last element in the TBDeleted spot
-    explosions[_pos]=holder;
-        
+        //put the old last element in the TBDeleted spot
+        explosions[_pos]=holder;
+    }
     
     
     //delete the explosion
@@ -272,18 +275,15 @@ void Blaster::removeExplosion(int _pos){
     //resize the vector
     explosions.pop_back();
     
-    //check if our group should still exist
-    if(explosions.size()==0){
-        
-    }
-    
 }
 
 void Blaster::removeMissile(int _pos){
+    
+    Missile *holder;
     if(_pos!=missiles.size()-1){
         //Temporarily store our last element in the holder
-        Missile *holder=missiles[missiles.size()-1];
-        
+        holder=missiles[missiles.size()-1];
+       
         //move the element we want to delete to the endof the position
         missiles[missiles.size()-1]=missiles[_pos];
         
@@ -296,14 +296,6 @@ void Blaster::removeMissile(int _pos){
     //resize the vector
     missiles.pop_back();
     
-    /*
-    //pos now needs to be swapped all the way to the back
-    while (_pos<missiles.size()-1 && missiles.size()>=2) {
-        Missile *holder=missiles[_pos+1];
-        missiles[_pos+1]=missiles[_pos];
-        missiles[_pos]=holder;
-        _pos++;
-    }*/
 }
 
 void Blaster::draw(){
@@ -320,7 +312,8 @@ void Blaster::draw(){
     finger->draw();
     
     for(short i=0; i<missiles.size(); i++){
-        missiles.at(i)->draw();
+        if(missiles.at(i)!=NULL)
+            missiles.at(i)->draw();
     }
     
     ofPushMatrix();

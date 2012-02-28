@@ -114,8 +114,9 @@ void World::update(){
     if(!enabled) return;
     handler->update();
     notifier->update();
-    spawner->update();
+    
     blaster->update();
+    spawner->update();
     hud->update();
     checkRezStatus();
     
@@ -144,11 +145,6 @@ void World::drawBackground(){
 void World::draw(){
     if(!enabled) return;
     drawBackground();
-    /*
-    ofFill();
-    ofSetColor(225, 225, 225);
-    ofRect(0, 0, 768, 1024);
-     */
     notifier->draw();
     spawner->draw();
     blaster->draw();

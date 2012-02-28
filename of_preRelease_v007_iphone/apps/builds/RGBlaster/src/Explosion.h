@@ -33,11 +33,6 @@ public:
     
     float speed;
     
-    basicSprite *sprite;
-    
-    ofxSpriteSheetRenderer *spriteRenderer;
-    ofxSpriteSheetRenderer *smokeRenderer;
-    
     void update();
     void draw();
     
@@ -45,7 +40,6 @@ public:
     
     
 private:
-    bool enabled;
     
 };
 

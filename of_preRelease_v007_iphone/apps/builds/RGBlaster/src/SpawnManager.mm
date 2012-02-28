@@ -32,6 +32,12 @@ SpawnManager::SpawnManager(){
     //activeMulticoreShips.push_back(shipTest);
 }
 
+SpawnManager::~SpawnManager(){
+    activeGroups.clear();
+    activeMulticoreShips.clear();
+    delete instance;
+}
+
 void SpawnManager::setInitialValues(){
     
     gameOver=false;
@@ -39,7 +45,7 @@ void SpawnManager::setInitialValues(){
     resolution=Resolution(0);
     
     currentFrame=0;
-    spawnInterval=220; //in frames //game runs at 60fps
+    spawnInterval=190; //in frames //game runs at 60fps
     spawnDecrementer=2;
     
     difficulty=1;

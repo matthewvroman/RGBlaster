@@ -44,8 +44,7 @@ public:
     
     bool        down;
     
-    bool        hitTest(Ship &ship);
-    bool        hitTest(Core &core);
+    bool        hitTest(BasicObject *ship);
     
     void        setColor(Color _color);
     

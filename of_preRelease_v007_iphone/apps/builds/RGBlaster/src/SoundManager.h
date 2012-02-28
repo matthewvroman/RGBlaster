@@ -24,6 +24,8 @@ public:
     static SoundManager* instance;
     static SoundManager* getInstance();
     
+    ~SoundManager();
+    
     ofSoundPlayer  targeted;
     ofSoundPlayer  explosion;
     
@@ -51,6 +53,7 @@ private:
     
     //singleton has a private constructor called by getInstance()
     SoundManager();
+    
 };
 
 #endif
