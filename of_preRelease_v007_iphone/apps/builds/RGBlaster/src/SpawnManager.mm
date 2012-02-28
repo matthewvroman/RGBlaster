@@ -231,6 +231,12 @@ void SpawnManager::notifyGameOver(){
 
 void SpawnManager::update(){
     if(!gameOver){
+        
+        if(hud->getTime() > nextDifficultyIncrease){
+            nextDifficultyIncrease+=difficultyUpTimeGap;
+            increaseDifficulty();
+        }
+        
         if(currentFrame>=spawnInterval){
             //spawn group
             spawnEnemy();
@@ -302,11 +308,6 @@ void SpawnManager::spawnEnemy(){
     }
     
     spawnGroup();
-    
-    if(hud->getTime() > nextDifficultyIncrease){
-        nextDifficultyIncrease+=difficultyUpTimeGap;
-        increaseDifficulty();
-    }
     
     applyPowerUp();
 }
@@ -441,13 +442,13 @@ void SpawnManager::increaseDifficulty(){
         default:
             
             if (difficultyUpTimeGap<30) {
-                difficultyUpTimeGap+=3;
+                difficultyUpTimeGap+=2;
             }
             if(coreFlashSpeed>=2){
                 coreFlashSpeed-=0.1;
             }
-            if(maxShipSpeed<7){
-                maxShipSpeed+=0.025;
+            if(maxShipSpeed<8){
+                maxShipSpeed+=0.5;
             }
             if(minShipSpeed<5){
                 minShipSpeed+=0.025;

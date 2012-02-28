@@ -26,9 +26,7 @@ SoundManager::SoundManager(){
     
     
     targeted.loadSound("sound/cannon-shot.wav");
-    //targeted.loadSound("sound/target_sfx.caf");
     explosion.loadSound("sound/explosion_sfx.caf");
-    //missileSuccess.loadSound("sound/missile-success.wav");
     missileSuccess.loadSound("sound/ship_explosion.wav");
     missileFailure.loadSound("sound/missile-failure.wav");
     resUp.loadSound("sound/res_up_sfx.wav");
@@ -36,7 +34,6 @@ SoundManager::SoundManager(){
     gameOver.loadSound("sound/game_over_sfx.wav");
     click.loadSound("sound/blip.wav");
     spin.loadSound("sound/blaster-spin.wav");
-    //spin.loadSound("sound/cannon_rotation.wav");
     
     sfx.push_back(targeted);
     sfx.push_back(explosion);

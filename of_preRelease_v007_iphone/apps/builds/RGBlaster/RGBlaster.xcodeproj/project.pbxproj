@@ -28,7 +28,6 @@
 		AC2F6C4214956BFA00EA8F1E /* AboutScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC2F6C3D14956BFA00EA8F1E /* AboutScreen.mm */; };
 		AC2F6C44149573ED00EA8F1E /* visitor1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2F6C43149573EC00EA8F1E /* visitor1.ttf */; };
 		AC713067147C33BE00CF6A73 /* Finger.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC713066147C33BE00CF6A73 /* Finger.mm */; };
-		AC72D3851472FF2100380F24 /* Target.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC72D3841472FF2100380F24 /* Target.mm */; };
 		AC80989C148605F70042AF68 /* targeting_spriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = AC80989B148605F70042AF68 /* targeting_spriteSheet.png */; };
 		AC8098A0148608860042AF68 /* missile-failure.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC80989E148608860042AF68 /* missile-failure.wav */; };
 		AC9012F21495CA160010F64B /* green_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9012EF1495CA160010F64B /* green_sprite.png */; };
@@ -147,8 +146,6 @@
 		AC2F6C43149573EC00EA8F1E /* visitor1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = visitor1.ttf; path = fonts/visitor1.ttf; sourceTree = "<group>"; };
 		AC713065147C339100CF6A73 /* Finger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finger.h; sourceTree = "<group>"; };
 		AC713066147C33BE00CF6A73 /* Finger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Finger.mm; sourceTree = "<group>"; };
-		AC72D3831472FF1300380F24 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
-		AC72D3841472FF2100380F24 /* Target.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Target.mm; sourceTree = "<group>"; };
 		AC72D3861472FF4400380F24 /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Structs.h; sourceTree = "<group>"; };
 		AC72D3871472FF7D00380F24 /* Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
 		AC80989B148605F70042AF68 /* targeting_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = targeting_spriteSheet.png; path = sprites/targeting_spriteSheet.png; sourceTree = "<group>"; };
@@ -507,8 +504,6 @@
 				ACC67B5F14DA56D800BDAB88 /* Core.mm */,
 				ACEDC636146CAF55009CDD3C /* Blaster.h */,
 				ACEDC635146CAF55009CDD3C /* Blaster.mm */,
-				AC72D3831472FF1300380F24 /* Target.h */,
-				AC72D3841472FF2100380F24 /* Target.mm */,
 				ACB54892147323E700B32CE4 /* Missile.h */,
 				ACB54893147323F500B32CE4 /* Missile.mm */,
 				AC98DA5714CFFBEE007F549D /* Explosion.h */,
@@ -738,7 +733,6 @@
 				AC2629B21469C15700184B74 /* Ship.mm in Sources */,
 				ACEDC634146C5EDE009CDD3C /* SpawnManager.mm in Sources */,
 				ACEDC637146CAF55009CDD3C /* Blaster.mm in Sources */,
-				AC72D3851472FF2100380F24 /* Target.mm in Sources */,
 				ACB54894147323F500B32CE4 /* Missile.mm in Sources */,
 				ACDB7D2B1473518F00F732A5 /* SoundManager.mm in Sources */,
 				AC713067147C33BE00CF6A73 /* Finger.mm in Sources */,

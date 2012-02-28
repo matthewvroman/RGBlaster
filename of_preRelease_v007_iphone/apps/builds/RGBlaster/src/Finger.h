@@ -20,7 +20,6 @@
 #import "ofxSpriteSheetRenderer.h"
 #import "Animations.h"
 
-#import "Target.h"
 #import "Ship.h"
 #import "Core.h"
 
@@ -31,8 +30,6 @@ public:
     
     //destructor
     ~Finger();
-    
-    Target      *target;
     
     float       x;
     float       y;

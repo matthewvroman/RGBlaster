@@ -157,11 +157,11 @@ bool Missile::hitTest(BasicObject *ship){
             if(ship->derez()){   //if ship is the same color & on last life, destroy it
                 SpawnManager::getInstance()->notifyShipDestroyed();
                 ship->kill();
-                //SoundManager::getInstance()->missileSuccess.play();
+                SoundManager::getInstance()->missileSuccess.play();
             }
         }else{
             SpawnManager::getInstance()->resetColorStreak();
-            //SoundManager::getInstance()->missileFailure.play();
+            SoundManager::getInstance()->missileFailure.play();
         }
         ship->targeted=false;
         if(derez()){

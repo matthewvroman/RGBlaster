@@ -25,7 +25,6 @@
 #include "BasicObject.h"
 #include "Ship.h"
 #include "Blaster.h"
-#import "Target.h"
 #import "Finger.h"
 #import "HUD.h"
 #import "Notifier.h"

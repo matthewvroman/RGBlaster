@@ -19,7 +19,6 @@
 #import "ofxiPhoneExtras.h"
 
 #import "BasicObject.h"
-#import "Target.h"
 #import "Missile.h"
 #import "Finger.h"
 #import "SpawnManager.h"
@@ -32,9 +31,6 @@ public:
     
     //destructor
     ~Blaster();
-    
-    
-    void addTarget(BasicObject *target);
     
     void update();
     void draw();
@@ -52,8 +48,6 @@ public:
 private:
     Resolution resolution;
     Color color;
-    
-    Target *targetOverlay;
     
     SpawnManager *spawner;
     

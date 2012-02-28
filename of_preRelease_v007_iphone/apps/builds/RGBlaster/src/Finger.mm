@@ -19,8 +19,6 @@ Finger::Finger(){
 	ofAddListener(ofEvents.touchMoved, this, &Finger::touchMoved);
 	ofAddListener(ofEvents.touchUp, this, &Finger::touchUp);
     
-    target = new Target();
-    
     //defines how large of a radius the touch has influence over
     defaultRadius=radius=15;
     r=0;
@@ -42,7 +40,6 @@ Finger::~Finger(){
 	ofRemoveListener(ofEvents.touchUp, this, &Finger::touchUp);
 
     delete sprite;
-    delete target;
     delete renderer;
 }
 
@@ -63,7 +60,6 @@ void Finger::touchUp(ofTouchEventArgs &touch) {
     down=false;
     x=nil;
     y=nil;
-    target->clearTargets();
 }
 
 void Finger::setColor(Color _color){
@@ -76,41 +72,11 @@ bool Finger::hitTest(BasicObject *ship){
     if(x - radius < ship->x+ship->width/2 && x + radius > ship->x - ship->width/2 &&
        y - radius < ship->y+ship->height/2 && y + radius > ship->y-ship->height/2 &&
        !ship->targeted){
-        target->addTarget(ship);
         return true;
     }else{
         return false;
     }
 }
-
-/*
-//Check if the touch has collided with any of the ships on-screen
-bool Finger::hitTest(BasicObject &ship){
-    
-    if(x - radius < ship.x+ship.width/2 && x + radius > ship.x - ship.width/2 &&
-       y - radius < ship.y+ship.height/2 && y + radius > ship.y-ship.height/2 &&
-       !ship.targeted){
-        ship.targeted=true;
-        target->addTarget(ship);
-        return true;
-    }else{
-        return false;
-    }
-}
-
-//Check if the touch has collided with any of the ships on-screen
-bool Finger::hitTest(Core &core){
-    
-    if(x - radius < core.x+core.width/2 && x + radius > core.x - core.width/2 &&
-       y - radius < core.y+core.height/2 && y + radius > core.y-core.height/2 &&
-       !core.targeted){
-        core.targeted=true;
-        target->addTarget(core);
-        return true;
-    }else{
-        return false;
-    }
-}*/
 
 void Finger::powerUp(){
     scale=2;

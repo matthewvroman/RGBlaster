@@ -54,7 +54,6 @@ Blaster::Blaster(){
     spawner = nil;
     
     finger = new Finger();
-    targetOverlay = finger->target;
     
     tilesPerRow=6;
     
@@ -120,14 +119,6 @@ void Blaster::touchUp(ofTouchEventArgs &touch) {
     
 }
 
-void Blaster::addTarget(BasicObject *target){
-    if(!target->targeted){
-        targets.push_back(target);
-        target->targeted = true;
-    }
-    sprite->animation = blasterAnimation;
-}
-
 void Blaster::setSpawner(SpawnManager *_spawner){
     spawner = _spawner;
 }
@@ -135,7 +126,6 @@ void Blaster::setSpawner(SpawnManager *_spawner){
 void Blaster::switchColor(){
     updateSpriteSheet();
     finger->setColor(color);
-    targetOverlay->changeColor(color);
 }
 
 //check finger collisions & spawn a missile if there'sa hit
@@ -181,6 +171,7 @@ void Blaster::update(){
             for(short j=0; j<spawner->activeGroups.at(i)->objects.size(); j++){
                 if(finger->hitTest(spawner->activeGroups.at(i)->objects.at(j))){
                     //Missile *missile = new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j));
+                    spawner->activeGroups.at(i)->objects.at(j)->targeted=true;
                     missiles.push_back(new Missile(currentMissileSpawnPos.x,currentMissileSpawnPos.y,color,resolution,spawner->activeGroups.at(i)->objects.at(j)));
                     sprite->animation = blasterAnimation;
                     sprite->animation.index = tilesPerRow*int(resolution);
@@ -200,8 +191,6 @@ void Blaster::update(){
          }*/
         
     }
-    
-    targetOverlay->update();
     
     for(int k=0; k<missiles.size(); k++){
         missiles.at(k)->update();
@@ -306,8 +295,6 @@ void Blaster::draw(){
     }
     
     if(spawner->gameOver) return;
-    
-    targetOverlay->draw();
     
     finger->draw();
     
