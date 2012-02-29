@@ -72,6 +72,7 @@ bool Finger::hitTest(BasicObject *ship){
     if(x - radius < ship->x+ship->width/2 && x + radius > ship->x - ship->width/2 &&
        y - radius < ship->y+ship->height/2 && y + radius > ship->y-ship->height/2 &&
        !ship->targeted){
+        SoundManager::getInstance()->targeted.play();
         return true;
     }else{
         return false;

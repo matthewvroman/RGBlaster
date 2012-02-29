@@ -20,6 +20,8 @@
 #import "ofxSpriteSheetRenderer.h"
 #import "Animations.h"
 
+#import "SoundManager.h"
+
 #import "Ship.h"
 #import "Core.h"
 

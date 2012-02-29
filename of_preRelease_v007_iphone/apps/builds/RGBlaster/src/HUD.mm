@@ -36,6 +36,10 @@ HUD::HUD(){
     setScore(0);
     setLives(1);
     setHealth(0,100);
+    resetMultiplier();
+    
+    saturation=0;
+    saturationUp=true;
     
     powerUpCountString="";
     
@@ -58,6 +62,19 @@ void HUD::update(){
         }
     }
     
+    if(saturationUp){
+        saturation+=3;
+        if(saturation>=255){
+            saturation=255;
+            saturationUp=false;
+        }
+    }else{
+        saturation-=3;
+        if(saturation<=0){
+            saturation=0;
+            saturationUp=true;
+        }
+    }
     
     //tween the health bar based on current health and current health bar width
     if(currentHealthBarWidth>tweenToHealthWidth && tweenToHealthWidth-3>=currentHealthBarWidth){
@@ -82,6 +99,16 @@ void HUD::draw(){
     //ofFill();
     //ofSetColor(0,0,0,255);
     //ofRect(0, 0, 768, 65);
+    /*
+    ofSetColor(0,0,0);
+    blockFont.drawString("SCORE", 17, 32);
+    blockFont.drawString("TIME",327,32);
+    blockFont.drawString("HIGH SCORE",562,32);
+    blockFont.drawString(multiplierString, 57, 80);
+    blockFont.drawString(scoreString, 17, 58);
+    blockFont.drawString(timeString, 327, 58);
+    blockFont.drawString(highScoreString,562,58);
+    */
     
     //r
     ofSetColor(255,0,0);
@@ -99,6 +126,11 @@ void HUD::draw(){
     blockFont.drawString(scoreString, 15, 56);
     blockFont.drawString(timeString, 325, 56);
     blockFont.drawString(highScoreString,560,56);
+    
+    if(scoreMultiplier>1){
+        ofSetColor(255,255, saturation);
+        blockFont.drawString(multiplierString, 57, 78);
+    }
     
     //GAME OVER HUD
     if(gameOver){
@@ -199,6 +231,11 @@ void HUD::setPowerUpCountString(int _count){
     }
 }
 
+void HUD::setMultiplier(int _mult){
+    scoreMultiplier=_mult;
+    multiplierToString();
+}
+
 void HUD::setHighScore(int _score){
     //set highscore to 0 if this is the first time
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"]==nil){
@@ -241,6 +278,10 @@ int HUD::getLives(){
     return lives;
 }
 
+int HUD::getMultiplier(){
+    return scoreMultiplier;
+}
+
 
 //INCREMENTERS
 void HUD::incrementTime(int _increment){
@@ -250,7 +291,7 @@ void HUD::incrementTime(int _increment){
 }
 
 void HUD::incrementScore(int _increment){
-    score+=_increment;
+    score+=(_increment*scoreMultiplier);
     scoreToString();
 }
 
@@ -266,6 +307,11 @@ void HUD::increaseHealth(float _healthGain){
         health=health-maxHealth;
         rezUp=true;
     }
+}
+
+void HUD::incrementMultiplier(int _increment){
+    scoreMultiplier+=_increment;
+    multiplierToString();
 }
 
 //DECREMENTERS
@@ -288,6 +334,11 @@ void HUD::resetHealth(){
     health=maxHealth;
     tweenToHealthWidth=(health/maxHealth)*maxHealthBarWidth;
     currentHealthBarWidth=tweenToHealthWidth;
+}
+
+void HUD::resetMultiplier(){
+    scoreMultiplier=1;
+    multiplierToString();
 }
 
 
@@ -314,4 +365,11 @@ void HUD::livesToString(){
     livesString=ofToString(lives);
     while(livesString.length()<2)
         livesString="x0"+livesString;
+}
+
+void HUD::multiplierToString(){
+    multiplierString=ofToString(scoreMultiplier);
+    while(multiplierString.length()<2)
+        multiplierString="0"+multiplierString;
+    multiplierString="x"+multiplierString;
 }

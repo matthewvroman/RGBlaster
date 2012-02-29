@@ -40,18 +40,22 @@ public:
     void setHighScore(int);
     void resetHealth();
     void setPowerUpCountString(int);
+    void setMultiplier(int);
+    void resetMultiplier();
     
     //getters
     int getScore();
     int getTime();
     int getLives();
     int getHighScore();
+    int getMultiplier();
     
     //incrementers
     void incrementTime(int);
     void incrementScore(int);
     void incrementLives(int);
     void increaseHealth(float);
+    void incrementMultiplier(int);
     
     //decrementers
     void decrementLives(int);
@@ -81,6 +85,8 @@ private:
     int lives;
     int timeCounter;
     
+    int scoreMultiplier;
+    
     float health;
     float maxHealth;
     
@@ -95,12 +101,17 @@ private:
     string timeString;
     string livesString;
     string powerUpCountString;
+    string multiplierString;
     
     //private methods
     void timeToString();
     void scoreToString();
     void livesToString();
     void highScoreToString();
+    void multiplierToString();
+    
+    int saturation;
+    bool saturationUp;
 };
 
 

@@ -54,6 +54,7 @@ public:
     
 	void reportScore(std::string _category, int _score);
 	void reportAchievement(std::string _ach, float percent);
+    void reportScoreAchievement(int _score);
     
 	bool isAuthenticated;
     void updateStats();

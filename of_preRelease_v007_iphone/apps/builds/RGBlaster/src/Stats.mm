@@ -110,9 +110,10 @@ void Stats::retrieveAchievementMetadata(){
 }
 
 void Stats::reportScore(std::string _category, int _score){
-        if (!isAuthenticated) {
-            authenticateLocalPlayer();
-        }
+    if (!isAuthenticated) {
+        authenticateLocalPlayer();
+    }
+    
     std::cout << "Trying to report score to: " << _category << " with score: " << _score << std::endl;
 		int64_t score = static_cast<int64_t>(_score);
 		NSString * category = [NSString stringWithUTF8String: _category.c_str()];
@@ -129,10 +130,11 @@ void Stats::reportScore(std::string _category, int _score){
 }
 
 void Stats::reportAchievement(std::string _ach, float percent){
-        if (!isAuthenticated) {
-            authenticateLocalPlayer();
-        }
+    if (!isAuthenticated) {
+        authenticateLocalPlayer();
+    }
         
+    if(isAuthenticated){
         //convert from 1.00 to 100%
         percent*=100;
         
@@ -158,6 +160,16 @@ void Stats::reportAchievement(std::string _ach, float percent){
                  }
              }];
         }
+    }else{
+        NSLog(@"can't report achievement: we aren't logged into gamecenter");
+    }
+}
+
+void Stats::reportScoreAchievement(int _score){
+    reportAchievement("Score_01", float(_score)/5000.0f); 
+    reportAchievement("Score_02", float(_score)/10000.0f); 
+    reportAchievement("Score_03", float(_score)/25000.0f); 
+    reportAchievement("Score_04", float(_score)/50000.0f); 
 }
 
 

@@ -198,20 +198,20 @@ void Group::circleMove(float _speed,int _radius){
 void Group::expandMove(float _speed,int _maxRadius){
     
     if(expanding){
-        r+=_speed;
+        r+=_speed/2;
         if(r>=_maxRadius)
             expanding=false;
         
     }
     if(!expanding){
-        r-=_speed;
+        r-=_speed/2;
         if(r<=0)
             expanding=true;
     }
     short i=0;
     while(i<objects.size()){
         if(objects.at(i)!=nil)
-            objects.at(i)->expandMove(this->x, this->y, _speed, this->r);
+            objects.at(i)->expandMove(this->x, this->y, _speed/2, this->r);
         i++;
     }
     y+=_speed;
@@ -220,19 +220,19 @@ void Group::expandMove(float _speed,int _maxRadius){
 //move the group in and out from a central point while rotating around that center
 void Group::expandCircleMove(float _speed, int _maxRadius){
     if(expanding){
-        r+=_speed;
+        r+=_speed/2;
         if(r>=_maxRadius)
             expanding=false;
         
     }
     if(!expanding){
-        r-=_speed;
+        r-=_speed/2;
         if(r<=0)
             expanding=true;
     }
     short i=0;
     while(i<objects.size()){
-        objects.at(i)->circleMove(this->x, this->y, _speed, this->r);
+        objects.at(i)->circleMove(this->x, this->y, _speed/2, this->r);
         i++;
     }
     y+=_speed;

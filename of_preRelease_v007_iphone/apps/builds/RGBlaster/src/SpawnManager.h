@@ -36,6 +36,7 @@ public:
     int currentFrame;
     int spawnInterval;
     int currSpawnInterval;
+    int minSpawnInterval;
     
     int maxColor;
     int maxResolution;

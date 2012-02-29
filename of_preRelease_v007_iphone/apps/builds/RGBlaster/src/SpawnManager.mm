@@ -45,19 +45,20 @@ void SpawnManager::setInitialValues(){
     resolution=Resolution(0);
     
     currentFrame=0;
-    spawnInterval=190; //in frames //game runs at 60fps
-    spawnDecrementer=2;
+    spawnInterval=210; //in frames //game runs at 60fps
+    spawnDecrementer=5;
+    minSpawnInterval=80;
     
     difficulty=1;
     
     numWaves=0;
-    nextDifficultyIncrease=difficultyUpTimeGap=10; //difficulty increases every 15 seconds
+    nextDifficultyIncrease=difficultyUpTimeGap=8; //difficulty increases every 15 seconds
     
     maxMovementLevel=0;
     maxResolution=0;
     maxColor=0;
     maxShips=minShips=4;
-    maxShipSpeed=minShipSpeed=1.5;
+    maxShipSpeed=minShipSpeed=2.5;
     maxMultiplier=1;
     colorStreak=0;
     chanceToSpawnMulticore=0.0;
@@ -109,7 +110,7 @@ void SpawnManager::setNotifier(Notifier *_notifier){
 
 void SpawnManager::notifyShipDestroyed(){
     if(hud!=nil){
-        hud->incrementScore(5*maxMultiplier*(resolution+1));
+        hud->incrementScore(5*(resolution+1));
         hud->increaseHealth(1);
         SoundManager::getInstance()->missileSuccess.play();
         incrementColorStreak(1);
@@ -119,6 +120,9 @@ void SpawnManager::notifyShipDestroyed(){
 void SpawnManager::incrementColorStreak(int _incremenet){
     colorStreak+=_incremenet;
     
+    if(colorStreak%25==0){
+        hud->incrementMultiplier(1);
+    }
     if(colorStreak==75){
         generatePowerUp();
     }
@@ -137,7 +141,7 @@ void SpawnManager::generatePowerUp(){
         notifier->displayNotification(powerUpName);
     }
     
-    resetColorStreak();
+    colorStreak=0;
     
     hud->setPowerUpCountString(powerUpLength);
 }
@@ -211,6 +215,7 @@ void SpawnManager::decrementColorStreak(int _decrement){
 
 void SpawnManager::resetColorStreak(){
     colorStreak=0;
+    hud->resetMultiplier();
     stats->incrementStat("colorBlind", 1);
 }
 
@@ -223,7 +228,10 @@ void SpawnManager::notifyShipCrashed(int _dmg){
 void SpawnManager::notifyGameOver(){
     gameOver=true;
     stats->reportScore("default" , hud->getScore());
+    stats->reportScoreAchievement(hud->getScore());
     stats->updateStats();
+    
+    hud->gameOver=true;
     hud->setHighScore(hud->getScore());
     removeAllGroups();
     removeAllMulticoreShips();
@@ -243,12 +251,6 @@ void SpawnManager::update(){
         
             //reset frame counter
             currentFrame=0;
-        
-            //decrement time between spawns
-            if(spawnInterval-spawnDecrementer>80)
-                spawnInterval-=spawnDecrementer;
-            else
-                spawnInterval=80;
         
         }else{
             currentFrame++;
@@ -391,26 +393,24 @@ void SpawnManager::increaseDifficulty(){
         case 1:
             maxColor=1;
             maxMovementLevel=0;
-            maxShipSpeed=1.5;
             maxShips=5;
             break;
         case 2:
             maxColor=2;
             maxMovementLevel=1;
             chanceToSpawnMulticore=0.05;
-            chanceToSpawnExtras=0.2;
+            chanceToSpawnExtras=0.15;
             coresPerShip=2;
             colorsPerMulticoreShip=1;
             break;
         case 3:
-            maxShipSpeed=1.75;
+            maxShipSpeed=3;
             maxMovementLevel=2;
             maxColor=3;
             maxShips=7;
             maxExtras=1;
             break;
         case 4:
-            maxShipSpeed=2;
             coresPerShip=2;
             colorsPerMulticoreShip=2;
             chanceToSpawnExtras=0.2;
@@ -430,14 +430,15 @@ void SpawnManager::increaseDifficulty(){
             break;
         case 8:
             coresShouldFlash=YES;
-            maxShipSpeed=2.25;
-            chanceToSpawnExtras=0.3;
+            maxShipSpeed=3.5;
+            chanceToSpawnExtras=0.2;
             break;
         case 9:
-            maxShipSpeed=3;
+            minShipSpeed=2.5;
             coreFlashSpeed=6;
             chanceToSpawnMulticore=0.125;
             maxExtras=3;
+            maxShips=8;
             break;
         default:
             
@@ -447,17 +448,17 @@ void SpawnManager::increaseDifficulty(){
             if(coreFlashSpeed>=2){
                 coreFlashSpeed-=0.1;
             }
-            if(maxShipSpeed<8){
+            if(maxShipSpeed<5){
                 maxShipSpeed+=0.5;
             }
-            if(minShipSpeed<5){
+            if(minShipSpeed<maxShipSpeed){
                 minShipSpeed+=0.025;
             }
             if(chanceToSpawnMulticore<0.175){
                 chanceToSpawnMulticore+=0.015;
             }
-            if(chanceToSpawnExtras<0.45){
-                chanceToSpawnExtras+=0.05;
+            if(chanceToSpawnExtras<0.3){
+                chanceToSpawnExtras+=0.025;
             }
             if(minShips<maxShips){
                 minShips++;
@@ -465,6 +466,13 @@ void SpawnManager::increaseDifficulty(){
             
             break;
             
+    }
+    
+    //decrement time between spawns
+    if(spawnInterval-spawnDecrementer>minSpawnInterval){
+        spawnInterval-=spawnDecrementer;
+    }else{
+        spawnInterval=minSpawnInterval;
     }
 }
 
