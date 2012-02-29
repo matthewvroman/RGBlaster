@@ -14,10 +14,6 @@
 #ifndef RGBlaster_BasicObject_h
 #define RGBlaster_BasicObject_h
 
-#include "ofMain.h"
-#include "ofxiPhone.h"
-#include "ofxiPhoneExtras.h"
-
 #include "ofxSpriteSheetRenderer.h"
 
 #import "Enums.h"

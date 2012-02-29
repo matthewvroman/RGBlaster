@@ -20,34 +20,68 @@ SoundManager* SoundManager::instance = NULL;
 SoundManager::SoundManager(){
     
     //load all the sounds and put them in the proper arrays
+    menuSoundsLoaded=gameplaySoundsLoaded=false;
+     
+}
+
+SoundManager::~SoundManager(){
+    sfx.clear();
+    music.clear();
+    delete instance;
+}
+
+void SoundManager::loadGameplaySounds(){
+    if(!gameplaySoundsLoaded){
+        backgroundMusic.loadSound("sound/the-voyage.wav");
     
-    mainMenuMusic.loadSound("sound/fuelship-theme.wav");
-    backgroundMusic.loadSound("sound/the-voyage.wav");
     
-    
-    targeted.loadSound("sound/cannon-shot.wav");
-    explosion.loadSound("sound/explosion_sfx.caf");
-    missileSuccess.loadSound("sound/ship_explosion.wav");
-    missileFailure.loadSound("sound/missile-failure.wav");
-    resUp.loadSound("sound/res_up_sfx.wav");
-    resDown.loadSound("sound/res_down_sfx.wav");
-    gameOver.loadSound("sound/game_over_sfx.wav");
-    click.loadSound("sound/blip.wav");
-    spin.loadSound("sound/blaster-spin.wav");
-    
-    sfx.push_back(targeted);
-    sfx.push_back(explosion);
-    sfx.push_back(missileSuccess);
-    sfx.push_back(missileFailure);
-    sfx.push_back(resUp);
-    sfx.push_back(resDown);
-    sfx.push_back(gameOver);
-    sfx.push_back(click);
-    sfx.push_back(spin);
-    
-    music.push_back(mainMenuMusic);
-    music.push_back(backgroundMusic);
-    
+        targeted.loadSound("sound/cannon-shot.wav");
+        explosion.loadSound("sound/explosion_sfx.caf");
+        missileSuccess.loadSound("sound/ship_explosion.wav");
+        missileFailure.loadSound("sound/missile-failure.wav");
+        resUp.loadSound("sound/res_up_sfx.wav");
+        resDown.loadSound("sound/res_down_sfx.wav");
+        gameOver.loadSound("sound/game_over_sfx.wav");
+        spin.loadSound("sound/blaster-spin.wav");
+        
+        sfx.push_back(targeted);
+        sfx.push_back(explosion);
+        sfx.push_back(missileSuccess);
+        sfx.push_back(missileFailure);
+        sfx.push_back(resUp);
+        sfx.push_back(resDown);
+        sfx.push_back(gameOver);
+        sfx.push_back(spin);
+        
+        
+        music.push_back(backgroundMusic);
+        
+        setVolumes();
+        gameplaySoundsLoaded=true;
+        
+        cout << "Loaded gameplay sounds" << endl;
+    }
+
+}
+
+void SoundManager::loadMenuSounds(){
+    if(!menuSoundsLoaded){
+        mainMenuMusic.loadSound("sound/fuelship-theme.wav");
+        music.push_back(mainMenuMusic);
+        
+        click.loadSound("sound/blip.wav");
+        sfx.push_back(click);
+        
+        setVolumes();
+        
+        menuSoundsLoaded=true;
+        
+        cout << "Loaded menu sounds" << endl;
+        
+    }
+}
+
+void SoundManager::setVolumes(){
     float sfxVolume=0.5;
     for(int i=0; i<sfx.size(); i++){
         sfx.at(i).setVolume(sfxVolume);
@@ -60,13 +94,6 @@ SoundManager::SoundManager(){
     }
     
     backgroundMusic.setVolume(1.0);
-     
-}
-
-SoundManager::~SoundManager(){
-    sfx.clear();
-    music.clear();
-    delete instance;
 }
 
 //stop all music currently playing

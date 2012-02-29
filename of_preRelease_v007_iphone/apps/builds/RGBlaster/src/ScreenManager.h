@@ -23,7 +23,7 @@
 #import "Stats.h"
 #import "AtlasHandler.h"
 
-class ScreenManager : public ofxiPhoneApp {
+class ScreenManager {
 public:
     ScreenManager();
     ~ScreenManager();

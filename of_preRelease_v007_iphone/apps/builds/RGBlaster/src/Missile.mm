@@ -42,8 +42,12 @@ Missile::Missile(int posX, int posY, Color _color, Resolution _res, BasicObject 
     targetRenderer=AtlasHandler::getInstance()->targetRenderer;
     
     target=_target;
-    
-    speed=5;
+    if(resolution==2)
+        speed=12;
+    if(resolution==1)
+        speed=9;
+    else
+        speed=7;
     
     r=0;
     

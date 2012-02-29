@@ -25,6 +25,10 @@ ScreenManager::ScreenManager(){
     //on first load this will generate all the stats and set them at 0
     Stats::getInstance();
     
+    SoundManager::getInstance()->loadMenuSounds();
+    
+    AtlasHandler::getInstance()->loadBackgrounds();
+    
     mainBackground=&AtlasHandler::getInstance()->background8;
     
 }
@@ -106,7 +110,6 @@ void ScreenManager::switchScreens(int screen){
     if(screen != currentScreen){
         switch (currentScreen) {
             case 0:
-                cout << "deleted main menu" << endl;
                 delete menuScreen;
                 break;
             case 1:

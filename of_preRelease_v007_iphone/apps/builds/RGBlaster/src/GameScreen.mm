@@ -18,6 +18,9 @@
 GameScreen::GameScreen(){	
     soundManager = SoundManager::getInstance();
     
+    soundManager->loadGameplaySounds();
+    AtlasHandler::getInstance()->loadSpriteSheets();
+    
     // Create world
     world = new World();
     world->soundManager = soundManager;

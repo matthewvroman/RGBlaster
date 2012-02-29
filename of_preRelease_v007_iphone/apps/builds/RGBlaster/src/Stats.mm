@@ -83,7 +83,7 @@ void Stats::retrieveAchievements(){
              if (achievements!=nil) {
                  for(gkA in achievements){
                      [achievementsDictionary setObject:gkA forKey:gkA.identifier];
-                     NSLog(@"%@: %f : %i", gkA.identifier, gkA.percentComplete, gkA.completed);
+                     //NSLog(@"%@: %f : %i", gkA.identifier, gkA.percentComplete, gkA.completed);
                  }
              }
          }
@@ -102,7 +102,7 @@ void Stats::retrieveAchievementMetadata(){
              if (descriptions != nil){
                  for (a in descriptions) {
                      [achievementsDescDictionary setObject: a forKey: a.identifier];
-                     //NSLog(@"Identity: %@",a.identifier);
+                     NSLog(@"Identity: %@",a.identifier);
                  }
              }
          }
@@ -139,14 +139,21 @@ void Stats::reportAchievement(std::string _ach, float percent){
         percent*=100;
         
 		NSString * identifier = [NSString stringWithUTF8String: _ach.c_str()];
-
+        
         GKAchievement *achievement = [achievementsDictionary objectForKey:identifier];
+        if(achievement==nil){
+            NSLog(@"achievement is nil.. create new one");
+            achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
+        }
         achievement.showsCompletionBanner = NO;
     
         //NSLog(@"%@: %i",identifier,achievement.isCompleted);
         if (achievement && !achievement.isCompleted)
         {
             NSLog(@"reporting achievement: %@", identifier);
+            if(percent>100){
+                percent=100;
+            }
             achievement.percentComplete = percent;
             if(achievement.percentComplete==100){
                 //Show banners manually
@@ -166,6 +173,7 @@ void Stats::reportAchievement(std::string _ach, float percent){
 }
 
 void Stats::reportScoreAchievement(int _score){
+    NSLog(@"reporting score achievements with score of: %i", _score);
     reportAchievement("Score_01", float(_score)/5000.0f); 
     reportAchievement("Score_02", float(_score)/10000.0f); 
     reportAchievement("Score_03", float(_score)/25000.0f); 
@@ -285,7 +293,7 @@ void Stats::incrementStat(std::string _statName, int increment){
     }
     
     //GREEN KILLS
-    if(_statName=="totalGreenKilled"){
+    else if(_statName=="totalGreenKilled"){
         totalGreenKilled+=increment;
         if(totalGreenKilled==200){
             reportAchievement("GreenKills_01", float(totalGreenKilled)/200.0f);     //GOING GREEN 
@@ -297,7 +305,7 @@ void Stats::incrementStat(std::string _statName, int increment){
     }
     
     //BLUE KILLS
-    if(_statName=="totalBlueKilled"){
+    else if(_statName=="totalBlueKilled"){
         totalBlueKilled+=increment;
         if(totalBlueKilled==300){
             reportAchievement("BlueKills_01", float(totalBlueKilled)/300.0f);     //BLUE'S CLUES

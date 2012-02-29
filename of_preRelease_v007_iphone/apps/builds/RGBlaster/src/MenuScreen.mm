@@ -21,10 +21,6 @@ MenuScreen::MenuScreen(){
     
     soundManager = SoundManager::getInstance();
     
-    // Play menu music
-    if(!soundManager->mainMenuMusic.getIsPlaying())
-        soundManager->mainMenuMusic.play();
-    
     // Load images
     logo.loadImage("logo.png");
     
@@ -53,6 +49,10 @@ MenuScreen::MenuScreen(){
 
 //--------------------------------------------------------------
 void MenuScreen::update(){
+    // Play menu music
+    if(!soundManager->mainMenuMusic.getIsPlaying())
+        soundManager->mainMenuMusic.play();
+    
     // Check for button press
     if(btn_start->pressed) {
         btn_start->setPosAndSize( 200, 390, 368, 80 );

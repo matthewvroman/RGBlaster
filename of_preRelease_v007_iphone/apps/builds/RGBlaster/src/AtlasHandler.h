@@ -13,10 +13,6 @@
 #ifndef RGBlaster_AtlasHandler_h
 #define RGBlaster_AtlasHandler_h
 
-#import "ofMain.h"
-#import "ofxiPhone.h"
-#import "ofxiPhoneExtras.h"
-
 #import "ofxSpriteSheetRenderer.h"
 
 class AtlasHandler{
@@ -28,9 +24,8 @@ public:
     static AtlasHandler* instance;
     static AtlasHandler* getInstance();
     
-    void loadTextureAtlases();
-    
-    ofxSpriteSheetRenderer* getSpriteSheetRenderer(string);
+    void loadSpriteSheets();
+    void loadBackgrounds();
     
     void update();
     
@@ -52,6 +47,9 @@ private:
     //singleton has a private constructor called by getInstance()
     AtlasHandler();
     vector<ofxSpriteSheetRenderer*>sheets;
+    
+    bool spriteSheetsLoaded;
+    bool backgroundsLoaded;
 };
 
 #endif

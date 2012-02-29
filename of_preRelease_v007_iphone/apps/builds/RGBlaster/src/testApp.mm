@@ -29,8 +29,6 @@ void testApp::setup(){
 	ofSetFrameRate(60);
     
     screenManager = new ScreenManager();
-    
-    //AtlasHandler::getInstance();
 
 }
 

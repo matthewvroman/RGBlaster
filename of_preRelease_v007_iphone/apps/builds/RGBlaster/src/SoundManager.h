@@ -44,12 +44,20 @@ public:
     ofSoundPlayer   mainMenuMusic;
 	ofSoundPlayer   backgroundMusic;
     
+    void loadGameplaySounds();
+    void loadMenuSounds();
+    
+    void setVolumes();
+    
     void stopAll();
     
 private:
     
     vector<ofSoundPlayer>sfx;
     vector<ofSoundPlayer>music;
+    
+    bool gameplaySoundsLoaded;
+    bool menuSoundsLoaded;
     
     //singleton has a private constructor called by getInstance()
     SoundManager();

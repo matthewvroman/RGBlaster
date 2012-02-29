@@ -12,9 +12,6 @@
 
 #ifndef RGBlaster_Group_h
 #define RGBlaster_Group_h
-#import "ofMain.h"
-#import "ofxiPhone.h"
-#import "ofxiPhoneExtras.h"
 
 #import "Ship.h"
 #import "Explosion.h"

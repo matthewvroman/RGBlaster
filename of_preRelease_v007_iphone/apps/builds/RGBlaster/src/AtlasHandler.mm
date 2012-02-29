@@ -23,64 +23,63 @@ AtlasHandler* AtlasHandler::getInstance(){
 
 //Loads all texture sprite sheets we need for the gameplay
 AtlasHandler::AtlasHandler(){
-    
-    redShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
-    redShipRenderer->loadTexture("sprites/red_sprite.png", 512, GL_NEAREST);
-    sheets.push_back(redShipRenderer);
-    
-    blueShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
-    blueShipRenderer->loadTexture("sprites/blue_sprite.png", 512, GL_NEAREST);
-    sheets.push_back(blueShipRenderer);
-    
-    greenShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
-    greenShipRenderer->loadTexture("sprites/green_sprite.png", 512, GL_NEAREST);
-    sheets.push_back(greenShipRenderer);
-    
-    missileRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
-    missileRenderer->loadTexture("sprites/missile_spriteSheet.png", 256, GL_NEAREST);
-    sheets.push_back(missileRenderer);
-    
-    explosionRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
-    explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 512, GL_NEAREST);
-    sheets.push_back(explosionRenderer);
-    
-    coreRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
-    coreRenderer->loadTexture("sprites/cores_spriteSheet.png", 512, GL_NEAREST);
-    sheets.push_back(coreRenderer);
-    
-    multicoreShipRenderer = new ofxSpriteSheetRenderer(1,100,0,64);
-    multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
-    sheets.push_back(multicoreShipRenderer);
-    
-    targetRenderer = new ofxSpriteSheetRenderer(1, 1000, 0, 64);
-    targetRenderer->loadTexture("sprites/targeting_spriteSheet.png", 256, GL_NEAREST);
-    sheets.push_back(targetRenderer);
-    
-    cout << "Loaded Sprite Sheets" << endl;
-    
-    background8.loadImage("sprites/background-low.png");
-    cout << "Loaded 8-bit Handler" << endl;
-    background16.loadImage("sprites/background-med.png");
-    cout << "Loaded 16-bit Handler" << endl;
-    background32.loadImage("sprites/background-hi.png");
-    
-    ofEnableAlphaBlending();
-    
+    spriteSheetsLoaded=false;
+    backgroundsLoaded=false;
     cout << "Loaded Atlas Handler" << endl;
 
 }
 
-ofxSpriteSheetRenderer* AtlasHandler::getSpriteSheetRenderer(string _renderer){
-    ofxSpriteSheetRenderer* renderer;
-    if(_renderer=="RedEnemy"){
-        //explosionRenderer->texture;
-    }else if(_renderer=="BlueEnemy"){
+void AtlasHandler::loadSpriteSheets(){
+    if(!spriteSheetsLoaded){
+        redShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
+        redShipRenderer->loadTexture("sprites/red_sprite.png", 512, GL_NEAREST);
+        sheets.push_back(redShipRenderer);
         
-    }else if(_renderer=="GreenEnemy"){
+        blueShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
+        blueShipRenderer->loadTexture("sprites/blue_sprite.png", 512, GL_NEAREST);
+        sheets.push_back(blueShipRenderer);
         
+        greenShipRenderer = new ofxSpriteSheetRenderer(1,100,0,48);
+        greenShipRenderer->loadTexture("sprites/green_sprite.png", 512, GL_NEAREST);
+        sheets.push_back(greenShipRenderer);
+        
+        missileRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+        missileRenderer->loadTexture("sprites/missile_spriteSheet.png", 256, GL_NEAREST);
+        sheets.push_back(missileRenderer);
+        
+        explosionRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+        explosionRenderer->loadTexture("sprites/explosion_spriteSheet.png", 512, GL_NEAREST);
+        sheets.push_back(explosionRenderer);
+        
+        coreRenderer = new ofxSpriteSheetRenderer(1,100,0,32);
+        coreRenderer->loadTexture("sprites/cores_spriteSheet.png", 512, GL_NEAREST);
+        sheets.push_back(coreRenderer);
+        
+        multicoreShipRenderer = new ofxSpriteSheetRenderer(1,100,0,64);
+        multicoreShipRenderer->loadTexture("sprites/multicore_ship_sprite.png", 512, GL_NEAREST);
+        sheets.push_back(multicoreShipRenderer);
+        
+        targetRenderer = new ofxSpriteSheetRenderer(1, 1000, 0, 64);
+        targetRenderer->loadTexture("sprites/targeting_spriteSheet.png", 256, GL_NEAREST);
+        sheets.push_back(targetRenderer);
+        
+        spriteSheetsLoaded=true;
+        cout << "Loaded Sprite Sheets" << endl;
     }
+    ofEnableAlphaBlending();
     
-    return renderer;
+}
+
+void AtlasHandler::loadBackgrounds(){
+    if(!backgroundsLoaded){
+        background8.loadImage("sprites/background-low.png");
+        cout << "Loaded 8-bit Handler" << endl;
+        background16.loadImage("sprites/background-med.png");
+        cout << "Loaded 16-bit Handler" << endl;
+        background32.loadImage("sprites/background-hi.png");
+        cout << "Loaded 32-bit Handler" << endl;
+        backgroundsLoaded=true;
+    }
 }
 
 //deletes all dynamically allocated memory
@@ -88,15 +87,6 @@ AtlasHandler::~AtlasHandler(){
     //clear should dealloc each renderer
     sheets.clear();
     delete instance;
-    /*
-    delete redShipRenderer;
-    delete blueShipRenderer;
-    delete greenShipRenderer;
-    delete missileRenderer;
-    delete explosionRenderer;
-    delete coreRenderer;
-    delete multicoreShipRenderer;
-     */
 }
 
 

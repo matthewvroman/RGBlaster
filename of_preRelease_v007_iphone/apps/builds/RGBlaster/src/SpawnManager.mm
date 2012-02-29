@@ -227,12 +227,13 @@ void SpawnManager::notifyShipCrashed(int _dmg){
 
 void SpawnManager::notifyGameOver(){
     gameOver=true;
-    stats->reportScore("default" , hud->getScore());
+    stats->reportScore("ScoreBoard_01" , hud->getScore());
     stats->reportScoreAchievement(hud->getScore());
     stats->updateStats();
     
     hud->gameOver=true;
     hud->setHighScore(hud->getScore());
+    
     removeAllGroups();
     removeAllMulticoreShips();
 }
@@ -471,6 +472,7 @@ void SpawnManager::increaseDifficulty(){
     //decrement time between spawns
     if(spawnInterval-spawnDecrementer>minSpawnInterval){
         spawnInterval-=spawnDecrementer;
+        cout << "decreasing spawn interval" << endl;
     }else{
         spawnInterval=minSpawnInterval;
     }

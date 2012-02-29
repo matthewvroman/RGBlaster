@@ -13,9 +13,9 @@
 #ifndef RGBlaster_Notifier_h
 #define RGBlaster_Notifier_h
 
-#include "ofMain.h"
-#include "ofxiPhone.h"
-#include "ofxiPhoneExtras.h"
+#import "ofMain.h"
+#import "ofxiPhone.h"
+#import "ofxiPhoneExtras.h"
 
 struct Notification{
     string message;
