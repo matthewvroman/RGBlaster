@@ -155,7 +155,7 @@ void CollageTexture::pasteImage(int x, int y, int w, int h, unsigned char * pxls
 {	
     
     if(!h){
-        cout << "can't find h" << endl;
+        //cout << "can't find h" << endl;
         h=w;
     }
 	int bpp;

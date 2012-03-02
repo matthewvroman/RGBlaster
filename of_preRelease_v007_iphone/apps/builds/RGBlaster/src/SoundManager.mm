@@ -59,7 +59,7 @@ void SoundManager::loadGameplaySounds(){
         setVolumes();
         gameplaySoundsLoaded=true;
         
-        cout << "Loaded gameplay sounds" << endl;
+        //cout << "Loaded gameplay sounds" << endl;
     }
 
 }
@@ -76,7 +76,7 @@ void SoundManager::loadMenuSounds(){
         
         menuSoundsLoaded=true;
         
-        cout << "Loaded menu sounds" << endl;
+        //cout << "Loaded menu sounds" << endl;
         
     }
 }

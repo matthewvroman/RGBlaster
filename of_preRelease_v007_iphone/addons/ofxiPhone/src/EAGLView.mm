@@ -109,7 +109,7 @@
 	
 - (void)layoutSubviews
 {
-		NSLog(@"layoutSubviews");
+		//NSLog(@"layoutSubviews");
 	    [renderer resizeFromLayer:(CAEAGLLayer*)self.layer];
 	    [renderer startRender];
 	    [renderer finishRender];

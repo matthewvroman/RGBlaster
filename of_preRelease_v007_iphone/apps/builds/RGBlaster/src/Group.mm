@@ -280,11 +280,11 @@ void Group::swirlMove(float _speed, int _spacing){
     while(i<objects.size()){
         if(i==_middle){
             r=0;
-            cout << i << "HIT MIDDLE" << endl;
+            //cout << i << "HIT MIDDLE" << endl;
             _shipSpeed=_speed;
         }else{
             r+=_spacing;
-            cout << i << endl;
+            //cout << i << endl;
         }
         if(i>_middle){
             //r+=_spacing;

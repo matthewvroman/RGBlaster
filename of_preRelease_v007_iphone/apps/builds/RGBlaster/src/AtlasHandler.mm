@@ -25,7 +25,7 @@ AtlasHandler* AtlasHandler::getInstance(){
 AtlasHandler::AtlasHandler(){
     spriteSheetsLoaded=false;
     backgroundsLoaded=false;
-    cout << "Loaded Atlas Handler" << endl;
+    //cout << "Loaded Atlas Handler" << endl;
 
 }
 
@@ -64,7 +64,7 @@ void AtlasHandler::loadSpriteSheets(){
         sheets.push_back(targetRenderer);
         
         spriteSheetsLoaded=true;
-        cout << "Loaded Sprite Sheets" << endl;
+        //cout << "Loaded Sprite Sheets" << endl;
     }
     ofEnableAlphaBlending();
     
@@ -73,11 +73,11 @@ void AtlasHandler::loadSpriteSheets(){
 void AtlasHandler::loadBackgrounds(){
     if(!backgroundsLoaded){
         background8.loadImage("sprites/background-low.png");
-        cout << "Loaded 8-bit Handler" << endl;
+        //cout << "Loaded 8-bit Handler" << endl;
         background16.loadImage("sprites/background-med.png");
-        cout << "Loaded 16-bit Handler" << endl;
+        //cout << "Loaded 16-bit Handler" << endl;
         background32.loadImage("sprites/background-hi.png");
-        cout << "Loaded 32-bit Handler" << endl;
+        //cout << "Loaded 32-bit Handler" << endl;
         backgroundsLoaded=true;
     }
 }

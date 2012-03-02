@@ -34,7 +34,7 @@ ScreenManager::ScreenManager(){
 }
 
 ScreenManager::~ScreenManager(){
-    cout << "removing screen manager" << endl;
+    //cout << "removing screen manager" << endl;
 }
 
 void ScreenManager::update(){

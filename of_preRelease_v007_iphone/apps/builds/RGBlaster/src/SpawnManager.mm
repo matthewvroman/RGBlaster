@@ -389,7 +389,7 @@ void SpawnManager::removeAllMulticoreShips(){
 
 void SpawnManager::increaseDifficulty(){
     difficulty++;
-    cout << "NEW DIFFICULTY: " << difficulty << endl;
+    //cout << "NEW DIFFICULTY: " << difficulty << endl;
     switch(difficulty){
         case 1:
             maxColor=1;
@@ -472,7 +472,7 @@ void SpawnManager::increaseDifficulty(){
     //decrement time between spawns
     if(spawnInterval-spawnDecrementer>minSpawnInterval){
         spawnInterval-=spawnDecrementer;
-        cout << "decreasing spawn interval" << endl;
+        //cout << "decreasing spawn interval" << endl;
     }else{
         spawnInterval=minSpawnInterval;
     }

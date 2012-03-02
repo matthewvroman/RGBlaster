@@ -16,7 +16,7 @@ MulticoreShip::~MulticoreShip(){
 
 //called from constructor
 void MulticoreShip::initCores(){
-    cout << "new multicore ship" << endl;
+    //cout << "new multicore ship" << endl;
     spriteRenderer=AtlasHandler::getInstance()->multicoreShipRenderer;
     
     dead=destroyed=false;

@@ -55,7 +55,7 @@ void Stats::authenticateLocalPlayer(){
             if (error == nil)
             {
                 // Insert code here to handle a successful authentication.
-                NSLog(@"succesfully authenticated");
+                //NSLog(@"succesfully authenticated");
                 isAuthenticated=true;
                 retrieveAchievements();
                 retrieveAchievementMetadata();
@@ -63,7 +63,7 @@ void Stats::authenticateLocalPlayer(){
             else
             {
                 // Your application can process the error parameter to report the error to the player.
-                NSLog(@"failed to authenticate");
+                //NSLog(@"failed to authenticate");
                 isAuthenticated=false;
             }
         }];
@@ -114,13 +114,13 @@ void Stats::reportScore(std::string _category, int _score){
         authenticateLocalPlayer();
     }
     
-    std::cout << "Trying to report score to: " << _category << " with score: " << _score << std::endl;
+    //std::cout << "Trying to report score to: " << _category << " with score: " << _score << std::endl;
 		int64_t score = static_cast<int64_t>(_score);
 		NSString * category = [NSString stringWithUTF8String: _category.c_str()];
 		GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:category] autorelease];
 		scoreReporter.value = score;
         
-        NSLog(@"Reporting score of %lld to %@",score,category);
+        //NSLog(@"Reporting score of %lld to %@",score,category);
 		[scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
 			if (error != nil){
 				// handle the reporting error
@@ -142,7 +142,7 @@ void Stats::reportAchievement(std::string _ach, float percent){
         
         GKAchievement *achievement = [achievementsDictionary objectForKey:identifier];
         if(achievement==nil){
-            NSLog(@"achievement is nil.. create new one");
+            //NSLog(@"achievement is nil.. create new one");
             achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
         }
         achievement.showsCompletionBanner = NO;
@@ -150,7 +150,7 @@ void Stats::reportAchievement(std::string _ach, float percent){
         //NSLog(@"%@: %i",identifier,achievement.isCompleted);
         if (achievement && !achievement.isCompleted)
         {
-            NSLog(@"reporting achievement: %@", identifier);
+            //NSLog(@"reporting achievement: %@", identifier);
             if(percent>100){
                 percent=100;
             }
@@ -168,12 +168,12 @@ void Stats::reportAchievement(std::string _ach, float percent){
              }];
         }
     }else{
-        NSLog(@"can't report achievement: we aren't logged into gamecenter");
+        //NSLog(@"can't report achievement: we aren't logged into gamecenter");
     }
 }
 
 void Stats::reportScoreAchievement(int _score){
-    NSLog(@"reporting score achievements with score of: %i", _score);
+    //NSLog(@"reporting score achievements with score of: %i", _score);
     reportAchievement("Score_01", float(_score)/5000.0f); 
     reportAchievement("Score_02", float(_score)/10000.0f); 
     reportAchievement("Score_03", float(_score)/25000.0f); 
@@ -203,7 +203,7 @@ void Stats::retrieveStats(){
 
 //brings the userdefault stats up to speed
 void Stats::updateStats(){
-    std::cout << "UPDATING ALL STATS!" << std::endl;
+    //std::cout << "UPDATING ALL STATS!" << std::endl;
     setStat(@"totalRedKilled", totalRedKilled);
     setStat(@"totalGreenKilled", totalGreenKilled);
     setStat(@"totalBlueKilled", totalBlueKilled);
@@ -274,7 +274,7 @@ int Stats::getStat(NSString* _statName){
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:_statName];
     }
     
-    NSLog(@"%@: %i",_statName, [[NSUserDefaults standardUserDefaults] integerForKey:_statName]);
+    //NSLog(@"%@: %i",_statName, [[NSUserDefaults standardUserDefaults] integerForKey:_statName]);
     return [[NSUserDefaults standardUserDefaults] integerForKey:_statName];
 }
 

@@ -51,6 +51,7 @@ void button::update() {
 }
 
 void button:: hide() {
+    pressed=false;
     hideBtn = true;
     enabled=false;
     if(touchEventsEnabled)
@@ -58,6 +59,7 @@ void button:: hide() {
 }
 
 void button:: show() {
+    pressed=false;
     hideBtn = false;
     enabled=true;
     if(!touchEventsEnabled)
@@ -104,7 +106,7 @@ void button::glow(){
         saturation+=3;
     }
     
-    cout << saturation << endl;
+    //cout << saturation << endl;
 }
 
 

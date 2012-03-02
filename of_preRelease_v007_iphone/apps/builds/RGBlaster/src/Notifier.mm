@@ -19,7 +19,7 @@ Notifier::Notifier(){
 }
 
 Notifier::~Notifier(){
-    
+    notifications.clear();
 }
 
 //Create a new notification and add it to the vector

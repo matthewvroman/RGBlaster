@@ -152,7 +152,7 @@ void ofxSpriteSheetRenderer::loadTexture(ofTexture * _texture)
 	clearTexture();
 	textureIsExternal = true;
 	texture = _texture;
-    cout << "Loaded texture: " << _texture << endl;
+    //cout << "Loaded texture: " << _texture << endl;
 }
 
 void ofxSpriteSheetRenderer::loadTexture(CollageTexture * _texture){
