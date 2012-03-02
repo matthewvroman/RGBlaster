@@ -102,7 +102,7 @@ void Stats::retrieveAchievementMetadata(){
              if (descriptions != nil){
                  for (a in descriptions) {
                      [achievementsDescDictionary setObject: a forKey: a.identifier];
-                     NSLog(@"Identity: %@",a.identifier);
+                     //NSLog(@"Identity: %@",a.identifier);
                  }
              }
          }

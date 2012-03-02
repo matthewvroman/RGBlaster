@@ -194,7 +194,7 @@ void ofPixels_<PixelType>::allocate(int w, int h, ofImageType type){
 
 	}
 }
-
+/*
 template<typename PixelType>
 void ofPixels_<PixelType>::swapRgb(){
 	if (channels >= 3){
@@ -208,7 +208,17 @@ void ofPixels_<PixelType>::swapRgb(){
 			pixels_ptr+=channels;
 		}
 	}
-}
+}*/
+
+template<typename PixelType>  
+void ofPixels_<PixelType>::swapRgb(){  
+    if (channels >= 3){  
+        int sizePixels = width*height*channels;  
+        for (int i=0; i< sizePixels; i+=channels){  
+            std::swap(pixels[i],pixels[i+2]);  
+        }  
+    }  
+}  
 
 template<typename PixelType>
 void ofPixels_<PixelType>::clear(){

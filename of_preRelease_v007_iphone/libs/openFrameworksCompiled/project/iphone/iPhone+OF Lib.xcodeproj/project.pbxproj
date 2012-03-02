@@ -964,6 +964,10 @@
 		BB24DED310DA7A3F00E9C588 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../../lib/iphone/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
@@ -980,12 +984,17 @@
 					"\"$(SRCROOT)/../../../poco/lib/iphone\"",
 				);
 				PRODUCT_NAME = "ofxiPhone_${PLATFORM_NAME}_Debug";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		BB24DED410DA7A3F00E9C588 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../../lib/iphone/";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = NO;
@@ -1001,6 +1010,7 @@
 					"\"$(SRCROOT)/../../../poco/lib/iphone\"",
 				);
 				PRODUCT_NAME = "ofxiPhone_${PLATFORM_NAME}_Release";
+				TARGETED_DEVICE_FAMILY = 2;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1009,7 +1019,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E41D3E9113B38BE900A75A5D /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -1019,7 +1032,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E41D3E9213B38BE900A75A5D /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};

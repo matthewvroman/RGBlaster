@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "RGBlaster.app"
-               BlueprintName = "RGBlaster"
-               ReferencedContainer = "container:RGBlaster.xcodeproj">
+               BuildableName = "imageLoaderExample.app"
+               BlueprintName = "imageLoaderExample"
+               ReferencedContainer = "container:imageLoaderExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "RGBlaster.app"
-            BlueprintName = "RGBlaster"
-            ReferencedContainer = "container:RGBlaster.xcodeproj">
+            BuildableName = "imageLoaderExample.app"
+            BlueprintName = "imageLoaderExample"
+            ReferencedContainer = "container:imageLoaderExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -45,39 +45,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
-      enablesOpenGLESFrameCapture = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "RGBlaster.app"
-            BlueprintName = "RGBlaster"
-            ReferencedContainer = "container:RGBlaster.xcodeproj">
+            BuildableName = "imageLoaderExample.app"
+            BlueprintName = "imageLoaderExample"
+            ReferencedContainer = "container:imageLoaderExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "NSDebugEnabled"
-            value = "YES"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "MallocStackLogging"
-            value = "YES"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "MallocStackLoggingNoCompact"
-            value = "YES"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "RGBlaster.app"
-            BlueprintName = "RGBlaster"
-            ReferencedContainer = "container:RGBlaster.xcodeproj">
+            BuildableName = "imageLoaderExample.app"
+            BlueprintName = "imageLoaderExample"
+            ReferencedContainer = "container:imageLoaderExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

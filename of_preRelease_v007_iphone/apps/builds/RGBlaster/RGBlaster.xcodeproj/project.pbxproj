@@ -770,14 +770,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = armv7;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_INPUT_FILETYPE = automatic;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -788,7 +791,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Debug\"",
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
+					"\"$(SRCROOT)/../../../libs/openFrameworksCompiled/lib/iphone\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
@@ -799,11 +804,15 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhone_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -814,7 +823,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Debug\"",
 					"\"$(SRCROOT)/../../../addons/ofxBullet/bullet/lib/osx/Release\"",
+					"\"$(SRCROOT)/../../../libs/openFrameworksCompiled/lib/iphone\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
@@ -827,7 +838,10 @@
 			baseConfigurationReference = E41D3ED613B38FB500A75A5D /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				COMPRESS_PNG_FILES = NO;
@@ -847,6 +861,8 @@
 				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";
 			};
@@ -857,13 +873,16 @@
 			baseConfigurationReference = E41D3ED613B38FB500A75A5D /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vroman (5F8TEQ7GQX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Vroman (5VX53A8EGG)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
@@ -875,6 +894,8 @@
 				PROVISIONING_PROFILE = "F2551626-70A8-40BE-956C-C143A8D2E630";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BEE4A3AE-777F-40B6-887B-879AFA3D2C76";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
 				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_LDFLAGS = "-no_arch_warnings";
 			};
