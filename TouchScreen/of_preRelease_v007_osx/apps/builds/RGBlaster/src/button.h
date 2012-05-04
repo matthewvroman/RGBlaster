@@ -27,9 +27,10 @@ public:
 	void exit();
 	void show();
 	void hide();
-	void onTouchDown( float x, float y );
-	void onTouchMoved( float x, float y );
-	void onTouchUp( float x, float y );
+	void onPress(int x, int y, int button);
+    void onRelease(int x, int y, int button);
+	void onReleaseOutside(int x, int y, int button);
+    
 	void setLabel( string newLabel );
 	
 	ofTrueTypeFont	ArcadeClassic;				// the label font

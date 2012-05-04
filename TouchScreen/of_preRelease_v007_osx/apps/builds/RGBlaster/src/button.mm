@@ -15,12 +15,12 @@
 #include "button.h"
 
 button::button() {
-	enableTouchEvents();
+	enableMouseEvents();
 }
 
 button::~button() {
-    if(touchEventsEnabled)
-        disableTouchEvents();
+    /*if(touchEventsEnabled)
+        disableMouseEvents();*/
 }
 
 void button::init( int _buttonId, bool _alive, string _buttonLabel, ofTrueTypeFont &font, float _offset ) {
@@ -54,16 +54,16 @@ void button:: hide() {
     pressed=false;
     hideBtn = true;
     enabled=false;
-    if(touchEventsEnabled)
-        disableTouchEvents();
+    /*if(touchEventsEnabled)
+        disableMouseEvents();*/
 }
 
 void button:: show() {
     pressed=false;
     hideBtn = false;
     enabled=true;
-    if(!touchEventsEnabled)
-        enableTouchEvents();
+    /*if(!touchEventsEnabled)
+        disableMouseEvents();*/
 }
 
 void button::draw() {
@@ -114,7 +114,7 @@ void button::glow(){
 void button::exit() {
 }
 
-void button::onTouchDown( float x, float y ) {
+void button::onPress( int x, int y, int button ) {
 	// Activate touch
     if(!hideBtn){
         touchedDown = true;
@@ -122,13 +122,15 @@ void button::onTouchDown( float x, float y ) {
     }
 }
 
-void button::onTouchMoved( float x, float y ) {}
-
-void button::onTouchUp( float x, float y ) {
+void button::onRelease( int x, int y, int button ) {
 	// Deactivate touch
     if(!hideBtn){
         touchedDown = false;
     }
+}
+
+void button::onReleaseOutside(int x, int y, int button){
+    onRelease(x,y,button);
 }
 
 void button::setLabel( string _newLabel ) {

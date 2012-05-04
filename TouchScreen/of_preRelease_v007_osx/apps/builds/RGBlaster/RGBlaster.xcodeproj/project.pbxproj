@@ -29,10 +29,10 @@
 		AC1C072715545CA700B4D42D /* Explosion.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070315545CA700B4D42D /* Explosion.mm */; };
 		AC1C072815545CA700B4D42D /* BasicObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070415545CA700B4D42D /* BasicObject.mm */; };
 		AC1C072915545CA700B4D42D /* World.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070515545CA700B4D42D /* World.mm */; };
-		AC1C072A15545CA700B4D42D /* ofxMSAInteractiveObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070715545CA700B4D42D /* ofxMSAInteractiveObject.mm */; };
 		AC1C072B15545CA700B4D42D /* Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070B15545CA700B4D42D /* Core.mm */; };
 		AC1C072D15545CA700B4D42D /* Ship.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070F15545CA700B4D42D /* Ship.mm */; };
 		AC1C072E15545CA700B4D42D /* HelpScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C071115545CA700B4D42D /* HelpScreen.mm */; };
+		AC1C07B8155463D800B4D42D /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1C07B7155463D700B4D42D /* ofxMSAInteractiveObject.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -125,8 +125,6 @@
 		AC1C070415545CA700B4D42D /* BasicObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BasicObject.mm; sourceTree = "<group>"; };
 		AC1C070515545CA700B4D42D /* World.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = World.mm; sourceTree = "<group>"; };
 		AC1C070615545CA700B4D42D /* MenuScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScreen.h; sourceTree = "<group>"; };
-		AC1C070715545CA700B4D42D /* ofxMSAInteractiveObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxMSAInteractiveObject.mm; sourceTree = "<group>"; };
-		AC1C070815545CA700B4D42D /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
 		AC1C070915545CA700B4D42D /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
 		AC1C070A15545CA700B4D42D /* MulticoreShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticoreShip.h; sourceTree = "<group>"; };
 		AC1C070B15545CA700B4D42D /* Core.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Core.mm; sourceTree = "<group>"; };
@@ -200,6 +198,9 @@
 		AC1C07B215545CDD00B4D42D /* smoke_trail_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke_trail_spriteSheet.png; sourceTree = "<group>"; };
 		AC1C07B315545CDD00B4D42D /* targeting_spriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = targeting_spriteSheet.png; sourceTree = "<group>"; };
 		AC1C07B415545CDD00B4D42D /* emptyExampleDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = emptyExampleDebug.app; sourceTree = "<group>"; };
+		AC1C07B6155463D700B4D42D /* ofxMSAInteractiveObjectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObjectDelegate.h; sourceTree = "<group>"; };
+		AC1C07B7155463D700B4D42D /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
+		AC1C07B9155466A300B4D42D /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -456,7 +457,6 @@
 				AC1C06E715545CA700B4D42D /* SpawnManager.mm */,
 				AC1C06E815545CA700B4D42D /* SoundManager.mm */,
 				AC1C06E915545CA700B4D42D /* ScreenManager.mm */,
-				AC1C06EA15545CA700B4D42D /* button.mm */,
 				AC1C06EB15545CA700B4D42D /* Notifier.mm */,
 				AC1C06EC15545CA700B4D42D /* Missile.mm */,
 				AC1C06ED15545CA700B4D42D /* MenuScreen.mm */,
@@ -470,11 +470,11 @@
 				AC1C06F615545CA700B4D42D /* HUD.mm */,
 				AC1C06F715545CA700B4D42D /* HUD.h */,
 				AC1C06F915545CA700B4D42D /* SpawnManager.h */,
-				AC1C06FA15545CA700B4D42D /* Finger.mm */,
 				AC1C06FB15545CA700B4D42D /* Finger.h */,
+				AC1C06FA15545CA700B4D42D /* Finger.mm */,
+				AC1C06FE15545CA700B4D42D /* Blaster.h */,
 				AC1C06FC15545CA700B4D42D /* Blaster.mm */,
 				AC1C06FD15545CA700B4D42D /* World.h */,
-				AC1C06FE15545CA700B4D42D /* Blaster.h */,
 				AC1C06FF15545CA700B4D42D /* Animations.h */,
 				AC1C070015545CA700B4D42D /* Missile.h */,
 				AC1C070115545CA700B4D42D /* AboutScreen.mm */,
@@ -483,9 +483,11 @@
 				AC1C070415545CA700B4D42D /* BasicObject.mm */,
 				AC1C070515545CA700B4D42D /* World.mm */,
 				AC1C070615545CA700B4D42D /* MenuScreen.h */,
-				AC1C070715545CA700B4D42D /* ofxMSAInteractiveObject.mm */,
-				AC1C070815545CA700B4D42D /* ofxMSAInteractiveObject.h */,
+				AC1C07B6155463D700B4D42D /* ofxMSAInteractiveObjectDelegate.h */,
+				AC1C07B7155463D700B4D42D /* ofxMSAInteractiveObject.cpp */,
+				AC1C07B9155466A300B4D42D /* ofxMSAInteractiveObject.h */,
 				AC1C070915545CA700B4D42D /* button.h */,
+				AC1C06EA15545CA700B4D42D /* button.mm */,
 				AC1C070A15545CA700B4D42D /* MulticoreShip.h */,
 				AC1C070B15545CA700B4D42D /* Core.mm */,
 				AC1C070D15545CA700B4D42D /* Core.h */,
@@ -621,10 +623,10 @@
 				AC1C072715545CA700B4D42D /* Explosion.mm in Sources */,
 				AC1C072815545CA700B4D42D /* BasicObject.mm in Sources */,
 				AC1C072915545CA700B4D42D /* World.mm in Sources */,
-				AC1C072A15545CA700B4D42D /* ofxMSAInteractiveObject.mm in Sources */,
 				AC1C072B15545CA700B4D42D /* Core.mm in Sources */,
 				AC1C072D15545CA700B4D42D /* Ship.mm in Sources */,
 				AC1C072E15545CA700B4D42D /* HelpScreen.mm in Sources */,
+				AC1C07B8155463D800B4D42D /* ofxMSAInteractiveObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

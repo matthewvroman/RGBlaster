@@ -23,8 +23,8 @@ Blaster::Blaster(){
     //how many pixels the user must swipe for the blaster to rotate
     leeway=75;
     
-    ofAddListener(ofEvents.touchDown, this, &Blaster::touchDown);
-	ofAddListener(ofEvents.touchUp, this, &Blaster::touchUp);
+    ofAddListener(ofEvents.mousePressed, this, &Blaster::_mousePressed);
+	ofAddListener(ofEvents.mouseReleased, this, &Blaster::_mouseReleased);
     
     /*SPRITE DRAWING*/
     //int _numLayers, int _tilesPerLayer, int _defaultLayer, int _tileSize
@@ -76,14 +76,14 @@ Blaster::Blaster(){
 }
 
 Blaster::~Blaster(){
-    ofRemoveListener(ofEvents.touchDown, this, &Blaster::touchDown);
-	ofRemoveListener(ofEvents.touchUp, this, &Blaster::touchUp);
+    ofRemoveListener(ofEvents.mousePressed, this, &Blaster::_mousePressed);
+	ofRemoveListener(ofEvents.mouseReleased, this, &Blaster::_mouseReleased);
     delete finger; 
     delete colorWheelRenderer;
     delete colorWheelSprite;
 }
 
-void Blaster::touchDown(ofTouchEventArgs &touch) {
+void Blaster::_mousePressed(ofMouseEventArgs &touch) {
     if(touch.y>this->y-this->height){
         lastTouch.x=touch.x;
         lastTouch.y=touch.y;
@@ -94,7 +94,7 @@ void Blaster::touchDown(ofTouchEventArgs &touch) {
 }
 
 //Swap colors if the swipe moved far enough from touchDown to touchUp
-void Blaster::touchUp(ofTouchEventArgs &touch) {
+void Blaster::_mouseReleased(ofMouseEventArgs &touch) {
     if(lastTouch!=nil){
         //left
         if(touch.x<lastTouch.x-leeway){

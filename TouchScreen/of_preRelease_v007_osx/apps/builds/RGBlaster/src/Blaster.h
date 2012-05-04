@@ -39,8 +39,8 @@ public:
     
     void setSpawner(SpawnManager *_spawner);
     
-    void touchDown(ofTouchEventArgs &touch);
-    void touchUp(ofTouchEventArgs &touch);
+    void _mousePressed(ofMouseEventArgs &touch);
+	void _mouseReleased(ofMouseEventArgs &touch);
     
     Finger *finger;
     

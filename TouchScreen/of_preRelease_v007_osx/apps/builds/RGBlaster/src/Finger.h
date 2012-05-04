@@ -46,10 +46,9 @@ public:
     
     void        setColor(Color _color);
     
-    void		touchDown(ofTouchEventArgs &touch);
-    void		touchMoved(ofTouchEventArgs &touch);
-    void		touchUp(ofTouchEventArgs &touch);
-    
+	void        _mousePressed(ofMouseEventArgs &touch);
+	void        _mouseDragged(ofMouseEventArgs &touch);
+	void        _mouseReleased(ofMouseEventArgs &touch);
     
     void        update();
     void        draw();

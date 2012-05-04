@@ -15,9 +15,9 @@
 
 //setup finger with OF touch event listeners
 Finger::Finger(){
-    ofAddListener(ofEvents.touchDown, this, &Finger::touchDown);
-	ofAddListener(ofEvents.touchMoved, this, &Finger::touchMoved);
-	ofAddListener(ofEvents.touchUp, this, &Finger::touchUp);
+    ofAddListener(ofEvents.mousePressed, this, &Finger::_mousePressed);
+	ofAddListener(ofEvents.mouseDragged, this, &Finger::_mouseDragged);
+	ofAddListener(ofEvents.mouseReleased, this, &Finger::_mouseReleased);
     
     //defines how large of a radius the touch has influence over
     defaultRadius=radius=15;
@@ -35,28 +35,28 @@ Finger::Finger(){
 
 //remove all touch events
 Finger::~Finger(){
-    ofRemoveListener(ofEvents.touchDown, this, &Finger::touchDown);
-	ofRemoveListener(ofEvents.touchMoved, this, &Finger::touchMoved);
-	ofRemoveListener(ofEvents.touchUp, this, &Finger::touchUp);
+    ofRemoveListener(ofEvents.mousePressed, this, &Finger::_mousePressed);
+	ofRemoveListener(ofEvents.mouseDragged, this, &Finger::_mouseDragged);
+	ofRemoveListener(ofEvents.mouseReleased, this, &Finger::_mouseReleased);
 
     delete sprite;
     delete renderer;
 }
 
-void Finger::touchDown(ofTouchEventArgs &touch) {
+void Finger::_mousePressed(ofMouseEventArgs &touch) {
     down=true;
     x=touch.x;
     y=touch.y;
     
 }
 
-void Finger::touchMoved(ofTouchEventArgs &touch) {
+void Finger::_mouseDragged(ofMouseEventArgs &touch) {
     x=touch.x;
     y=touch.y;
         
 }
 
-void Finger::touchUp(ofTouchEventArgs &touch) {
+void Finger::_mouseReleased(ofMouseEventArgs &touch) {
     down=false;
     x=nil;
     y=nil;
