@@ -26,6 +26,8 @@ Group::Group(){
     
     speed=privSpeed=2;
 
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetWidth();
 
     
 }
@@ -38,11 +40,14 @@ Group::Group(int _numShips, Color _color, Resolution _res, MovementType _movemen
     
     expanding=false;
     
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
     a=r=0;
     
     y=-ofRandom(400);
     
-    x=ofRandom(600)+100;
+    x=ofRandom(screenRes.x-200)+100;
     
     speed=privSpeed=_speed;
     
@@ -398,7 +403,7 @@ void Group::update(){
             renderer->addCenteredTile(&objects[i]->sprite->animation,objects[i]->x,objects[i]->y);
         }
         //check pos
-        if(objects[i]->getPosition().y>995){
+        if(objects[i]->getPosition().y>screenRes.y-29){
             SpawnManager::getInstance()->notifyShipCrashed(10);
             objects[i]->dead=true;
             objects[i]->enabled=false;

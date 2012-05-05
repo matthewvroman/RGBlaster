@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
                BuildableName = "emptyExample.app"
-               BlueprintName = "emptyExample"
+               BlueprintName = "RGBlaster"
                ReferencedContainer = "container:RGBlaster.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "emptyExample.app"
-            BlueprintName = "emptyExample"
+            BlueprintName = "RGBlaster"
             ReferencedContainer = "container:RGBlaster.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -43,7 +43,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
@@ -51,7 +51,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "emptyExample.app"
-            BlueprintName = "emptyExample"
+            BlueprintName = "RGBlaster"
             ReferencedContainer = "container:RGBlaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,7 +69,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "emptyExample.app"
-            BlueprintName = "emptyExample"
+            BlueprintName = "RGBlaster"
             ReferencedContainer = "container:RGBlaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -89,6 +89,7 @@ protected:
     Resolution resolution;
     Color color;
     float deg2rad(float _deg);
+    ofVec2f screenRes;
     
 private:
 

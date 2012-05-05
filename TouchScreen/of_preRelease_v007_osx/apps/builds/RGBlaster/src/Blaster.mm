@@ -57,16 +57,20 @@ Blaster::Blaster(){
     
     tilesPerRow=6;
     
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
+    
     width=height=74;
     
-    setPosition(386, 995);
+    setPosition(screenRes.x/2, screenRes.y-29);
     
     r=currentR=0;
     
     rotationSpeed=10;
     maxRotation=0.85;
     
-    missileSpawnPos=currentMissileSpawnPos=ofVec2f(386,930);
+    missileSpawnPos=currentMissileSpawnPos=ofVec2f(screenRes.x/2,screenRes.y-94);
     
     switchingColor=false;
     

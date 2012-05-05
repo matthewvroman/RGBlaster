@@ -35,7 +35,7 @@ public:
     ofTrueTypeFont      font;
     
     int nextScreen;
-
+    ofVec2f screenRes;
 };
 
 

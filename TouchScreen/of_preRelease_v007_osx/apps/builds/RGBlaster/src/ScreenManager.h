@@ -44,6 +44,8 @@ private:
     bool fading;
     int saturation;
     void fade();
+    
+    ofVec2f screenRes;
 };
 
 

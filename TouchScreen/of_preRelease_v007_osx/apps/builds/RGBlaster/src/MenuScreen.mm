@@ -15,7 +15,11 @@
 #include "MenuScreen.h"
 
 //--------------------------------------------------------------
-MenuScreen::MenuScreen(){	    
+MenuScreen::MenuScreen(){
+    
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
     // Reset font DPI
     ofTrueTypeFont::setGlobalDpi(96);
     
@@ -35,9 +39,9 @@ MenuScreen::MenuScreen(){
     btn_start->init( 1, true, "Start Game", font, 20 );
     btn_about->init( 3, true, "About", font, 110 );
     btn_help->init( 2, true, "Help", font, 120 );
-    btn_start->setPosAndSize( 200, 390, 368, 80 );
-    btn_help->setPosAndSize( 200, 510, 368, 80 );
-    btn_about->setPosAndSize( 200, 630, 368, 80 );
+    btn_start->setPosAndSize( screenRes.x/2-184, 790, 368, 80 );
+    btn_help->setPosAndSize( screenRes.x/2-184, 910, 368, 80 );
+    btn_about->setPosAndSize( screenRes.x/2-184, 1030, 368, 80 );
     btn_start->show();
     btn_help->show();
     btn_about->show();
@@ -55,9 +59,9 @@ void MenuScreen::update(){
     
     // Check for button press
     if(btn_start->pressed) {
-        btn_start->setPosAndSize( 200, 390, 368, 80 );
-        btn_help->setPosAndSize( 200, 510, 368, 80 );
-        btn_about->setPosAndSize( 200, 630, 368, 80 );
+        btn_start->setPosAndSize( screenRes.x/2-184, 790, 368, 80 );
+        btn_help->setPosAndSize( screenRes.x/2-184, 910, 368, 80 );
+        btn_about->setPosAndSize( screenRes.x/2-184, 1030, 368, 80 );
         nextScreen = 1;
         SoundManager::getInstance()->click.play();
     } else if (btn_help->pressed) {
@@ -75,12 +79,12 @@ void MenuScreen::draw(){
     // Draw logo
     ofSetColor( 255, 255, 255 );
     ofEnableAlphaBlending();
-    logo.draw(30, 100, 699, 178);
+    logo.draw(screenRes.x/2-350, 100, 699, 178);
     ofDisableAlphaBlending();
     
     // Draw copyright text
     ofSetColor(97, 114, 175);
-    visitorFont.drawString( "Copyright RGBeast 2011", 175, 1000);
+    visitorFont.drawString( "Copyright RGBeast 2011", screenRes.x/2-175, screenRes.y-24);
     
     // Reset color
     ofSetColor( 255, 255, 255 );

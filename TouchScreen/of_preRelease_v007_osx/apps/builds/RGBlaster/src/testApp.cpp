@@ -6,9 +6,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){	
 	//ofxiPhoneSetOrientation(OFXIPHONE_ORIENTATION_PORTRAIT);
-	
-	//ipad doesn't need no scale ;) 
-	//appIphoneScale = 1;
+	ofSetDataPathRoot("../Resources/");
     
 	ofBackground(0,0,0);
 	
@@ -30,7 +28,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofPushMatrix();
-    //ofScale(appIphoneScale, appIphoneScale);
+    //ofScale(.875,1.875);
     screenManager->draw();
     ofPopMatrix();
 }

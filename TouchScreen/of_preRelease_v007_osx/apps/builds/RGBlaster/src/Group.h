@@ -92,6 +92,8 @@ private:
     ofxSpriteSheetRenderer *renderer;
     
     float privSpeed;
+    
+    ofVec2f screenRes;
 
 };
 

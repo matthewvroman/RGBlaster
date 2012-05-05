@@ -16,6 +16,8 @@
 
 //--------------------------------------------------------------
 GameScreen::GameScreen(){	
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
     soundManager = SoundManager::getInstance();
     
     soundManager->loadGameplaySounds();
@@ -35,8 +37,8 @@ GameScreen::GameScreen(){
     font.loadFont("fonts/ArcadeClassic.ttf", 45, true, true, false);
     btn_replay.init( 1, true, "Replay", font, 110 );
     btn_mainMenu.init( 3, true, "Main Menu", font, 70 );
-    btn_replay.setPosAndSize( 200, 430, 368, 80 );
-    btn_mainMenu.setPosAndSize( 200, 550, 368, 80 );
+    btn_replay.setPosAndSize( screenRes.x/2-184, 430, 368, 80 );
+    btn_mainMenu.setPosAndSize( screenRes.x/2-184, 550, 368, 80 );
     btn_replay.hide();
     btn_mainMenu.hide();
     

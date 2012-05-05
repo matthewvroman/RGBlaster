@@ -33,6 +33,8 @@ public:
     button btn_back;
     
     int nextScreen;
+    
+    ofVec2f screenRes;
 };
 
 

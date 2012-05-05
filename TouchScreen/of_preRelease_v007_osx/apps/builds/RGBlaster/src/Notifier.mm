@@ -16,6 +16,8 @@
 Notifier::Notifier(){
     blockFont.loadFont("fonts/ArcadeClassic.ttf",100,true,true);
     blockFont.loadFont("fonts/ArcadeClassic.ttf",50,true,true);
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
 }
 
 Notifier::~Notifier(){
@@ -26,8 +28,8 @@ Notifier::~Notifier(){
 void Notifier::displayNotification(string _message){
     Notification newMessage;
     newMessage.message=_message;
-    newMessage.x=384-blockFont.stringWidth(_message)/2;
-    newMessage.y=1024;
+    newMessage.x=screenRes.x/2-blockFont.stringWidth(_message)/2;
+    newMessage.y=screenRes.y;
     
     notifications.push_back(newMessage);
 }

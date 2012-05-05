@@ -37,6 +37,8 @@ public:
     button *btn_help;
     
     int nextScreen;
+    
+    ofVec2f screenRes;
 };
 
 

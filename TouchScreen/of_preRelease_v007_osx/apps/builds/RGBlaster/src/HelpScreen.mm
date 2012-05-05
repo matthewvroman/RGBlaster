@@ -16,6 +16,9 @@
 
 //--------------------------------------------------------------
 HelpScreen::HelpScreen(){	
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
     soundManager = SoundManager::getInstance();
         
     // loading label text
@@ -33,7 +36,7 @@ HelpScreen::HelpScreen(){
     
     // Initialize buttons
     btn_back.init( 2, true, "Main Menu", font, 35 );
-    btn_back.setPosAndSize( 200, 930, 368, 80 );
+    btn_back.setPosAndSize( screenRes.x/2-184,screenRes.y-104, 368, 80 );
     
     // Assign screen ID
     nextScreen = 2;
@@ -52,7 +55,8 @@ void HelpScreen::update(){
 //--------------------------------------------------------------
 void HelpScreen::draw(){
     ofSetColor( 255, 255, 255 );
-    
+    ofTranslate(150,250,0);
+    ofPushMatrix();
     // Draw icons
     ofEnableAlphaBlending();
     help1.draw(40, 20);
@@ -72,6 +76,8 @@ void HelpScreen::draw(){
     aboutFont.drawString( "The better you do, the higher\nyour resolution.", 215, 569);
     aboutFont.drawString( "Enemy ships hitting your planet\nwill decrease your resolution.", 215, 693);
     aboutFont.drawString( "Losing all your resolution will\nend the game.", 215, 815);
+    
+    ofPopMatrix();
 }
 
 HelpScreen::~HelpScreen(){

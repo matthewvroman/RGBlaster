@@ -45,6 +45,9 @@ HUD::HUD(){
     
     healthBarBackground.loadImage("sprites/health-bar-background.jpg");
     
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
 }
 
 HUD::~HUD(){
@@ -95,37 +98,22 @@ void HUD::update(){
 void HUD::draw(){
     //ofPushMatrix();
     
-    //TOP HUD
-    //ofFill();
-    //ofSetColor(0,0,0,255);
-    //ofRect(0, 0, 768, 65);
-    /*
-    ofSetColor(0,0,0);
-    blockFont.drawString("SCORE", 17, 32);
-    blockFont.drawString("TIME",327,32);
-    blockFont.drawString("HIGH SCORE",562,32);
-    blockFont.drawString(multiplierString, 57, 80);
-    blockFont.drawString(scoreString, 17, 58);
-    blockFont.drawString(timeString, 327, 58);
-    blockFont.drawString(highScoreString,562,58);
-    */
-    
     //r
     ofSetColor(255,0,0);
     blockFont.drawString("SCORE", 15, 30);
     
     //g
     ofSetColor(0,255,0);
-    blockFont.drawString("TIME",325,30);
+    blockFont.drawString("TIME",screenRes.x/2-59,30);
     
     //b
     ofSetColor(0,0,255);
-    blockFont.drawString("HIGH SCORE",560,30);
+    blockFont.drawString("HIGH SCORE",screenRes.x-223,30);
     
     ofSetColor(255, 255, 255);
     blockFont.drawString(scoreString, 15, 56);
-    blockFont.drawString(timeString, 325, 56);
-    blockFont.drawString(highScoreString,560,56);
+    blockFont.drawString(timeString, screenRes.x/2-59, 56);
+    blockFont.drawString(highScoreString,screenRes.x-223,56);
     
     if(scoreMultiplier>1){
         ofSetColor(255,255, saturation);
@@ -153,11 +141,11 @@ void HUD::draw(){
     
     //HEALTH BAR
     ofSetColor(255,255,255);
-    healthBarBackground.draw(0,1024-healthBarBackground.height);
+    healthBarBackground.draw(0,screenRes.y-healthBarBackground.height);
     
     ofFill();
     ofSetColor(255,255,255);
-    ofRect(6, 1000, currentHealthBarWidth, 19);
+    ofRect(6, screenRes.y-24, currentHealthBarWidth, 19);
     
     string resString="";
     switch (int(SpawnManager::getInstance()->resolution)){
@@ -176,15 +164,15 @@ void HUD::draw(){
         
     }
     ofSetColor(0,0,0);
-    smallBlockFont.drawString(resString + " RESOLUTION",306,1016);
+    smallBlockFont.drawString(resString + " RESOLUTION",centerFontPos(smallBlockFont, resString + " RESOLUTION"),screenRes.y-8);
     
     ofSetColor(255,255,0);
-    smallBlockFont.drawString(resString + " RESOLUTION",305,1015);
+    smallBlockFont.drawString(resString + " RESOLUTION",centerFontPos(smallBlockFont, resString + " RESOLUTION")+1,screenRes.y-9);
     
     ofSetColor(0,0,0);
-    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString)-2, 510);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString)-2, screenRes.y/2);
     ofSetColor(255,255,255);
-    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), 512);
+    blockFont.drawString(powerUpCountString, centerFontPos(blockFont, powerUpCountString), screenRes.y/2-2);
     
     ofSetColor(255,255,255);
     
@@ -193,7 +181,7 @@ void HUD::draw(){
 
 //returns an X value that will position the string in the center of the screen
 float HUD::centerFontPos(ofTrueTypeFont &font,string _letters){
-    return 384-font.stringWidth(_letters)/2;
+    return screenRes.x/2-font.stringWidth(_letters)/2;
 }
 
 //SETTERS

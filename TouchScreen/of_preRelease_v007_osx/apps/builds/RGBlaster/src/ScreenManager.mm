@@ -17,7 +17,8 @@
 
 
 ScreenManager::ScreenManager(){	
-    
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
     // Initialize screen manager
     currentScreen = 0;
     switchScreens(currentScreen);
@@ -82,7 +83,7 @@ void ScreenManager::draw(){
             mainBackground->draw(0,0);
             ofEnableAlphaBlending(); 
             ofSetColor(0,0,0,127);
-            ofRect(0, 0, 768, 1024);
+            ofRect(0, 0, screenRes.x, screenRes.y);
             ofDisableAlphaBlending(); 
             ofSetColor( 255, 255, 255 );
             helpScreen->draw();
@@ -91,7 +92,7 @@ void ScreenManager::draw(){
             mainBackground->draw(0,0);
             ofEnableAlphaBlending(); 
             ofSetColor(0,0,0,127);
-            ofRect(0, 0, 768, 1024);
+            ofRect(0, 0, screenRes.x, screenRes.y);
             ofDisableAlphaBlending(); 
             ofSetColor( 255, 255, 255 );
             aboutScreen->draw();

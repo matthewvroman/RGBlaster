@@ -109,6 +109,8 @@ private:
     
     int saturation;
     bool saturationUp;
+    
+    ofVec2f screenRes;
 };
 
 

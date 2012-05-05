@@ -46,6 +46,8 @@ private:
     ofTrueTypeFont  smallBockFont;
     
     void removeNotification(int);
+    
+    ofVec2f screenRes;
 };
 
 #endif

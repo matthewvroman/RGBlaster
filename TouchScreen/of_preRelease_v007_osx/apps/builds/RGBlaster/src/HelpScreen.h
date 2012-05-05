@@ -41,6 +41,8 @@ public:
     ofImage help7;
     
     int nextScreen;
+    
+    ofVec2f screenRes;
 };
 
 

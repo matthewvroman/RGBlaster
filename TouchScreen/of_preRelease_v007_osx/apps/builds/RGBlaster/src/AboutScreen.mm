@@ -16,6 +16,10 @@
 
 //--------------------------------------------------------------
 AboutScreen::AboutScreen(){	
+    
+    screenRes.x=ofGetWidth();
+    screenRes.y=ofGetHeight();
+    
     soundManager = SoundManager::getInstance();
                 
     // Loading label text
@@ -24,7 +28,7 @@ AboutScreen::AboutScreen(){
     
     // Initialize buttons
     btn_back.init( 3, true, "Main Menu", font, 35 );
-    btn_back.setPosAndSize( 200, 930, 368, 80 );
+    btn_back.setPosAndSize( screenRes.x/2-184,screenRes.y-104, 368, 80 );
     
     // Assign screen ID
     nextScreen = 3;
@@ -43,7 +47,8 @@ void AboutScreen::update(){
 //--------------------------------------------------------------
 void AboutScreen::draw(){
     ofSetColor( 255, 255, 255 );
-    
+    ofTranslate(150,250,0);
+    ofPushMatrix();
     // Draw text
     aboutFont.drawString( "   The planet Reztopia, home to the", 30, 50);
     aboutFont.drawString( "RGBeast race, is under planetwide", 30, 90);
@@ -67,6 +72,7 @@ void AboutScreen::draw(){
     aboutFont.drawString( "matching colored projectiles. Swipe", 30, 810);
     aboutFont.drawString( "left or right over your cannon", 30, 850);
     aboutFont.drawString( "to switch projectile colors.", 30, 890);
+    ofPopMatrix();
 }
 
 AboutScreen::~AboutScreen(){
