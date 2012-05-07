@@ -48,6 +48,9 @@ MenuScreen::MenuScreen(){
     
     // Assign screen ID
     nextScreen = 0;
+    
+    test= new ofxInitialsBox();
+    test->setPos(ofGetWidth()/2,200);
 }
 
 
@@ -84,10 +87,14 @@ void MenuScreen::draw(){
     
     // Draw copyright text
     ofSetColor(97, 114, 175);
-    visitorFont.drawString( "Copyright RGBeast 2011", screenRes.x/2-175, screenRes.y-24);
+    visitorFont.drawString( "Copyright RGBeast 2012", screenRes.x/2-175, screenRes.y-24);
     
     // Reset color
     ofSetColor( 255, 255, 255 );
+    
+    ofPushMatrix();
+    test->draw();
+    ofPopMatrix();
 }
 
 MenuScreen::~MenuScreen(){

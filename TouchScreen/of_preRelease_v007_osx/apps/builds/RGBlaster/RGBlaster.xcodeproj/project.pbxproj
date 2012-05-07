@@ -33,8 +33,10 @@
 		AC1C072D15545CA700B4D42D /* Ship.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C070F15545CA700B4D42D /* Ship.mm */; };
 		AC1C072E15545CA700B4D42D /* HelpScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC1C071115545CA700B4D42D /* HelpScreen.mm */; };
 		AC1C07B8155463D800B4D42D /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1C07B7155463D700B4D42D /* ofxMSAInteractiveObject.cpp */; };
-		AC1C07C51554A2E700B4D42D /* ofxKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1C07C11554A2E700B4D42D /* ofxKey.cpp */; };
-		AC1C07C61554A2E700B4D42D /* ofxKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1C07C31554A2E700B4D42D /* ofxKeyboard.cpp */; };
+		AC37FE7A1556F398002DA974 /* ofxControlArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC37FE791556F398002DA974 /* ofxControlArrow.cpp */; };
+		AC37FE7E1556F700002DA974 /* ofxInitial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC37FE7D1556F700002DA974 /* ofxInitial.cpp */; };
+		AC37FE801556F74E002DA974 /* ofxInitialsBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC37FE7F1556F74E002DA974 /* ofxInitialsBox.cpp */; };
+		AC37FE841556F83C002DA974 /* ofxControlInitial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC37FE831556F83C002DA974 /* ofxControlInitial.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -206,10 +208,16 @@
 		AC1C07BC1554721B00B4D42D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		AC1C07BD1554733100B4D42D /* icon-debug.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "icon-debug.icns"; sourceTree = "<group>"; };
 		AC1C07BE1554733100B4D42D /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		AC1C07C11554A2E700B4D42D /* ofxKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKey.cpp; sourceTree = "<group>"; };
-		AC1C07C21554A2E700B4D42D /* ofxKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKey.h; sourceTree = "<group>"; };
-		AC1C07C31554A2E700B4D42D /* ofxKeyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKeyboard.cpp; sourceTree = "<group>"; };
-		AC1C07C41554A2E700B4D42D /* ofxKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKeyboard.h; sourceTree = "<group>"; };
+		AC37FE791556F398002DA974 /* ofxControlArrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxControlArrow.cpp; sourceTree = "<group>"; };
+		AC37FE7B1556F3B8002DA974 /* ofxControlArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxControlArrow.h; sourceTree = "<group>"; };
+		AC37FE7C1556F6AF002DA974 /* ofxInitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxInitial.h; sourceTree = "<group>"; };
+		AC37FE7D1556F700002DA974 /* ofxInitial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxInitial.cpp; sourceTree = "<group>"; };
+		AC37FE7F1556F74E002DA974 /* ofxInitialsBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxInitialsBox.cpp; sourceTree = "<group>"; };
+		AC37FE811556F75E002DA974 /* ofxInitialsBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxInitialsBox.h; sourceTree = "<group>"; };
+		AC37FE821556F827002DA974 /* ofxControlInitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxControlInitial.h; sourceTree = "<group>"; };
+		AC37FE831556F83C002DA974 /* ofxControlInitial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxControlInitial.cpp; sourceTree = "<group>"; };
+		AC37FE8515570411002DA974 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		ACE177071557265800BAB147 /* leaderboard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = leaderboard.plist; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -303,6 +311,7 @@
 				AC1C077915545CDD00B4D42D /* raw */,
 				AC1C078115545CDD00B4D42D /* sound */,
 				AC1C079815545CDD00B4D42D /* sprites */,
+				ACE177071557265800BAB147 /* leaderboard.plist */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -362,6 +371,7 @@
 		AC1C079815545CDD00B4D42D /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				AC37FE8515570411002DA974 /* arrow.png */,
 				AC1C079915545CDD00B4D42D /* background-hi.png */,
 				AC1C079A15545CDD00B4D42D /* background-low.png */,
 				AC1C079B15545CDD00B4D42D /* background-med.png */,
@@ -393,22 +403,9 @@
 			path = sprites;
 			sourceTree = "<group>";
 		};
-		AC1C07C01554A2E700B4D42D /* ofxKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				AC1C07C11554A2E700B4D42D /* ofxKey.cpp */,
-				AC1C07C21554A2E700B4D42D /* ofxKey.h */,
-				AC1C07C31554A2E700B4D42D /* ofxKeyboard.cpp */,
-				AC1C07C41554A2E700B4D42D /* ofxKeyboard.h */,
-			);
-			name = ofxKeyboard;
-			path = ../../../addons/ofxKeyboard;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				AC1C07C01554A2E700B4D42D /* ofxKeyboard */,
 				AC1C06B615545B3100B4D42D /* ofxSpriteSheetRenderer */,
 			);
 			name = addons;
@@ -476,6 +473,14 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				AC37FE7B1556F3B8002DA974 /* ofxControlArrow.h */,
+				AC37FE791556F398002DA974 /* ofxControlArrow.cpp */,
+				AC37FE7C1556F6AF002DA974 /* ofxInitial.h */,
+				AC37FE7D1556F700002DA974 /* ofxInitial.cpp */,
+				AC37FE821556F827002DA974 /* ofxControlInitial.h */,
+				AC37FE831556F83C002DA974 /* ofxControlInitial.cpp */,
+				AC37FE811556F75E002DA974 /* ofxInitialsBox.h */,
+				AC37FE7F1556F74E002DA974 /* ofxInitialsBox.cpp */,
 				AC1C06F115545CA700B4D42D /* AtlasHandler.h */,
 				AC1C06E315545CA700B4D42D /* AtlasHandler.mm */,
 				AC1C06E415545CA700B4D42D /* MulticoreShip.mm */,
@@ -652,8 +657,10 @@
 				AC1C072D15545CA700B4D42D /* Ship.mm in Sources */,
 				AC1C072E15545CA700B4D42D /* HelpScreen.mm in Sources */,
 				AC1C07B8155463D800B4D42D /* ofxMSAInteractiveObject.cpp in Sources */,
-				AC1C07C51554A2E700B4D42D /* ofxKey.cpp in Sources */,
-				AC1C07C61554A2E700B4D42D /* ofxKeyboard.cpp in Sources */,
+				AC37FE7A1556F398002DA974 /* ofxControlArrow.cpp in Sources */,
+				AC37FE7E1556F700002DA974 /* ofxInitial.cpp in Sources */,
+				AC37FE801556F74E002DA974 /* ofxInitialsBox.cpp in Sources */,
+				AC37FE841556F83C002DA974 /* ofxControlInitial.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,7 +811,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOsc/libs/oscpack/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
@@ -891,7 +900,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOsc/libs/oscpack/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

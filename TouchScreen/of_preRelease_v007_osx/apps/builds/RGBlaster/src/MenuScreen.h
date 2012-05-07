@@ -14,7 +14,7 @@
 
 #import "SoundManager.h"
 #import "button.h"
-
+#import "ofxInitialsBox.h"
 
 class MenuScreen {
 	
@@ -39,6 +39,8 @@ public:
     int nextScreen;
     
     ofVec2f screenRes;
+    
+    ofxInitialsBox *test;
 };
 
 
