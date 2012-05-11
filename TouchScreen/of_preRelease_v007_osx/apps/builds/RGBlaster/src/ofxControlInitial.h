@@ -22,6 +22,8 @@ public:
     
     void setPos(int x, int y);
     
+    string getInitial();
+    
 private:
     ofxControlArrow *upArrow;
     ofxControlArrow *downArrow;

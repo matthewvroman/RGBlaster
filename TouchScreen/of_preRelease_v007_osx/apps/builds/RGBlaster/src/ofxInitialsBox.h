@@ -20,7 +20,10 @@ public:
     
     void setPos(int x, int y);
     
+    void update();
     void draw();
+    
+    string getInitials();
     
 private:
     ofxControlInitial *firstInitial;

@@ -49,8 +49,8 @@ MenuScreen::MenuScreen(){
     // Assign screen ID
     nextScreen = 0;
     
-    test= new ofxInitialsBox();
-    test->setPos(ofGetWidth()/2,200);
+    //test= new ofxInitialsBox();
+    //test->setPos(ofGetWidth()/2,200);
 }
 
 
@@ -92,9 +92,9 @@ void MenuScreen::draw(){
     // Reset color
     ofSetColor( 255, 255, 255 );
     
-    ofPushMatrix();
-    test->draw();
-    ofPopMatrix();
+    //ofPushMatrix();
+    //test->draw();
+    //ofPopMatrix();
 }
 
 MenuScreen::~MenuScreen(){

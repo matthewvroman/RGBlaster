@@ -40,3 +40,7 @@ void ofxControlInitial::draw(){
     initial->draw();
     downArrow->draw();
 }
+
+string ofxControlInitial::getInitial(){
+    return initial->getCurrentLetter();
+}

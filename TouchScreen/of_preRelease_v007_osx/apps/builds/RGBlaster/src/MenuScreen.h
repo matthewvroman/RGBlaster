@@ -40,7 +40,7 @@ public:
     
     ofVec2f screenRes;
     
-    ofxInitialsBox *test;
+    //ofxInitialsBox *test;
 };
 
 

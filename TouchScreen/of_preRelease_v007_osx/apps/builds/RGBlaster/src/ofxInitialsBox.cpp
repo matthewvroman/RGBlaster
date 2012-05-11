@@ -43,6 +43,12 @@ void ofxInitialsBox::setPos(int x, int y){
     _y=y;
 }
 
+void ofxInitialsBox::update(){
+    if(submitBtn->pressed){
+        //call next state
+    }
+}
+
 void ofxInitialsBox::draw(){
     
     //centered
@@ -51,4 +57,10 @@ void ofxInitialsBox::draw(){
     firstInitial->draw();
     middleInitial->draw();
     lastInitial->draw();
+}
+
+string ofxInitialsBox::getInitials(){
+    string _initials=firstInitial->getInitial()+middleInitial->getInitial()+lastInitial->getInitial();
+    cout << "Entered: " << _initials << endl;
+    return _initials;
 }
